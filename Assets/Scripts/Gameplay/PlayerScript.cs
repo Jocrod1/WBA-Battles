@@ -205,8 +205,11 @@ public class PlayerScript : MonoBehaviour {
         ScreentoScale = new Vector2(100f / Screen.width, 100f / Screen.height);
         GesturesExecution();
 
+        AnimatorStateInfo stateinfo = Anim.GetCurrentAnimatorStateInfo(0);
+        bool IdleState = stateinfo.IsName("Idle");
 
-        if (Tap) {
+
+        if (Tap && IdleState) {
             if (taplocal.y < 50 / ScreentoScale.y) {
                 if (taplocal.x < 50 / ScreentoScale.x)
                 {
@@ -229,7 +232,7 @@ public class PlayerScript : MonoBehaviour {
             }
         }
 
-        if (longTap) {
+        if (longTap && IdleState) {
             if (taplocal.y < 50 / ScreentoScale.y)
             {
                 if (taplocal.x < 50 / ScreentoScale.x)
@@ -254,16 +257,16 @@ public class PlayerScript : MonoBehaviour {
             }
         }
 
-        if (swipeLeft) {
+        if (swipeLeft && IdleState) {
             Anim.SetTrigger("DodgeLeft");
         }
-        if (swipeRight) {
+        if (swipeRight && IdleState) {
             Anim.SetTrigger("DodgeRight");
         }
 
         if (Touching)
         {
-            if (swipeUp || SwipeDown)
+            if ((swipeUp || SwipeDown) && IdleState)
             {
                 Sliding = true;
             }

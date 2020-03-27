@@ -164,10 +164,10 @@ AnimatorStateMachine:
     m_Position: {x: 210, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2118353565598614999}
-    m_Position: {x: 470, y: 310, z: 0}
+    m_Position: {x: 390, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2735308141935175726}
-    m_Position: {x: 240, y: 310, z: 0}
+    m_Position: {x: 170, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6962959894518438651}
     m_Position: {x: 720, y: 300, z: 0}
@@ -179,7 +179,7 @@ AnimatorStateMachine:
     m_Position: {x: 890, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8087810554299176361}
-    m_Position: {x: 870, y: 140, z: 0}
+    m_Position: {x: 870, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3612912534935540340}
     m_Position: {x: 860, y: 210, z: 0}
@@ -486,13 +486,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: HardBottomLeft
+  - m_Name: HardBottomRight
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: HardBottomRight
+  - m_Name: HardBottomLeft
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
