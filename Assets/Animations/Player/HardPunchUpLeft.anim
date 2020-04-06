@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.36666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5833333
+        time: 0.4
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -57,11 +57,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 271e34e2c0b9cd7468ae6b903f66d167, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 5f52e53bce8e0444997145d31ef3d53a, type: 3}
-    - time: 0.8333333
-      value: {fileID: 21300000, guid: 5f52e53bce8e0444997145d31ef3d53a, type: 3}
+      value: {fileID: 21300000, guid: 5831568923b9c694999daf6eceb0b9b2, type: 3}
+    - time: 0.06666667
+      value: {fileID: 21300000, guid: ef181992b39c58e4888a772a4e7abd81, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: c063a3c30081cee41ad89e98ab4e9ed6, type: 3}
+    - time: 0.36666667
+      value: {fileID: 21300000, guid: 7358f367fb70c1a4380669b5d8bc0fce, type: 3}
+    - time: 0.6166667
+      value: {fileID: 21300000, guid: 7358f367fb70c1a4380669b5d8bc0fce, type: 3}
     attribute: m_Sprite
     path: Renderer
     classID: 212
@@ -88,15 +92,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 271e34e2c0b9cd7468ae6b903f66d167, type: 3}
-    - {fileID: 21300000, guid: 5f52e53bce8e0444997145d31ef3d53a, type: 3}
-    - {fileID: 21300000, guid: 5f52e53bce8e0444997145d31ef3d53a, type: 3}
+    - {fileID: 21300000, guid: 5831568923b9c694999daf6eceb0b9b2, type: 3}
+    - {fileID: 21300000, guid: ef181992b39c58e4888a772a4e7abd81, type: 3}
+    - {fileID: 21300000, guid: c063a3c30081cee41ad89e98ab4e9ed6, type: 3}
+    - {fileID: 21300000, guid: 7358f367fb70c1a4380669b5d8bc0fce, type: 3}
+    - {fileID: 21300000, guid: 7358f367fb70c1a4380669b5d8bc0fce, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.84999996
+    m_StopTime: 0.6333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -125,7 +131,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.36666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -134,7 +140,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5833333
+        time: 0.4
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -152,4 +158,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: BeginPunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.3
+    functionName: DoPunch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
