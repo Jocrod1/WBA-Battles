@@ -6,6 +6,14 @@ public class RecieverScript : MonoBehaviour
 {
     public bool Recieve;
     public Character Charctr;
+    public Targets Target;
+
+
+    [System.Serializable]
+    public enum Targets {
+        Player,
+        Enemy
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +29,7 @@ public class RecieverScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Receptor")
+        if (collision.transform.tag == "Receptor" && collision.transform.parent.parent.parent.name == Target.ToString())
         {
             Recieve = true;
             Charctr.PunchRecieved = true;

@@ -22,9 +22,9 @@ public class EnemyScript : Character {
     float PbottomBlock;
     float PDodge;
 
-    [Header("Validators")]
-    public bool InCombo;
-    public bool PunchFailed;
+    //[Header("Validators")]
+    //public bool InCombo;
+    //public bool PunchFailed;
 
     public List<bool> Combos;
 
@@ -178,7 +178,7 @@ public class EnemyScript : Character {
             int WCombo = B < 0.5 ? 1 : 2;
             print( B + " is " + WCombo);
             if(stateInfo.IsName("BlockV"))
-                anim.SetTrigger("Combo" + WCombo);
+                anim.SetTrigger("Combo" + 2);
 
         }
 

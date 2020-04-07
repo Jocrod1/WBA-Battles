@@ -56,6 +56,10 @@ public class Character : MonoBehaviour {
 
     public float SD2Dodge = 30;
 
+    [Header("States and Times")]
+    public bool IsTired;
+    public bool PunchFailed;
+
     [Header("Punch Infos")]
     public PunchInfo PIBottom;
     public PunchInfo PIUp;
@@ -63,6 +67,8 @@ public class Character : MonoBehaviour {
     public PunchInfo PIHardUp;
 
     public Stateinfos stateinfo;
+
+
 
     #region FunctionsForAnimations
 
@@ -83,8 +89,72 @@ public class Character : MonoBehaviour {
     {
         StaminaDown(SD2Dodge);
     }
+
+    public bool Begin;
+
+    IEnumerator WatchAttackColliders() {
+        Begin = true;
+        bool Steady = true;
+        while (Steady) {
+            Steady = false;
+            for (int i = 0; i < AttColl.childCount; i++) {
+                Steady = Steady || AttColl.GetChild(i).gameObject.activeSelf;
+            }
+            Steady = !Steady;
+            if(Steady)
+                yield return null;
+        }
+
+        yield return null;
+
+        int counting = 0;
+        for (int i = 0; i < AttColl.childCount; i++) {
+            GameObject Gobj = AttColl.GetChild(i).gameObject;
+            if (Gobj.activeSelf) {
+                counting++;
+                if (counting > 1)
+                    print("Hay mas de 1 collider activo");
+                StartCoroutine(Watchdisabling(Gobj));
+            }
+        }
+        Begin = false;
+    }
+
+    public virtual bool Conditions2Fail() {
+        return !PunchEnded;
+    }
+
+    public virtual void FailingProcess() {
+        anim.SetBool("PunchFailed", true);
+    }
+
+    IEnumerator Watchdisabling(GameObject target) {
+        if (stateinfo.Punching || stateinfo.HardPunching)
+        {
+            while (target.activeSelf)
+            {
+                yield return null;
+            }
+
+            yield return null;
+
+            if (Conditions2Fail())
+            {
+                FailingProcess();
+                PunchFailed = true;
+                print("my punch failed");
+            }
+            PunchEnded = false;
+        }
+        else {
+
+            print("Error: El gameobject " + target.transform.name + "no deberia activarse en este state");
+            yield return null;
+        }
+    }
     #endregion
 
+    #region StateinfoClass
     [System.Serializable]
     public class Stateinfos {
 
@@ -148,16 +218,33 @@ public class Character : MonoBehaviour {
         public bool PunchFailedBottomRight;
         public bool PunchFailedUpLeft;
         public bool PunchFailedUpRight;
+        public bool NormalPunchFailed;
+
+        public bool PunchFailedHBottomLeft;
+        public bool PunchFailedHBottomRight;
+        public bool PunchFailedHUpLeft;
+        public bool PunchFailedHUpRight;
+        public bool HardpunchFailed;
+
         public bool PunchFailed;
+
         public bool FailingPunch;
         protected void GetPunchFailed() {
             PunchFailedBottomLeft = StateInfo.IsName("PunchFailedBottomLeft");
             PunchFailedBottomRight = StateInfo.IsName("PunchFailedBottomRight");
             PunchFailedUpLeft = StateInfo.IsName("PunchFailedUpLeft");
             PunchFailedUpRight = StateInfo.IsName("PunchFailedUpRight");
+            NormalPunchFailed = PunchFailedBottomLeft || PunchFailedBottomRight || PunchFailedUpLeft || PunchFailedUpRight;
+
+            PunchFailedHBottomLeft = StateInfo.IsName("PunchFailedHBottomLeft");
+            PunchFailedHBottomRight = StateInfo.IsName("PunchFailedHBottomRight");
+            PunchFailedHUpLeft = StateInfo.IsName("PunchFailedHUpLeft");
+            PunchFailedHUpRight = StateInfo.IsName("PunchFailedHUpRight");
+            HardpunchFailed = PunchFailedHBottomLeft || PunchFailedHBottomRight || PunchFailedHUpLeft || PunchFailedHUpRight;
+
             PunchFailed = StateInfo.IsName("PunchFailed");
 
-            FailingPunch = PunchFailedBottomLeft || PunchFailedBottomRight || PunchFailedUpLeft || PunchFailedUpRight;
+            FailingPunch = NormalPunchFailed || HardpunchFailed || PunchFailed;
         }
 
         [Header("Recieve Punch")]
@@ -210,8 +297,12 @@ public class Character : MonoBehaviour {
         }
     }
 
+    #endregion
+
+
     public virtual void DoPunch() {
         Punch = true;
+        StartCoroutine(WatchAttackColliders());
     }
 
     public virtual void LoadData() {
@@ -252,6 +343,12 @@ public class Character : MonoBehaviour {
     public virtual void UpdateThis() {
         if (pause)
             return;
+
+        if (PunchFailed && stateinfo.FailingPunch) {
+            anim.SetBool("PunchFailed", false);
+            PunchFailed = false;
+        }
+
         CurrentStamina += RecuperationPerSecond * Time.deltaTime;
         CurrentHealth += 10f * Time.deltaTime;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
@@ -266,14 +363,33 @@ public class Character : MonoBehaviour {
 
     public virtual void Damaged(PunchInfo punchInfo) {
         CurrentHealth -= punchInfo.Damage;
-        if (!punchInfo.Hard) {
-            if (punchInfo.PunchRawLocal.y == -1) {
-                if (punchInfo.PunchRawLocal.x == -1) {
+        string Trigger = "Recieve";
 
-                }
-            }
+        if (punchInfo.Hard)
+            Trigger += "Hard";
+
+        if (punchInfo.PunchRawLocal.y == -1)
+            Trigger += "Bottom";
+        else if (punchInfo.PunchRawLocal.y == 1)
+            Trigger += "Up";
+        else print("Error in Y input of PunchInfo");
+
+        if (punchInfo.PunchRawLocal.x == -1)
+            Trigger += "Left";
+        else if (punchInfo.PunchRawLocal.x == 1)
+            Trigger += "Right";
+        else print("Error in X input of PunchInfo");
+
+        anim.SetTrigger(Trigger);
+
+        if (stateinfo.Punching || stateinfo.HardPunching) {
+            anim.SetBool("PunchFailed", true);
+            print("i get punch whlie i punch");
+            PunchFailed = true;
         }
-        if(CurrentHealth <= 0) {
+
+
+        if (CurrentHealth <= 0) {
             Defeated();
             return;
         }
@@ -315,5 +431,6 @@ public class Character : MonoBehaviour {
 
     void FixedUpdate() {
         FixedUpdatethis();
+        //WatchAttackColliders();
     }
 }
