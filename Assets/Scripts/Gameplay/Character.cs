@@ -90,67 +90,21 @@ public class Character : MonoBehaviour {
         StaminaDown(SD2Dodge);
     }
 
-    public bool Begin;
-
-    IEnumerator WatchAttackColliders() {
-        Begin = true;
-        bool Steady = true;
-        while (Steady) {
-            Steady = false;
-            for (int i = 0; i < AttColl.childCount; i++) {
-                Steady = Steady || AttColl.GetChild(i).gameObject.activeSelf;
-            }
-            Steady = !Steady;
-            if(Steady)
-                yield return null;
-        }
-
-        yield return null;
-
-        int counting = 0;
-        for (int i = 0; i < AttColl.childCount; i++) {
-            GameObject Gobj = AttColl.GetChild(i).gameObject;
-            if (Gobj.activeSelf) {
-                counting++;
-                if (counting > 1)
-                    print("Hay mas de 1 collider activo");
-                StartCoroutine(Watchdisabling(Gobj));
-            }
-        }
-        Begin = false;
-    }
-
-    public virtual bool Conditions2Fail() {
+    protected virtual bool Conditions2Fail() {
         return !PunchEnded;
     }
 
-    public virtual void FailingProcess() {
-        anim.SetBool("PunchFailed", true);
+    public virtual void CheckFailPunch() {
+        if (Conditions2Fail()) {
+            FailingProcess();
+        }
+        PunchEnded = false;
     }
 
-    IEnumerator Watchdisabling(GameObject target) {
-        if (stateinfo.Punching || stateinfo.HardPunching)
-        {
-            while (target.activeSelf)
-            {
-                yield return null;
-            }
-
-            yield return null;
-
-            if (Conditions2Fail())
-            {
-                FailingProcess();
-                PunchFailed = true;
-                print("my punch failed");
-            }
-            PunchEnded = false;
-        }
-        else {
-
-            print("Error: El gameobject " + target.transform.name + "no deberia activarse en este state");
-            yield return null;
-        }
+    protected virtual void FailingProcess() {
+        anim.SetBool("PunchFailed", true);
+        PunchFailed = true;
+        print("i failed punch");
     }
     #endregion
 
@@ -194,6 +148,14 @@ public class Character : MonoBehaviour {
             PunchBottomRight = StateInfo.IsName("PunchBottomRight");
             PunchUpLeft = StateInfo.IsName("PunchUpLeft");
             PunchUpRight = StateInfo.IsName("PunchUpRight");
+            for (int i = 0; i < 10; i++)
+            {
+                PunchBottomLeft = PunchBottomLeft || StateInfo.IsName("PunchBottomLeft" + i);
+                PunchBottomRight = PunchBottomRight || StateInfo.IsName("PunchBottomRight" + i);
+                PunchUpLeft = PunchUpLeft || StateInfo.IsName("PunchUpLeft" + i);
+                PunchUpRight = PunchUpRight|| StateInfo.IsName("PunchUpRight" + i);
+            }
+            
 
             Punching = PunchBottomLeft || PunchBottomRight || PunchUpLeft || PunchUpRight;
         }
@@ -209,6 +171,13 @@ public class Character : MonoBehaviour {
             HardPunchBottomRight = StateInfo.IsName("HardPunchBottomRight");
             HardPunchUpLeft = StateInfo.IsName("HardPunchUpLeft");
             HardPunchUpRight = StateInfo.IsName("HardPunchUpRight");
+            for (int i = 0; i < 10; i++)
+            {
+                HardPunchBottomLeft = HardPunchBottomLeft || StateInfo.IsName("HardPunchBottomLeft" + i);
+                HardPunchBottomRight = HardPunchBottomLeft || StateInfo.IsName("HardPunchBottomRight" + i);
+                HardPunchUpLeft = HardPunchBottomLeft || StateInfo.IsName("HardPunchUpLeft" + i);
+                HardPunchUpRight = HardPunchBottomLeft || StateInfo.IsName("HardPunchUpRight" + i);
+            }
 
             HardPunching = HardPunchBottomLeft || HardPunchBottomRight || HardPunchUpLeft || HardPunchUpRight;
         }
@@ -302,7 +271,6 @@ public class Character : MonoBehaviour {
 
     public virtual void DoPunch() {
         Punch = true;
-        StartCoroutine(WatchAttackColliders());
     }
 
     public virtual void LoadData() {

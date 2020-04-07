@@ -48,7 +48,7 @@ public class EnemyScript : Character {
     public override void UpdateThis() {
         base.UpdateThis();
 
-        actualtime = Time.time;
+        actualtime = Time.time - StartTime;
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
@@ -176,9 +176,9 @@ public class EnemyScript : Character {
             time2NextCombo = Random.Range(ClampedTimeA, ClampedTimeB);
             float B = Random.Range(1f, 2f) - 1;
             int WCombo = B < 0.5 ? 1 : 2;
-            print( B + " is " + WCombo);
+            //print( B + " is " + WCombo);
             if(stateInfo.IsName("BlockV"))
-                anim.SetTrigger("Combo" + 2);
+                anim.SetTrigger("Combo" + WCombo);
 
         }
 

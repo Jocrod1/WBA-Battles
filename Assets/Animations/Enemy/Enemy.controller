@@ -145,7 +145,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FailPunchBottomLeft
+  m_Name: PunchFailedBottomLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -682,7 +682,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FailPunchBottomRight
+  m_Name: PunchFailedBottomRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -929,20 +929,20 @@ AnimatorStateMachine:
     m_Position: {x: 880, y: -200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5400493174423885166}
-    m_Position: {x: 890, y: 30, z: 0}
+    m_Position: {x: 940, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8205385894843505833}
-    m_Position: {x: 900, y: 130, z: 0}
+    m_Position: {x: 830, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5576144698633094429}
-    m_Position: {x: 870, y: 260, z: 0}
+    m_Position: {x: 820, y: 230, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -3002369475563994004}
-    m_Position: {x: 190, y: 300, z: 0}
+    m_Position: {x: 230, y: 320, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -8566801541898840752}
-    m_Position: {x: 390, y: 280, z: 0}
+    m_Position: {x: 420, y: 300, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -3985221389604661257}
     m_Position: {x: 1080, y: -60, z: 0}
@@ -951,7 +951,7 @@ AnimatorStateMachine:
     m_Position: {x: 870, y: -100, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -659823436291872492}
-    m_Position: {x: 670, y: 340, z: 0}
+    m_Position: {x: 640, y: 340, z: 0}
   m_AnyStateTransitions:
   - {fileID: 7004150884148490093}
   - {fileID: -7381840345665183396}
@@ -1065,7 +1065,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FirstComo
+  m_Name: FirstCombo
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1496104581768536493}
@@ -1497,7 +1497,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FailPunchUpLeft
+  m_Name: PunchFailedUpLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -2194,7 +2194,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FailPunchUpRight
+  m_Name: PunchFailedUpRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
