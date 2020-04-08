@@ -44,6 +44,35 @@ public class EnemyScript : Character {
     public bool Blocking;
     float Block;
 
+    protected override void FailingProcess()
+    {
+        string Trigger = "PunchFailed";
+
+        if (info.Hard)
+            Trigger += "H";
+
+        if (info.PunchRawLocal.y == -1)
+            Trigger += "Bottom";
+        else if (info.PunchRawLocal.y == 1)
+            Trigger += "Up";
+        else {
+            print("Error input in punchrawlocal");
+            return;
+        }
+
+        if (info.PunchRawLocal.x == -1)
+            Trigger += "Left";
+        else if (info.PunchRawLocal.y == 1)
+            Trigger += "Right";
+        else {
+            print("Error input in punchrawlocal");
+            return;
+        }
+
+        anim.SetTrigger(Trigger);
+        print("i failed punch");
+    }
+
     // Update is called once per frame
     public override void UpdateThis() {
         base.UpdateThis();

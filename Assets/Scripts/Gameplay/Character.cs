@@ -174,9 +174,9 @@ public class Character : MonoBehaviour {
             for (int i = 0; i < 10; i++)
             {
                 HardPunchBottomLeft = HardPunchBottomLeft || StateInfo.IsName("HardPunchBottomLeft" + i);
-                HardPunchBottomRight = HardPunchBottomLeft || StateInfo.IsName("HardPunchBottomRight" + i);
-                HardPunchUpLeft = HardPunchBottomLeft || StateInfo.IsName("HardPunchUpLeft" + i);
-                HardPunchUpRight = HardPunchBottomLeft || StateInfo.IsName("HardPunchUpRight" + i);
+                HardPunchBottomRight = HardPunchBottomRight || StateInfo.IsName("HardPunchBottomRight" + i);
+                HardPunchUpLeft = HardPunchUpLeft || StateInfo.IsName("HardPunchUpLeft" + i);
+                HardPunchUpRight = HardPunchUpRight || StateInfo.IsName("HardPunchUpRight" + i);
             }
 
             HardPunching = HardPunchBottomLeft || HardPunchBottomRight || HardPunchUpLeft || HardPunchUpRight;
@@ -312,10 +312,7 @@ public class Character : MonoBehaviour {
         if (pause)
             return;
 
-        if (PunchFailed && stateinfo.FailingPunch) {
-            anim.SetBool("PunchFailed", false);
-            PunchFailed = false;
-        }
+        
 
         CurrentStamina += RecuperationPerSecond * Time.deltaTime;
         CurrentHealth += 10f * Time.deltaTime;
@@ -327,6 +324,12 @@ public class Character : MonoBehaviour {
     public virtual void FixedUpdatethis() {
         if (pause)
             return;
+        stateinfo.GetStatesInfo(anim.GetCurrentAnimatorStateInfo(0));
+        if (PunchFailed && stateinfo.FailingPunch)
+        {
+            anim.SetBool("PunchFailed", false);
+            PunchFailed = false;
+        }
     }
 
     public virtual void Damaged(PunchInfo punchInfo) {
@@ -393,7 +396,6 @@ public class Character : MonoBehaviour {
     void Update() {
         if (pause)
             return;
-        stateinfo.GetStatesInfo(anim.GetCurrentAnimatorStateInfo(0));
         UpdateThis();
     }
 
