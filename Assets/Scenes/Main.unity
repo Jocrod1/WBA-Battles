@@ -1461,9 +1461,9 @@ MonoBehaviour:
     RecieveHardPunch: 0
     Tired: 0
   Player: {fileID: 774160021}
-  ProbToUpBlock: 25
-  ProbToBottomBlock: 25
-  ProbtoDodge: 25
+  ProbToUpBlock: 100
+  ProbToBottomBlock: 100
+  ProbtoDodge: 100
   RecuperationTime: 2
   ClampedTimeA: 3
   ClampedTimeB: 5
@@ -3246,7 +3246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Recieve: 0
   Charctr: {fileID: 774160021}
-  Target: 0
+  Target: 1
 --- !u!1 &1250928840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,7 +4936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Recieve: 0
   Charctr: {fileID: 774160021}
-  Target: 0
+  Target: 1
 --- !u!1 &2123266490
 GameObject:
   m_ObjectHideFlags: 0

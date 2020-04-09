@@ -199,6 +199,11 @@ public class EnemyScript : Character {
 
         bool Trigg = Time.time - StartTime > time2NextCombo;
 
+        if(stateinfo.BlockIdle && Player.stateinfo.FailingPunch) {
+            anim.SetTrigger("Combo2");
+            StartTime = Time.time;
+        }
+
         if (Trigg) {
 
             StartTime = Time.time;
