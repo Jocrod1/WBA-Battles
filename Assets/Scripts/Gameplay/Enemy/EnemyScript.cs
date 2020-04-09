@@ -6,8 +6,11 @@ public class EnemyScript : Character {
 
     public PlayerScript Player;
 
-    public float ProbToUpBlock;
-    public float ProbToBottomBlock;
+    [Header("Probabilities")]
+    public float InitProbToUpBlock;
+    public float InitProbToBottomBlock;
+    public float IncrProbBlock;
+
     public float ProbtoDodge;
     public float RecuperationTime;
     float StartTime;
@@ -35,8 +38,8 @@ public class EnemyScript : Character {
         time2NextCombo = Random.Range(ClampedTimeA, ClampedTimeB);
         StartTime = 0;
 
-        PupBlock = ProbToUpBlock;
-        PbottomBlock = ProbToBottomBlock;
+        PupBlock = InitProbToUpBlock;
+        PbottomBlock = InitProbToBottomBlock;
         PDodge = ProbtoDodge;
     }
 
