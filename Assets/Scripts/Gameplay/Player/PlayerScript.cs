@@ -9,7 +9,7 @@ public class PlayerScript : Character {
     #region GesturesManagement
 
     [Header("Tweaks")]
-    [SerializeField] float deadzone = 100.0f;
+    [SerializeField] Vector2 deadzone;
     [SerializeField] float doubleTapDelta = 0.5f;
     [SerializeField] float longTapDelta = 0.5f;
 
@@ -87,30 +87,43 @@ public class PlayerScript : Character {
         if (startTouch != Vector2.zero && Touching)
             swipeDelta = (Vector2)Input.mousePosition - startTouch;
 
-        if (swipeDelta.sqrMagnitude > sqrDeadzone)
-        {
-
+        if (Mathf.Abs(swipeDelta.x) > deadzone.x) {
             isTap = false;
 
-            float x = swipeDelta.x;
-            float y = swipeDelta.y;
-
-            if (Mathf.Abs(x) > Mathf.Abs(y))
-            {
-                if (x < 0)
-                    swipeLeft = true;
-                else
-                    swipeRight = true;
-            }
+            if (swipeDelta.x < 0)
+                swipeLeft = true;
             else
-            {
-                if (y < 0)
-                    SwipeDown = true;
-                else
-                    swipeUp = true;
-            }
-            startTouch = swipeDelta = Vector2.zero;
+                swipeRight = true;
+
+            startTouch = new Vector2(Input.mousePosition.x, startTouch.y);
         }
+        if (Mathf.Abs(swipeDelta.y) > deadzone.y) {
+            isTap = false;
+
+            if (swipeDelta.y < 0)
+                SwipeDown = true;
+            else
+                swipeUp = true;
+        }
+
+        //if (swipeDelta.sqrMagnitude > sqrDeadzone)
+        //{
+
+        //    isTap = false;
+
+        //    float x = swipeDelta.x;
+        //    float y = swipeDelta.y;
+
+        //    if (Mathf.Abs(x) > Mathf.Abs(y))
+        //    {
+                
+        //    }
+        //    else
+        //    {
+                
+        //    }
+        //    startTouch = swipeDelta = Vector2.zero;
+        //}
     }
 
     void UpdateMobile()
@@ -194,10 +207,8 @@ public class PlayerScript : Character {
     public override void LoadData(){
         base.LoadData();
         //So we can use .sqrMagnitude, instead of .magnitude
-        sqrDeadzone = deadzone * deadzone;
+        //sqrDeadzone = deadzone * deadzone;
     }
-
-
 
     // Update is called once per frame
     public override void UpdateThis()
@@ -287,7 +298,7 @@ public class PlayerScript : Character {
 
         if (Touching)
         {
-            if ((swipeUp || SwipeDown) && IdleState)
+            if ((swipeUp || SwipeDown))
             {
                 Sliding = true;
             }

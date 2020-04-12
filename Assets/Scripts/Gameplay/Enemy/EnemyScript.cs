@@ -6,8 +6,67 @@ public class EnemyScript : Character {
 
     public PlayerScript Player;
 
-    public float ProbToUpBlock;
-    public float ProbToBottomBlock;
+    [Header("Probabilities")]
+    public float InitProbToUpBlock;
+    public float MaxProb2UpBlock;
+    public float InitProbToBottomBlock;
+    public float MaxProb2BottomBlock;
+    public float IncrProbBlock;
+    public Difficulties Difficulty;
+
+    [System.Serializable]
+    public enum Difficulties {
+        Easy,
+        Medium,
+        Hard,
+        Impossible
+    }
+
+    int NPunchBottom;
+    int NPunchUp;
+
+    enum Yopt {
+        Up, 
+        Bottom
+    }
+    void IncrPunch(Yopt yopt) {
+        if (yopt == Yopt.Bottom)
+        {
+
+        }
+        else if (yopt == Yopt.Up)
+        {
+
+        }
+        else
+            return;
+    }
+
+    void BlockThinking() {
+        switch (Difficulty) {
+            case Difficulties.Easy:
+                {
+
+                    break;
+                }
+            case Difficulties.Medium:
+                {
+                    break;
+                }
+            case Difficulties.Hard:
+                {
+                    break;
+                }
+            case Difficulties.Impossible:
+                {
+                    break;
+                }
+            default: break;
+        }
+    }
+
+
+
     public float ProbtoDodge;
     public float RecuperationTime;
     float StartTime;
@@ -35,8 +94,8 @@ public class EnemyScript : Character {
         time2NextCombo = Random.Range(ClampedTimeA, ClampedTimeB);
         StartTime = 0;
 
-        PupBlock = ProbToUpBlock;
-        PbottomBlock = ProbToBottomBlock;
+        PupBlock = InitProbToUpBlock;
+        PbottomBlock = InitProbToBottomBlock;
         PDodge = ProbtoDodge;
     }
 
@@ -181,7 +240,6 @@ public class EnemyScript : Character {
                 }
             }
         }
-        float time = Time.time;
         if (PunchRecieved)
         {
             Blocking = false;

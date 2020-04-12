@@ -33,6 +33,11 @@ public class Character : MonoBehaviour {
     float CurrentMaxStamina;
     public float RecuperationPerSecond;
 
+    [Header("Recuperation Times")]
+    public float TiredRecuperationTime;
+    public float PFailedRecuperationTime;
+
+
     #region AttReceptors
     protected ReceptorScript AttBottom;
     protected ReceptorScript AttUp;
@@ -308,14 +313,25 @@ public class Character : MonoBehaviour {
         CurrentStamina = CurrentMaxStamina;
     }
 
+    float timeStaminadown;
+    [Header("STAMINA RECOVERING DEMO")]
+    public float StaminaRecovering;
+    public virtual void UpdateStamina() {
+        bool CanIncStamina = Time.time - timeStaminadown > StaminaRecovering;
+        if (CanIncStamina){
+
+            CurrentStamina += RecuperationPerSecond * Time.deltaTime;
+
+        }
+    }
+
     public virtual void UpdateThis() {
         if (pause)
             return;
 
-        
 
-        CurrentStamina += RecuperationPerSecond * Time.deltaTime;
-        CurrentHealth += 10f * Time.deltaTime;
+
+        UpdateStamina();
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         CurrentMaxStamina = Mathf.Clamp(CurrentMaxStamina, 0, MaxStamina);
         CurrentStamina = Mathf.Clamp(CurrentStamina, 0, CurrentMaxStamina);
@@ -325,7 +341,7 @@ public class Character : MonoBehaviour {
         if (pause)
             return;
         stateinfo.GetStatesInfo(anim.GetCurrentAnimatorStateInfo(0));
-        if (PunchFailed && stateinfo.FailingPunch)
+        if (PunchFailed && (stateinfo.HardpunchFailed || stateinfo.NormalPunchFailed))
         {
             anim.SetBool("PunchFailed", false);
             PunchFailed = false;
@@ -354,9 +370,8 @@ public class Character : MonoBehaviour {
         anim.SetTrigger(Trigger);
 
         if (stateinfo.Punching || stateinfo.HardPunching) {
-            anim.SetBool("PunchFailed", true);
             print("i get punch whlie i punch");
-            PunchFailed = true;
+            StartCoroutine(FailedRecuperation(punchInfo));
         }
 
 
@@ -366,8 +381,23 @@ public class Character : MonoBehaviour {
         }
     }
 
+    IEnumerator FailedRecuperation(PunchInfo punchInfo) {
+        anim.SetBool("PunchFailed", true);
+        PunchFailed = true;
+        float rectime = PFailedRecuperationTime;
+        if (punchInfo.Hard)
+            rectime = rectime * 1.5f;
+
+
+        yield return new WaitForSeconds(rectime);
+
+        anim.SetBool("PunchFailed", false);
+        PunchFailed = false;
+    }
+
     public virtual void StaminaDown(float minusStamina) {
         CurrentStamina -= minusStamina;
+        timeStaminadown = Time.time;
         if (CurrentStamina <= 0) {
             Tired();
             return;
@@ -379,7 +409,18 @@ public class Character : MonoBehaviour {
     }
 
     public virtual void Tired() {
+        StartCoroutine(TiredRecuperation());
         print("tired");
+    }
+    IEnumerator TiredRecuperation()
+    {
+        anim.SetBool("Tired", true);
+        IsTired = true;
+
+        yield return new WaitForSeconds(TiredRecuperationTime);
+
+        anim.SetBool("Tired", false);
+        IsTired = false;
     }
 
     public virtual void Defeated() {
