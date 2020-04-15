@@ -36,9 +36,11 @@ public class MenuScript : MonoBehaviour
     }
 
     //boton cuando se elija en boxeador
-    public void SelectChamp()
+    public void SelectChamp(string Tabla)
     {
+        PlayerPrefs.SetInt("IDPlayer", IDChamp);
 
+        playgame(Tabla);
     }
 
     public void Champ1()
