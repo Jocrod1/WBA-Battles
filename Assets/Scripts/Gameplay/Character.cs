@@ -64,6 +64,7 @@ public class Character : MonoBehaviour {
     [Header("States and Times")]
     public bool IsTired;
     public bool PunchFailed;
+    public bool IsDefeated = true;
 
     [Header("Punch Infos")]
     public PunchInfo PIBottom;
@@ -376,7 +377,7 @@ public class Character : MonoBehaviour {
 
 
         if (CurrentHealth <= 0) {
-            Defeated();
+            Defeated(punchInfo);
             return;
         }
     }
@@ -410,7 +411,6 @@ public class Character : MonoBehaviour {
 
     public virtual void Tired() {
         StartCoroutine(TiredRecuperation());
-        print("tired");
     }
     IEnumerator TiredRecuperation()
     {
@@ -423,8 +423,25 @@ public class Character : MonoBehaviour {
         IsTired = false;
     }
 
-    public virtual void Defeated() {
-        print("Defeated");
+    public virtual void Defeated(PunchInfo punchInfo) {
+        string trigger = "Defeated";
+
+        if (punchInfo.PunchRawLocal.x == -1)
+            trigger += "Left";
+        else if (punchInfo.PunchRawLocal.x == 1)
+            trigger += "Right";
+        else
+            print("Error in X input of PunchInfo");
+
+        anim.SetTrigger(trigger);
+    }
+
+    public void Defeat() {
+        IsDefeated = true;
+    }
+
+    public virtual void Win() {
+        anim.SetTrigger("Win");
     }
 
     // Start is called before the first frame update
