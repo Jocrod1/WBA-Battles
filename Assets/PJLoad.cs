@@ -45,7 +45,7 @@ public class PJLoad : MonoBehaviour {
 
     public void OpenFight()
     {
-        if(Smoke!=null && Fight!=null && Table!=null)
+        if(Fight!=null && Table!=null)
         {
             Animator animator2 = Fight.GetComponent<Animator>();
             Animator animator3 = Table.GetComponent<Animator>();
