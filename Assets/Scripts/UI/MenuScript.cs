@@ -40,6 +40,9 @@ public class MenuScript : MonoBehaviour
     {
         PlayerPrefs.SetInt("IDPlayer", IDChamp);
 
+        //como comienza un nuevo juego, el eemigo es el primero siempre
+        PlayerPrefs.SetInt("IDEnemy", 7);
+
         playgame(Tabla);
     }
 
