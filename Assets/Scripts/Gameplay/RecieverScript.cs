@@ -29,7 +29,7 @@ public class RecieverScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Receptor" && collision.transform.parent.parent.parent.name == Target.ToString())
+        if (collision.transform.tag == "Receptor" && collision.transform.parent.parent.parent.name.Contains(Target.ToString()))
         {
             Recieve = true;
             Charctr.PunchRecieved = true;
