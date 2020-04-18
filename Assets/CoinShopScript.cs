@@ -8,7 +8,7 @@ public class CoinShopScript : MonoBehaviour
     private int coins;
 
     private void Start() {
-        coins=PlayerPrefs.GetInt("money");
+        coins = GlobalManager.Money;
     }
 
 
@@ -22,7 +22,7 @@ public class CoinShopScript : MonoBehaviour
         {
             coins-=100;
 
-            PlayerPrefs.SetInt("money", coins);
+            GlobalManager.Money = coins;
         }
     }
 
@@ -36,7 +36,7 @@ public class CoinShopScript : MonoBehaviour
         {
             coins-=200;
 
-            PlayerPrefs.SetInt("money", coins);
+            GlobalManager.Money = coins;
         }
     }
 
@@ -50,7 +50,7 @@ public class CoinShopScript : MonoBehaviour
         {
             coins-=500;
 
-            PlayerPrefs.SetInt("money", coins);
+            GlobalManager.Money = coins;
         }
     }
 

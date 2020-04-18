@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
  
-public class PJLoad : MonoBehaviour {
+public class PJLoad : Manager {
 
     public GameObject Player, ImagePlayer;
 
@@ -16,30 +16,31 @@ public class PJLoad : MonoBehaviour {
 
     private void Start() {
 
-        Player.transform.SetSiblingIndex(PlayerPrefs.GetInt("IDEnemy"));
+        Player.transform.SetSiblingIndex(GlobalManager.GameplayData.IDEnemy);
 
         //Debug.Log(transform.GetSiblingIndex());
 
+        int IDPlayer = GlobalManager.GameplayData.IDPlayer;
 
-        if(PlayerPrefs.GetInt("IDPlayer")==1)
+        if (IDPlayer == 1)
         {
             ImagePlayer.GetComponent<Image>().sprite = champ1;
-            playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
+            playerName.GetComponent<TextMeshProUGUI>().text = "Arlen Smith";
         }
-        else if(PlayerPrefs.GetInt("IDPlayer")==2)
+        else if (IDPlayer == 2)
         {
             ImagePlayer.GetComponent<Image>().sprite = champ2;
-            playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
+            playerName.GetComponent<TextMeshProUGUI>().text = "Daga Johar";
         }
-        else if(PlayerPrefs.GetInt("IDPlayer")==3)
+        else if (IDPlayer == 3)
         {
             ImagePlayer.GetComponent<Image>().sprite = champ3;
-            playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
+            playerName.GetComponent<TextMeshProUGUI>().text = "Irina Jones";
         }
-        else if(PlayerPrefs.GetInt("IDPlayer")==4)
+        else if (IDPlayer == 4)
         {
             ImagePlayer.GetComponent<Image>().sprite = champ4;
-            playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
+            playerName.GetComponent<TextMeshProUGUI>().text = "Angenis Nadai";
         }
     }
 
@@ -55,7 +56,7 @@ public class PJLoad : MonoBehaviour {
                 animator2.SetBool("Open", true);
                 animator3.SetBool("Open", true);
 
-                if(PlayerPrefs.GetInt("IDEnemy")==7)
+                if(GlobalManager.GameplayData.IDEnemy == 7)
                 {
                     fightName.GetComponent<TextMeshProUGUI>().text="El Calvo";
                 }

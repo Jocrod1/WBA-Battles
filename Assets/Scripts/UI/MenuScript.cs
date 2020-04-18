@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class MenuScript : MonoBehaviour
+public class MenuScript : Manager
 {
     public GameObject Smoke, Selection, ButtonSelection;
 
@@ -38,10 +38,10 @@ public class MenuScript : MonoBehaviour
     //boton cuando se elija en boxeador
     public void SelectChamp(string Tabla)
     {
-        PlayerPrefs.SetInt("IDPlayer", IDChamp);
+        GlobalManager.GameplayData.IDPlayer = IDChamp;
 
         //como comienza un nuevo juego, el eemigo es el primero siempre
-        PlayerPrefs.SetInt("IDEnemy", 7);
+        GlobalManager.GameplayData.IDEnemy = 7;
 
         playgame(Tabla);
     }
