@@ -6,7 +6,9 @@ using TMPro;
  
 public class PJLoad : MonoBehaviour {
 
-    public GameObject player, imagePlayer, cartelPlayer, cartelEnemy;
+    private AudioSource audioSrc;
+
+    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy;
 
     public GameObject fight, table;
  
@@ -16,11 +18,14 @@ public class PJLoad : MonoBehaviour {
  
     public TextMeshProUGUI playerName, fightName, cartelName;
 
+    public TextMeshProUGUI[] positions, names;
+
     private void Start() {
 
-        player.transform.SetSiblingIndex(PlayerPrefs.GetInt("IDEnemy"));
+        audioSrc=GetComponent<AudioSource>();
+        audioSrc.volume=PlayerPrefs.GetFloat("volume");
 
-        //Debug.Log(transform.GetSiblingIndex());
+        //positions= new float[position1, position2, position3, position4, position5, position6, position7, position8];
 
 
         if(PlayerPrefs.GetInt("IDPlayer")==1)
@@ -51,6 +56,135 @@ public class PJLoad : MonoBehaviour {
             playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
             cartelName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
         }
+
+        //positions
+        positions[0].GetComponent<TextMeshProUGUI>().text="1";
+        positions[1].GetComponent<TextMeshProUGUI>().text="2";
+        positions[2].GetComponent<TextMeshProUGUI>().text="3";
+        positions[3].GetComponent<TextMeshProUGUI>().text="4";
+        positions[4].GetComponent<TextMeshProUGUI>().text="5";
+        positions[5].GetComponent<TextMeshProUGUI>().text="6";
+        positions[6].GetComponent<TextMeshProUGUI>().text="7";
+        positions[7].GetComponent<TextMeshProUGUI>().text="8";
+
+
+        playerTable.transform.SetSiblingIndex(PlayerPrefs.GetInt("IDEnemy"));
+        //Debug.Log(transform.GetSiblingIndex());
+
+        if(PlayerPrefs.GetInt("IDEnemy")==7)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Dante Gray";
+            cartelEnemy.GetComponent<Image>().sprite = enemy1;
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==6)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Kwan Lee";
+            cartelEnemy.GetComponent<Image>().sprite = enemy2;
+
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="7";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==5)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Black Dwayne";
+            cartelEnemy.GetComponent<Image>().sprite = enemy3;
+
+            positions[5].GetComponent<TextMeshProUGUI>().text="7";
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="6";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==4)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
+            cartelEnemy.GetComponent<Image>().sprite = enemy4;
+
+            positions[4].GetComponent<TextMeshProUGUI>().text="6";
+            positions[5].GetComponent<TextMeshProUGUI>().text="7";
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="5";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==3)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
+            cartelEnemy.GetComponent<Image>().sprite = enemy5;
+
+            positions[3].GetComponent<TextMeshProUGUI>().text="5";
+            positions[4].GetComponent<TextMeshProUGUI>().text="6";
+            positions[5].GetComponent<TextMeshProUGUI>().text="7";
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="4";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==2)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
+            cartelEnemy.GetComponent<Image>().sprite = enemy6;
+
+            positions[2].GetComponent<TextMeshProUGUI>().text="4";
+            positions[3].GetComponent<TextMeshProUGUI>().text="5";
+            positions[4].GetComponent<TextMeshProUGUI>().text="6";
+            positions[5].GetComponent<TextMeshProUGUI>().text="7";
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="3";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==1)
+        {
+            fightName.GetComponent<TextMeshProUGUI>().text="Korona";
+            cartelEnemy.GetComponent<Image>().sprite = enemy7;
+
+            positions[1].GetComponent<TextMeshProUGUI>().text="3";
+            positions[2].GetComponent<TextMeshProUGUI>().text="4";
+            positions[3].GetComponent<TextMeshProUGUI>().text="5";
+            positions[4].GetComponent<TextMeshProUGUI>().text="6";
+            positions[5].GetComponent<TextMeshProUGUI>().text="7";
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="2";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==0)
+        {
+            positions[0].GetComponent<TextMeshProUGUI>().text="2";
+            positions[1].GetComponent<TextMeshProUGUI>().text="3";
+            positions[2].GetComponent<TextMeshProUGUI>().text="4";
+            positions[3].GetComponent<TextMeshProUGUI>().text="5";
+            positions[4].GetComponent<TextMeshProUGUI>().text="6";
+            positions[5].GetComponent<TextMeshProUGUI>().text="7";
+            positions[6].GetComponent<TextMeshProUGUI>().text="8";
+            positions[7].GetComponent<TextMeshProUGUI>().text="1";
+
+            names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+            names[0].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
     }
 
     public void OpenFight()
@@ -64,12 +198,6 @@ public class PJLoad : MonoBehaviour {
             {
                 animator2.SetBool("Open", true);
                 animator3.SetBool("Open", true);
-
-                if(PlayerPrefs.GetInt("IDEnemy")==7)
-                {
-                    fightName.GetComponent<TextMeshProUGUI>().text="El Calvo";
-                    cartelEnemy.GetComponent<Image>().sprite = enemy1;
-                }
             }
         }
 
