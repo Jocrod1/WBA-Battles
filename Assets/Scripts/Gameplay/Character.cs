@@ -459,3 +459,7 @@ public class Character : MonoBehaviour {
         //WatchAttackColliders();
     }
 }
+
+public class Enemy : Character {
+    public PlayerScript Player;
+}

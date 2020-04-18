@@ -151,9 +151,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsGameOver: 0
-  Enemy: {fileID: 614332921}
-  Player: {fileID: 3917258306218652659}
-  Manager: {fileID: 2082288466}
+  Players:
+  - {fileID: 2272623802930359498, guid: e278c804802c9054cb5dc9e3106306be, type: 3}
+  - {fileID: 1369671759334762757, guid: 7a67a509026425e478189795b4ca21eb, type: 3}
+  Enemies:
+  - {fileID: 6525551185790593945, guid: e6f547a5a6d0c05428165978e3376a72, type: 3}
+  - {fileID: 2178568826527945259, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747, type: 3}
+  SelectedPlayer: {fileID: 0}
+  SelectedEnemy: {fileID: 0}
+  PlayerSpawner: {fileID: 2006739565}
+  EnemySpawner: {fileID: 1333129642}
+  enemy: {fileID: 0}
+  Player: {fileID: 0}
+  HudManager: {fileID: 2082288466}
+  IDPlayer: 0
+  IDEnemy: 0
 --- !u!4 &7794975
 Transform:
   m_ObjectHideFlags: 0
@@ -1750,6 +1762,36 @@ Transform:
   m_Father: {fileID: 1521305262}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1333129641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333129642}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1333129642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333129641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23, y: -1.54, z: -0.3495746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353930953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2282,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965475111}
   m_CullTransparentMesh: 0
+--- !u!1 &2006739564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006739565}
+  m_Layer: 0
+  m_Name: PlayerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006739565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006739564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.17, z: -5.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023406514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,6 +2755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arlen Smith (Player)
       objectReference: {fileID: 0}
+    - target: {fileID: 2272623802930359498, guid: e278c804802c9054cb5dc9e3106306be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e278c804802c9054cb5dc9e3106306be, type: 3}
 --- !u!1001 &2692845373618395891
@@ -2696,6 +2773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Daga Johar (Player)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369671759334762757, guid: 7a67a509026425e478189795b4ca21eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1369671759334762758, guid: 7a67a509026425e478189795b4ca21eb,
         type: 3}
@@ -2820,6 +2902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Angelis Nadai (Player)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286134056455654260, guid: 3b050ca8dc992894f8775d765177d699,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b050ca8dc992894f8775d765177d699, type: 3}
@@ -2971,6 +3058,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dante Gray (Enemy)
       objectReference: {fileID: 0}
+    - target: {fileID: 6525551185790593945, guid: e6f547a5a6d0c05428165978e3376a72,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6525551185790593946, guid: e6f547a5a6d0c05428165978e3376a72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3024,31 +3116,6 @@ PrefabInstance:
     - target: {fileID: 6525551185790593946, guid: e6f547a5a6d0c05428165978e3376a72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6525551186247607548, guid: e6f547a5a6d0c05428165978e3376a72,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6525551186247607549, guid: e6f547a5a6d0c05428165978e3376a72,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6525551186247607549, guid: e6f547a5a6d0c05428165978e3376a72,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6525551186247607549, guid: e6f547a5a6d0c05428165978e3376a72,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6525551186247607549, guid: e6f547a5a6d0c05428165978e3376a72,
-        type: 3}
-      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3143,6 +3210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Irina Jones (Player)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233867, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
         type: 3}
