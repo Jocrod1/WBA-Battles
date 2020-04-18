@@ -329,9 +329,6 @@ public class Character : MonoBehaviour {
     public virtual void UpdateThis() {
         if (pause)
             return;
-
-
-
         UpdateStamina();
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         CurrentMaxStamina = Mathf.Clamp(CurrentMaxStamina, 0, MaxStamina);

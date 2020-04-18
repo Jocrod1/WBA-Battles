@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.13333334
+        time: 0.15
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.21666667
+        time: 0.23333333
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -58,7 +58,7 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: cb439c351266895439838c5dce8ad477, type: 3}
-    - time: 0.13333334
+    - time: 0.15
       value: {fileID: 21300000, guid: 9629996421280ba44aba8624ddaef011, type: 3}
     - time: 0.33333334
       value: {fileID: 21300000, guid: 9629996421280ba44aba8624ddaef011, type: 3}
@@ -125,7 +125,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.13333334
+        time: 0.15
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -134,7 +134,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.21666667
+        time: 0.23333333
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -174,7 +174,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
+  - time: 0.26666668
     functionName: CheckFailPunch
     data: 
     objectReferenceParameter: {fileID: 0}
