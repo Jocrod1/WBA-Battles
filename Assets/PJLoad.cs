@@ -187,22 +187,5 @@ public class PJLoad : MonoBehaviour {
         }
     }
 
-    public void OpenFight()
-    {
-        if(fight!=null && table!=null)
-        {
-            Animator animator2 = fight.GetComponent<Animator>();
-            Animator animator3 = table.GetComponent<Animator>();
-
-            if(animator2!=null && animator3!=null)
-            {
-                animator2.SetBool("Open", true);
-                animator3.SetBool("Open", true);
-            }
-        }
-
-
-    }
-
 
 }

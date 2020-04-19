@@ -1,15 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CupLoad : MonoBehaviour
 {
+    private AudioSource audioSrc;
 
-    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu;
+    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3;
+
+    public Sprite champ1, champ2, champ3, champ4;
 
     void Start()
     {
         Animator animator = menu.GetComponent<Animator>();
+
+        audioSrc=GetComponent<AudioSource>();
+        audioSrc.volume=PlayerPrefs.GetFloat("volume");
+
+
+        if(PlayerPrefs.GetInt("IDPlayer")==1)
+        {
+            imagePlayer.GetComponent<Image>().sprite = champ1;
+            imagePlayer2.GetComponent<Image>().sprite = champ1;
+            imagePlayer3.GetComponent<Image>().sprite = champ1;
+        }
+        else if(PlayerPrefs.GetInt("IDPlayer")==2)
+        {
+            imagePlayer.GetComponent<Image>().sprite = champ2;
+            imagePlayer2.GetComponent<Image>().sprite = champ2;
+            imagePlayer3.GetComponent<Image>().sprite = champ2;
+        }
+        else if(PlayerPrefs.GetInt("IDPlayer")==3)
+        {
+            imagePlayer.GetComponent<Image>().sprite = champ3;
+            imagePlayer2.GetComponent<Image>().sprite = champ3;
+            imagePlayer3.GetComponent<Image>().sprite = champ3;
+        }
+        else if(PlayerPrefs.GetInt("IDPlayer")==4)
+        {
+            imagePlayer.GetComponent<Image>().sprite = champ4;
+            imagePlayer2.GetComponent<Image>().sprite = champ4;
+            imagePlayer3.GetComponent<Image>().sprite = champ4;
+        }
 
         subEnemy1.SetActive(true);
         subEnemy2.SetActive(true);
