@@ -329,9 +329,6 @@ public class Character : MonoBehaviour {
     public virtual void UpdateThis() {
         if (pause)
             return;
-
-
-
         UpdateStamina();
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         CurrentMaxStamina = Mathf.Clamp(CurrentMaxStamina, 0, MaxStamina);
@@ -461,4 +458,8 @@ public class Character : MonoBehaviour {
         FixedUpdatethis();
         //WatchAttackColliders();
     }
+}
+
+public class Enemy : Character {
+    public PlayerScript Player;
 }

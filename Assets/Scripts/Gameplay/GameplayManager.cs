@@ -3,39 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameplayManager : MonoBehaviour {
+public class GameplayManager : Manager {
 
     public bool IsGameOver = false;
 
+    [Header("Prefabs Lists")]
+    public List<GameObject> Players;
+    public List<GameObject> Enemies;
 
-    public Character Enemy;
-    public Character Player;
+    [Header("Selected Prefabs")]
+    public GameObject SelectedPlayer;
+    public GameObject SelectedEnemy;
 
-    public HUDManager Manager;
+    GameObject RealPlayer;
+    GameObject RealEnemy;
 
+    [Header("Spawners")]
+    public Transform PlayerSpawner;
+    public Transform EnemySpawner;
 
+    [Header("Components")]
+    public Enemy enemy;
+    public PlayerScript Player;
+
+    public HUDManager HudManager;
+
+    [Header("GlobalData")]
+    public int IDPlayer;
+    public int IDEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
+        //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
+
+        if (IDPlayer > 0 || IDEnemy > 0)
+            return;
+
+
+        SelectedPlayer = Players[IDPlayer];
+        SelectedEnemy = Enemies[IDEnemy];
+
+        RealPlayer = Instantiate(SelectedPlayer, PlayerSpawner);
+        RealPlayer.transform.localPosition = Vector3.zero;
+        RealEnemy = Instantiate(SelectedEnemy, EnemySpawner);
+        RealEnemy.transform.localPosition = Vector3.zero;
+
+        Player = RealPlayer.GetComponent<PlayerScript>();
+        enemy = RealEnemy.GetComponent<Enemy>();
+
+        enemy.Player = Player;
+
+        HudManager.PlayerBars.Player = Player;
+        HudManager.EnemyBars.Player = enemy;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        AnimatorStateInfo stateInfo = Manager.GameOverAnimator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo stateInfo = HudManager.GameOverAnimator.GetCurrentAnimatorStateInfo(0);
 
-        if (Enemy.IsDefeated && !IsGameOver) {
+        if (enemy.IsDefeated && !IsGameOver) {
             Player.Win();
-            Manager.GameOver("Winner");
+            HudManager.GameOver("Winner");
             IsGameOver = true;
             Results.Win = true;
         }
         if (Player.IsDefeated && !IsGameOver) {
-            Enemy.Win();
-            Manager.GameOver("Defeated");
+            enemy.Win();
+            HudManager.GameOver("Defeated");
             IsGameOver = true;
             Results.Win = false;
         }

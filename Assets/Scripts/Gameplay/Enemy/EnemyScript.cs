@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : Character {
-
-    public PlayerScript Player;
+public class EnemyScript : Enemy {
 
     [Header("Probabilities")]
     public float InitProbToUpBlock;

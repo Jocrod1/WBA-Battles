@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
  
-public class PJLoad : MonoBehaviour {
+public class PJLoad : Manager {
 
     private AudioSource audioSrc;
 
@@ -27,29 +27,30 @@ public class PJLoad : MonoBehaviour {
 
         //positions= new float[position1, position2, position3, position4, position5, position6, position7, position8];
 
+        int IDPlayer = GlobalManager.GameplayData.IDPlayer;
 
-        if(PlayerPrefs.GetInt("IDPlayer")==1)
+        if (IDPlayer == 1)
         {
             imagePlayer.GetComponent<Image>().sprite = champ1;
             cartelPlayer.GetComponent<Image>().sprite = player1;
             playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
             cartelName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
         }
-        else if(PlayerPrefs.GetInt("IDPlayer")==2)
+        else if (IDPlayer == 2)
         {
             imagePlayer.GetComponent<Image>().sprite = champ2;
             cartelPlayer.GetComponent<Image>().sprite = player2;
             playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
             cartelName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
         }
-        else if(PlayerPrefs.GetInt("IDPlayer")==3)
+        else if (IDPlayer == 3)
         {
             imagePlayer.GetComponent<Image>().sprite = champ3;
             cartelPlayer.GetComponent<Image>().sprite = player3;
             playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
             cartelName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
         }
-        else if(PlayerPrefs.GetInt("IDPlayer")==4)
+        else if (IDPlayer == 4)
         {
             imagePlayer.GetComponent<Image>().sprite = champ4;
             cartelPlayer.GetComponent<Image>().sprite = player4;
