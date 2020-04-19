@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameplayManager : Manager {
 
@@ -27,6 +28,8 @@ public class GameplayManager : Manager {
     public PlayerScript Player;
 
     public HUDManager HudManager;
+    public Text PlayerTxt;
+    public Text EnemyTxt;
 
     [Header("GlobalData")]
     public int IDPlayer;
@@ -38,7 +41,7 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        if (IDPlayer > 0 || IDEnemy > 0)
+        if (IDPlayer < 0 || IDEnemy < 0)
             return;
 
 
