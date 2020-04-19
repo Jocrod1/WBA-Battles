@@ -11,6 +11,10 @@ public class MenuScript : MonoBehaviour
 
     public int IDChamp;
 
+    private void Start() {
+        PlayerPrefs.GetInt("IDEnemy");
+    }
+
     public void playgame(string Level)
     {
         SceneManager.LoadScene(Level);
@@ -35,13 +39,27 @@ public class MenuScript : MonoBehaviour
         }
     }
 
+    public void ContinueGame()
+    {
+        if(PlayerPrefs.GetInt("IDEnemy")<=7 && PlayerPrefs.GetInt("IDEnemy")>=0)
+        {
+            string Table="Table";
+            playgame(Table);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")<=-1 && PlayerPrefs.GetInt("IDEnemy")>=-4)
+        {
+            string Table="Championship";
+            playgame(Table);
+        }
+    }
+
     //boton cuando se elija en boxeador
     public void SelectChamp(string Tabla)
     {
         PlayerPrefs.SetInt("IDPlayer", IDChamp);
 
-        //como comienza un nuevo juego, el eemigo es el primero siempre
-        PlayerPrefs.SetInt("IDEnemy", 6);
+        //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
+        PlayerPrefs.SetInt("IDEnemy", 7);
 
         playgame(Tabla);
     }
