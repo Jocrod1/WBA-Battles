@@ -12,7 +12,7 @@ public class MenuScript : Manager
     public int IDChamp;
 
     private void Start() {
-        PlayerPrefs.GetInt("IDEnemy");
+        PlayerPrefs.GetInt("IDEnemy", -1);
     }
 
     public void playgame(string Level)
@@ -56,7 +56,8 @@ public class MenuScript : Manager
     //boton cuando se elija en boxeador
     public void SelectChamp(string Tabla)
     {
-        GlobalManager.GameplayData.IDPlayer = IDChamp;
+        //GlobalManager.GameplayData.IDPlayer = IDChamp;
+        PlayerPrefs.SetInt("IDPlayer", IDChamp);
 
         //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
         PlayerPrefs.SetInt("IDEnemy", 7);
