@@ -11,6 +11,10 @@ public class MenuScript : Manager
 
     public int IDChamp;
 
+    private void Start() {
+        PlayerPrefs.GetInt("IDEnemy", -1);
+    }
+
     public void playgame(string Level)
     {
         SceneManager.LoadScene(Level);
@@ -35,13 +39,28 @@ public class MenuScript : Manager
         }
     }
 
+    public void ContinueGame()
+    {
+        if(PlayerPrefs.GetInt("IDEnemy")<=7 && PlayerPrefs.GetInt("IDEnemy")>=0)
+        {
+            string Table="Table";
+            playgame(Table);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")<=-1 && PlayerPrefs.GetInt("IDEnemy")>=-4)
+        {
+            string Table="Championship";
+            playgame(Table);
+        }
+    }
+
     //boton cuando se elija en boxeador
     public void SelectChamp(string Tabla)
     {
-        GlobalManager.GameplayData.IDPlayer = IDChamp;
+        //GlobalManager.GameplayData.IDPlayer = IDChamp;
+        PlayerPrefs.SetInt("IDPlayer", IDChamp);
 
-        //como comienza un nuevo juego, el eemigo es el primero siempre
-        GlobalManager.GameplayData.IDEnemy = 7;
+        //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
+        PlayerPrefs.SetInt("IDEnemy", 7);
 
         playgame(Tabla);
     }

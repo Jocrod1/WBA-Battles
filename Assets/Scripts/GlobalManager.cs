@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class GlobalManager {
-    public class ConfigData
+    public static class SettingsData
     {
-        public float Volume { get; set; }
+        public static float Volume { get; set; }
     }
 
-    public class GameData {
-        public int IDPlayer { get; set; }
-        public int IDEnemy { get; set; }
-        public bool IsLeague { get; set; }
+    public static class GameplayData
+    {
+        public static int IDPlayer { get; set; }
+        public static int IDEnemy { get; set; }
+        public static bool IsLeague { get; set; }
     }
 
     public static int Money { get; set; }
-    public static GameData GameplayData { get; set; }
-    public static ConfigData SettingsData { get; set; }
+    //public static GameData GameplayData { get; set; }
+    //public static ConfigData SettingsData { get; set; }
 }
 
 public abstract class Manager : MonoBehaviour {
-    void Start() {
+    void Awake() {
         LoadGlobalManager();
     }
 
@@ -36,5 +37,26 @@ public abstract class Manager : MonoBehaviour {
         GlobalManager.GameplayData.IDEnemy = PlayerPrefs.GetInt("IDEnemy", -1);
         int Valid = PlayerPrefs.GetInt("IsLeague", -1);
         GlobalManager.GameplayData.IsLeague = Valid == 1;
+    }
+
+    public virtual void SaveGlobalManager() {
+        //Settings
+
+        //ESTA MIERDA QUEDO SUSPENDIDA HASTA QUE SE PUEDA HACER BIEN NOJODA
+    }
+
+    private void OnApplicationQuit()
+    {
+        
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        
     }
 }
