@@ -60,6 +60,9 @@ public class GameplayManager : Manager {
 
         HudManager.PlayerBars.Player = Player;
         HudManager.EnemyBars.Player = enemy;
+
+        PlayerTxt.text = Player.Name;
+        EnemyTxt.text = enemy.Name;
     }
 
     // Update is called once per frame
