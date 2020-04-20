@@ -46,7 +46,7 @@ public class MenuScript : Manager
             string Table="Table";
             playgame(Table);
         }
-        else if(PlayerPrefs.GetInt("IDEnemy")<=-1 && PlayerPrefs.GetInt("IDEnemy")>=-4)
+        else if(PlayerPrefs.GetInt("IDEnemy")<=10 && PlayerPrefs.GetInt("IDEnemy")>=12)
         {
             string Table="Championship";
             playgame(Table);

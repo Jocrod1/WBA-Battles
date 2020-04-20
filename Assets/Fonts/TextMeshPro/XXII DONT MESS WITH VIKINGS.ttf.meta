@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: dc2444b27d8cd934fb775c6751e9456e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: XXII DONT-MESS-WITH-VIKINGS
+  fontNames:
+  - XXII DONT-MESS-WITH-VIKINGS
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

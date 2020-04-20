@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CoinShopScript : MonoBehaviour
 {
-    public GameObject smoke, shop, error, fight, table;
+    public GameObject smoke, shop, error, fight, table, arrow;
     private int coins, health, defence, damage;
 
     public TextMeshProUGUI healthText, defenceText, damageText;
 
     private void Start() {
-        coins=PlayerPrefs.GetInt("money");
 
+        coins=PlayerPrefs.GetInt("money");
         health=PlayerPrefs.GetInt("health");
         defence=PlayerPrefs.GetInt("defence");
         damage=PlayerPrefs.GetInt("damage");
+
+        Color();
 
         healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
         defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
@@ -26,7 +29,11 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Health()
     {
-        if(coins<100)
+        if(health==100)
+        {
+
+        }
+        else if(coins<100)
         {
             NoCoin();
         }
@@ -46,7 +53,7 @@ public class CoinShopScript : MonoBehaviour
                 coins-=100;
                 health+=10;
             }
-
+            Color();
             PlayerPrefs.SetInt("money", coins);
             PlayerPrefs.SetInt("health", health);
 
@@ -56,7 +63,11 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Defence()
     {
-        if(coins<100)
+        if(defence==100)
+        {
+
+        }
+        else if(coins<100)
         {
             NoCoin();
         }
@@ -76,7 +87,7 @@ public class CoinShopScript : MonoBehaviour
                 coins-=100;
                 defence+=10;
             }
-
+            Color();
             PlayerPrefs.SetInt("money", coins);
             PlayerPrefs.SetInt("defence", defence);
 
@@ -86,7 +97,11 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Damage()
     {
-        if(coins<100)
+        if(damage==100)
+        {
+
+        }
+        else if(coins<100)
         {
             NoCoin();
         }
@@ -106,12 +121,56 @@ public class CoinShopScript : MonoBehaviour
                 coins-=100;
                 damage+=10;
             }
-
+            Color();
             PlayerPrefs.SetInt("money", coins);
             PlayerPrefs.SetInt("damage", damage);
 
             damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
         }
+    }
+
+    private void Color() {
+
+        if(health>=0 && health<=49)
+        {
+            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+        }
+        else if(health>=50 && health<=70)
+        {
+            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
+        }
+        else if(health>=71 && health<=100)
+        {
+            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+        }
+
+
+        if(defence>=0 && defence<=50)
+        {
+            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+        }
+        else if(defence>=51 && defence<=70)
+        {
+            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
+        }
+        else if(defence>=71 && defence<=100)
+        {
+            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+        }
+
+        if(damage>=0 && damage<=50)
+        {
+            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+        }
+        else if(damage>=51 && damage<=70)
+        {
+            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
+        }
+        else if(damage>=71 && damage<=100)
+        {
+            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+        }
+        
     }
 
 
@@ -123,6 +182,7 @@ public class CoinShopScript : MonoBehaviour
             Animator animator3 = table.GetComponent<Animator>();
             Animator animator4 = smoke.GetComponent<Animator>();
             Animator animator5 = shop.GetComponent<Animator>();
+            Animator animator6 = arrow.GetComponent<Animator>();
 
             if(animator2!=null && animator3!=null && animator4!=null && animator5!=null)
             {
@@ -130,9 +190,30 @@ public class CoinShopScript : MonoBehaviour
                 animator3.SetBool("Open", true);
                 animator4.SetBool("Open", true);
                 animator5.SetBool("Open", true);
+                animator6.SetBool("Open", true);
             }
         }
+    }
 
+    public void CloseFight()
+    {
+        if(fight!=null && table!=null)
+        {
+            Animator animator2 = fight.GetComponent<Animator>();
+            Animator animator3 = table.GetComponent<Animator>();
+            Animator animator4 = smoke.GetComponent<Animator>();
+            Animator animator5 = shop.GetComponent<Animator>();
+            Animator animator6 = arrow.GetComponent<Animator>();
+
+            if(animator2!=null && animator3!=null && animator4!=null && animator5!=null)
+            {
+                animator2.SetBool("Open", false);
+                animator3.SetBool("Open", false);
+                animator4.SetBool("Open", false);
+                animator5.SetBool("Open", false);
+                animator6.SetBool("Open", false);
+            }
+        }
     }
 
 
@@ -177,5 +258,10 @@ public class CoinShopScript : MonoBehaviour
                 animator2.SetBool("Open", false);
             }
         }
+    }
+
+    public void playgame(string Level)
+    {
+        SceneManager.LoadScene(Level);
     }
 }
