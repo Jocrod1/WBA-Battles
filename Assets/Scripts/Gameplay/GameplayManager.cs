@@ -41,6 +41,9 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
+        IDPlayer = PlayerPrefs.GetInt("IDPlayer");
+        IDEnemy = PlayerPrefs.GetInt("IDEnemy");
+
         if (IDPlayer < 0 || IDEnemy < 0)
             return;
 
