@@ -31,6 +31,8 @@ public class GameplayManager : Manager {
     public Text PlayerTxt;
     public Text EnemyTxt;
 
+    public Transform Ring;
+
     [Header("GlobalData")]
     public int IDPlayer;
     public int IDEnemy;
@@ -48,6 +50,15 @@ public class GameplayManager : Manager {
 
         IDPlayer = idp - 1;
         IDEnemy = 7 - ide;
+
+        Vector2 scr = new Vector2(Screen.width, Screen.height);
+
+        float dispersion = scr.x / scr.y;
+
+        if (dispersion > 2.1f) {
+            Ring.localScale = new Vector3(1.26225f, 1.791563f, 1);
+        }
+
 
         if (IDPlayer < 0 || IDEnemy < 0)
             return;

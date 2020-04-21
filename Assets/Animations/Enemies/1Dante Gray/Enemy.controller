@@ -59,7 +59,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blockv
     m_Mirror: 0
-  m_BlendParameter: Blockv
+  m_BlendParameter: InputY
   m_BlendParameterY: Blockv
   m_MinThreshold: -1
   m_MaxThreshold: 1
@@ -714,7 +714,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Blocked
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: Blockv
+    m_ConditionEvent: InputY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5576144698633094429}
@@ -1576,7 +1576,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Blocked
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: Blockv
+    m_ConditionEvent: InputY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8205385894843505833}
@@ -1809,7 +1809,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Blockv
+  - m_Name: InputY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
