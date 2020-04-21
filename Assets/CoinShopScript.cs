@@ -12,7 +12,15 @@ public class CoinShopScript : MonoBehaviour
 
     public TextMeshProUGUI healthText, defenceText, damageText;
 
+    public Button btnHealth, btnDefence, btnDamage;
+
+    private int countHealth, countDefence, countDamage;
+
     private void Start() {
+
+        countHealth=0;
+        countDefence=0;
+        countDamage=0;
 
         coins=PlayerPrefs.GetInt("money");
         health=PlayerPrefs.GetInt("health");
@@ -29,13 +37,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Health()
     {
-        if(health==100)
+        if(countHealth>=4)
         {
-
-        }
-        else if(coins<100)
-        {
-            NoCoin();
+            
         }
         else
         {
@@ -43,33 +47,42 @@ public class CoinShopScript : MonoBehaviour
             {
 
             }
-            else if(health>=91 && health<=99)
+            else if(coins<100)
             {
-                coins-=100;
-                health=100;
+                NoCoin();
             }
             else
             {
-                coins-=100;
-                health+=10;
-            }
-            Color();
-            PlayerPrefs.SetInt("money", coins);
-            PlayerPrefs.SetInt("health", health);
+                if(health==100)
+                {
 
-            healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
+                }
+                else if(health>=91 && health<=99)
+                {
+                    coins-=100;
+                    health=100;
+                    countHealth+=1;
+                }
+                else
+                {
+                    coins-=100;
+                    health+=10;
+                    countHealth+=1;
+                }
+                Color();
+                PlayerPrefs.SetInt("money", coins);
+                PlayerPrefs.SetInt("health", health);
+
+                healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
+            }
         }
     }
 
     public void Coin100Defence()
     {
-        if(defence==100)
+        if(countDefence>=4)
         {
-
-        }
-        else if(coins<100)
-        {
-            NoCoin();
+            
         }
         else
         {
@@ -77,33 +90,42 @@ public class CoinShopScript : MonoBehaviour
             {
 
             }
-            else if(defence>=91 && defence<=99)
+            else if(coins<100)
             {
-                coins-=100;
-                defence=100;
+                NoCoin();
             }
             else
             {
-                coins-=100;
-                defence+=10;
-            }
-            Color();
-            PlayerPrefs.SetInt("money", coins);
-            PlayerPrefs.SetInt("defence", defence);
+                if(defence==100)
+                {
 
-            defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
+                }
+                else if(defence>=91 && defence<=99)
+                {
+                    coins-=100;
+                    defence=100;
+                    countDefence+=1;
+                }
+                else
+                {
+                    coins-=100;
+                    defence+=10;
+                    countDefence+=1;
+                }
+                Color();
+                PlayerPrefs.SetInt("money", coins);
+                PlayerPrefs.SetInt("defence", defence);
+
+                defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
+            }
         }
     }
 
     public void Coin100Damage()
     {
-        if(damage==100)
+        if(countDamage>=4)
         {
-
-        }
-        else if(coins<100)
-        {
-            NoCoin();
+            
         }
         else
         {
@@ -111,21 +133,34 @@ public class CoinShopScript : MonoBehaviour
             {
 
             }
-            else if(damage>=91 && damage<=99)
+            else if(coins<100)
             {
-                coins-=100;
-                damage=100;
+                NoCoin();
             }
             else
             {
-                coins-=100;
-                damage+=10;
-            }
-            Color();
-            PlayerPrefs.SetInt("money", coins);
-            PlayerPrefs.SetInt("damage", damage);
+                if(damage==100)
+                {
 
-            damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
+                }
+                else if(damage>=91 && damage<=99)
+                {
+                    coins-=100;
+                    damage=100;
+                    countDamage+=1;
+                }
+                else
+                {
+                    coins-=100;
+                    damage+=10;
+                    countDamage+=1;
+                }
+                Color();
+                PlayerPrefs.SetInt("money", coins);
+                PlayerPrefs.SetInt("damage", damage);
+
+                damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
+            }
         }
     }
 
@@ -134,41 +169,72 @@ public class CoinShopScript : MonoBehaviour
         if(health>=0 && health<=49)
         {
             healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+
+            btnHealth.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
         else if(health>=50 && health<=70)
         {
             healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
+
+            btnHealth.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
         else if(health>=71 && health<=100)
         {
             healthText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+
+            btnHealth.GetComponent<Image>().color= new Color32(125, 255, 0,255);
+        }
+
+        if(health==100){
+            btnHealth.GetComponent<Image>().color= new Color32(255, 0, 5,255);
         }
 
 
         if(defence>=0 && defence<=50)
         {
             defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+
+            btnDefence.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
         else if(defence>=51 && defence<=70)
         {
             defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
+
+            btnDefence.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
         else if(defence>=71 && defence<=100)
         {
             defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+
+            btnDefence.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
+
+        if(defence==100){
+            btnDefence.GetComponent<Image>().color= new Color32(255, 0, 5,255);
+        }
+
 
         if(damage>=0 && damage<=50)
         {
             damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+
+            btnDamage.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
         else if(damage>=51 && damage<=70)
         {
             damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
+
+            btnDamage.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }
         else if(damage>=71 && damage<=100)
         {
             damageText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+
+            btnDamage.GetComponent<Image>().color= new Color32(125, 255, 0,255);
+        }
+
+        if(damage==100){
+            btnDamage.GetComponent<Image>().color= new Color32(255, 0, 5,255);
         }
         
     }
