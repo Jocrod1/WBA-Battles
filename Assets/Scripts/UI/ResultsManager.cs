@@ -14,7 +14,7 @@ public class ResultsManager : MonoBehaviour
     void Start()
     {
         if (Results.GameOver) {
-
+            Results.GameOver = false;
             idEnemy= PlayerPrefs.GetInt("IDEnemy");
 
             if (Results.Win) {
