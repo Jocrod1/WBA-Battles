@@ -12,6 +12,7 @@ public class MenuScript : Manager
     public int IDChamp;
 
     private void Start() {
+        //valor default
         PlayerPrefs.GetInt("IDEnemy", -1);
     }
 
