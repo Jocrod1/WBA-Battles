@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameplayManager : Manager {
 
@@ -27,6 +28,8 @@ public class GameplayManager : Manager {
     public PlayerScript Player;
 
     public HUDManager HudManager;
+    public Text PlayerTxt;
+    public Text EnemyTxt;
 
     [Header("GlobalData")]
     public int IDPlayer;
@@ -38,7 +41,13 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        if (IDPlayer > 0 || IDEnemy > 0)
+        //int idp = PlayerPrefs.GetInt("IDPlayer", 0);
+        //int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+
+        //IDPlayer = idp - 1;
+        //IDEnemy = 7 - ide;
+
+        if (IDPlayer < 0 || IDEnemy < 0)
             return;
 
 
@@ -57,6 +66,9 @@ public class GameplayManager : Manager {
 
         HudManager.PlayerBars.Player = Player;
         HudManager.EnemyBars.Player = enemy;
+
+        PlayerTxt.text = Player.Name;
+        EnemyTxt.text = enemy.Name;
     }
 
     // Update is called once per frame

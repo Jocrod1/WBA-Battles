@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
+    public string Name;
     public Animator anim { get; private set; }
 
     [Header("Attack Colliders")]
@@ -365,17 +366,19 @@ public class Character : MonoBehaviour {
             Trigger += "Right";
         else print("Error in X input of PunchInfo");
 
-        anim.SetTrigger(Trigger);
-
-        if (stateinfo.Punching || stateinfo.HardPunching) {
-            print("i get punch whlie i punch");
-            StartCoroutine(FailedRecuperation(punchInfo));
-        }
-
-
+        
         if (CurrentHealth <= 0) {
             Defeated(punchInfo);
             return;
+        }
+
+
+        anim.SetTrigger(Trigger);
+
+        if (stateinfo.Punching || stateinfo.HardPunching)
+        {
+            print("i get punch whlie i punch");
+            StartCoroutine(FailedRecuperation(punchInfo));
         }
     }
 

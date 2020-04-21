@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e123febf5099142abf5894d7dfcc3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Angelis Nadai
   AttColl: {fileID: 3286134054662133282}
   RecvColl: {fileID: 3286134056290145644}
   BlockColl: {fileID: 3286134055158505266}
