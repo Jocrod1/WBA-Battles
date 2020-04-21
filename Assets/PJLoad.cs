@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
  
 public class PJLoad : Manager {
 
     private AudioSource audioSrc;
 
-    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy;
+    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup;
 
     public GameObject fight, table;
  
@@ -25,6 +26,7 @@ public class PJLoad : Manager {
         audioSrc=GetComponent<AudioSource>();
         audioSrc.volume=PlayerPrefs.GetFloat("volume");
 
+        btnCup.SetActive(false);
         //positions= new float[position1, position2, position3, position4, position5, position6, position7, position8];
 
         int IDPlayer = GlobalManager.GameplayData.IDPlayer;
@@ -169,6 +171,9 @@ public class PJLoad : Manager {
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==0)
         {
+            btnCup.SetActive(true);
+            PlayerPrefs.SetInt("IDEnemy", 10);
+
             positions[0].GetComponent<TextMeshProUGUI>().text="2";
             positions[1].GetComponent<TextMeshProUGUI>().text="3";
             positions[2].GetComponent<TextMeshProUGUI>().text="4";
@@ -188,5 +193,9 @@ public class PJLoad : Manager {
         }
     }
 
+    public void goCup(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
 
 }

@@ -38,14 +38,16 @@ public class GameplayManager : Manager {
     // Start is called before the first frame update
     void Start()
     {
+        IsGameOver = false;
+        Results.Win = false;
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        //int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        //int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
 
-        //IDPlayer = idp - 1;
-        //IDEnemy = 7 - ide;
+        IDPlayer = idp - 1;
+        IDEnemy = 7 - ide;
 
         if (IDPlayer < 0 || IDEnemy < 0)
             return;
