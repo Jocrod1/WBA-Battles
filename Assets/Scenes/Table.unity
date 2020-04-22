@@ -14558,7 +14558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1519528591}
   Loader: {fileID: 28037314}
-  WithSlider: 0
+  WithSlider: 1
 --- !u!1 &2034898744
 GameObject:
   m_ObjectHideFlags: 0

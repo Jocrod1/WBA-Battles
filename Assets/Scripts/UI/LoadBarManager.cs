@@ -28,13 +28,23 @@ public class LoadBarManager : MonoBehaviour
 
         Loader.SetActive(true);
 
-        while (!operation.isDone) {
-            float progress = Mathf.Clamp01(operation.progress / .9f);
+        while (operation.progress < 0.9f) {
+            float ScaledPerc = Mathf.Clamp01(0.5f * operation.progress / 0.9f);
             print(operation.progress);
 
-            slider.value = progress;
-
-            yield return null;
+            slider.value = ScaledPerc;
         }
+
+        operation.allowSceneActivation = true;
+        float perc = 0.5f;
+
+        while (!operation.isDone) {
+            yield return null;
+            perc = Mathf.Lerp(perc, 1f, 0.005f);
+            slider.value = perc;
+        }
+
+        slider.value = 1f;
+        yield return new WaitForSeconds(0.2f);
     }
 }
