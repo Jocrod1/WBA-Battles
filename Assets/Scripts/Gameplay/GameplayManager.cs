@@ -82,6 +82,8 @@ public class GameplayManager : Manager {
 
         PlayerTxt.text = Player.Name;
         EnemyTxt.text = enemy.Name;
+
+        RealEnemy.GetComponent<EnemyScript>().enabled = false;
     }
 
     // Update is called once per frame
