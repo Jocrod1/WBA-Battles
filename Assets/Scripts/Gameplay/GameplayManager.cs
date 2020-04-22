@@ -83,7 +83,8 @@ public class GameplayManager : Manager {
         PlayerTxt.text = Player.Name;
         EnemyTxt.text = enemy.Name;
 
-        RealEnemy.GetComponent<EnemyScript>().enabled = false;
+        Player.enabled = false;
+        enemy.enabled = false;
     }
 
     // Update is called once per frame
@@ -114,6 +115,11 @@ public class GameplayManager : Manager {
     {
             // Use a coroutine to load the Scene in the background
             StartCoroutine(LoadYourAsyncScene());
+    }
+
+    public void EnableCharacters() {
+        Player.enabled = true;
+        enemy.enabled = true;
     }
 
     IEnumerator LoadYourAsyncScene()
