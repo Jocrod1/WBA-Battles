@@ -251,7 +251,7 @@ public class EnemyScript : Enemy {
             BlockDir = 0;
         }
 
-        anim.SetFloat("Blockv", BlockDir);
+        anim.SetFloat("InputY", BlockDir);
 
         bool Trigg = Time.time - StartTime > time2NextCombo;
 

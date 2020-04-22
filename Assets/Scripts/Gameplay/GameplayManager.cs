@@ -31,6 +31,8 @@ public class GameplayManager : Manager {
     public Text PlayerTxt;
     public Text EnemyTxt;
 
+    public Transform Ring;
+
     [Header("GlobalData")]
     public int IDPlayer;
     public int IDEnemy;
@@ -48,6 +50,15 @@ public class GameplayManager : Manager {
 
         IDPlayer = idp - 1;
         IDEnemy = 7 - ide;
+
+        Vector2 scr = new Vector2(Screen.width, Screen.height);
+
+        float dispersion = scr.x / scr.y;
+
+        if (dispersion > 2.1f) {
+            Ring.localScale = new Vector3(1.26225f, 1.791563f, 1);
+        }
+
 
         if (IDPlayer < 0 || IDEnemy < 0)
             return;
@@ -71,6 +82,9 @@ public class GameplayManager : Manager {
 
         PlayerTxt.text = Player.Name;
         EnemyTxt.text = enemy.Name;
+
+        Player.enabled = false;
+        enemy.enabled = false;
     }
 
     // Update is called once per frame
@@ -101,6 +115,11 @@ public class GameplayManager : Manager {
     {
             // Use a coroutine to load the Scene in the background
             StartCoroutine(LoadYourAsyncScene());
+    }
+
+    public void EnableCharacters() {
+        Player.enabled = true;
+        enemy.enabled = true;
     }
 
     IEnumerator LoadYourAsyncScene()
