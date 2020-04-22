@@ -33,6 +33,7 @@ public class LoadBarManager : MonoBehaviour
             print(operation.progress);
 
             slider.value = ScaledPerc;
+            yield return null;
         }
 
         operation.allowSceneActivation = true;
