@@ -328,7 +328,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual void UpdateThis() {
-        if (pause)
+        if (PauseManager.GameIsPaused)
             return;
         UpdateStamina();
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
@@ -337,7 +337,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual void FixedUpdatethis() {
-        if (pause)
+        if (PauseManager.GameIsPaused)
             return;
         stateinfo.GetStatesInfo(anim.GetCurrentAnimatorStateInfo(0));
         if (PunchFailed && (stateinfo.HardpunchFailed || stateinfo.NormalPunchFailed))

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class GameplayManager : Manager {
 
     public bool IsGameOver = false;
+    [Header("Round Management")]
+    public int NumersOfRounds;
+    public int CurrentRound;
 
     [Header("Prefabs Lists")]
     public List<GameObject> Players;
@@ -28,14 +33,21 @@ public class GameplayManager : Manager {
     public PlayerScript Player;
 
     public HUDManager HudManager;
-    public Text PlayerTxt;
-    public Text EnemyTxt;
+    public TextMeshProUGUI PlayerTxt;
+    public TextMeshProUGUI EnemyTxt;
 
     public Transform Ring;
 
     [Header("GlobalData")]
     public int IDPlayer;
     public int IDEnemy;
+
+    [Header("Timer")]
+    public TextMeshProUGUI TimerTxt;
+    public float TimeCount;
+    public float Timer;
+    public bool ActivateTimer;
+    float StartTime;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +57,11 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        //int idp = PlayerPrefs.GetInt("IDPlayer", 0);
+        //int ide = PlayerPrefs.GetInt("IDEnemy", 0);
 
-        IDPlayer = idp - 1;
-        IDEnemy = 7 - ide;
+        //IDPlayer = idp - 1;
+        //IDEnemy = 7 - ide;
 
         Vector2 scr = new Vector2(Screen.width, Screen.height);
 
@@ -85,13 +97,44 @@ public class GameplayManager : Manager {
 
         Player.enabled = false;
         enemy.enabled = false;
+
+        float initialtime = TimeCount * 60;
+
+        TimeSpan span = new TimeSpan(0, 0, Mathf.RoundToInt(initialtime));
+
+        string seconds = "";
+        if (span.Seconds < 10)
+            seconds += "0";
+
+        seconds += span.Seconds.ToString();
+
+        TimerTxt.text = span.Minutes + ":" + seconds;
     }
+
+    float timing = 0;
 
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.GameIsPaused)
+            return;
 
         AnimatorStateInfo stateInfo = HudManager.GameOverAnimator.GetCurrentAnimatorStateInfo(0);
+        if (ActivateTimer && StartTime != 0) {
+            timing += Time.deltaTime;
+            Timer = (TimeCount * 60) - timing;
+
+            TimeSpan span = new TimeSpan(0, 0, Mathf.RoundToInt(Timer));
+
+            string seconds = "";
+            if (span.Seconds < 10)
+                seconds += "0";
+
+            seconds += span.Seconds.ToString();
+
+            TimerTxt.text = span.Minutes + ":" + seconds;
+
+        }
 
         if (enemy.IsDefeated && !IsGameOver) {
             Player.Win();
@@ -120,6 +163,8 @@ public class GameplayManager : Manager {
     public void EnableCharacters() {
         Player.enabled = true;
         enemy.enabled = true;
+        ActivateTimer = true;
+        StartTime = Time.time;
     }
 
     IEnumerator LoadYourAsyncScene()
