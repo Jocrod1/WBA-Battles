@@ -21,6 +21,8 @@ public class PJLoad : Manager {
 
     public TextMeshProUGUI[] positions, names;
 
+    public GameObject[] eliminated;
+
     private void Start() {
 
         audioSrc=GetComponent<AudioSource>();
@@ -88,6 +90,8 @@ public class PJLoad : Manager {
             positions[7].GetComponent<TextMeshProUGUI>().text="7";
 
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
+            eliminated[0].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==5)
         {
@@ -100,6 +104,9 @@ public class PJLoad : Manager {
 
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
+            eliminated[0].SetActive(true);
+            eliminated[1].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==4)
         {
@@ -114,6 +121,10 @@ public class PJLoad : Manager {
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
+            eliminated[0].SetActive(true);
+            eliminated[1].SetActive(true);
+            eliminated[2].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==3)
         {
@@ -130,6 +141,11 @@ public class PJLoad : Manager {
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
+            eliminated[0].SetActive(true);
+            eliminated[1].SetActive(true);
+            eliminated[2].SetActive(true);
+            eliminated[3].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==2)
         {

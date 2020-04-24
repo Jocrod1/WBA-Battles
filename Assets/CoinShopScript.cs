@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CoinShopScript : MonoBehaviour
 {
-    public GameObject smoke, error, fight, table, wall;
+    public GameObject smoke, error, fight, table, wall, realShop;
     private int coins, health, defence, damage;
 
     public TextMeshProUGUI healthText, defenceText, damageText, coinText, healthCount, defenceCount, damageCount;
@@ -241,22 +241,6 @@ public class CoinShopScript : MonoBehaviour
         }
     }
 
-/*
-    public void CloseShop()
-    {
-        if(smoke!=null)
-        {
-            Animator animator = smoke.GetComponent<Animator>();
-
-            if(animator!=null && animator2!=null)
-            {
-                animator.SetBool("Open", false);
-                animator2.SetBool("Open", false);
-            }
-        }
-    }
-
-    */
     private void NoCoin()
     {
         if(smoke!=null && error!=null)
@@ -280,6 +264,41 @@ public class CoinShopScript : MonoBehaviour
 
             if(animator!=null && animator2!=null)
             {
+                animator.SetBool("Open", false);
+                animator2.SetBool("Open", false);
+            }
+        }
+    }
+
+    
+    public void OpenShop()
+    {
+        if(smoke!=null && realShop!=null)
+        {
+            Animator animator = smoke.GetComponent<Animator>();
+            Animator animator2 = realShop.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                smoke.transform.SetSiblingIndex(1);
+
+                animator.SetBool("Open", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseShop()
+    {
+        if(smoke!=null && realShop!=null)
+        {
+            Animator animator = smoke.GetComponent<Animator>();
+            Animator animator2 = realShop.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                smoke.transform.SetSiblingIndex(0);
+
                 animator.SetBool("Open", false);
                 animator2.SetBool("Open", false);
             }
