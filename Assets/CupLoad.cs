@@ -8,7 +8,7 @@ public class CupLoad : MonoBehaviour
 {
     private AudioSource audioSrc;
 
-    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3;
+    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnim1;
 
     public Sprite champ1, champ2, champ3, champ4;
 
@@ -25,24 +25,36 @@ public class CupLoad : MonoBehaviour
             imagePlayer.GetComponent<Image>().sprite = champ1;
             imagePlayer2.GetComponent<Image>().sprite = champ1;
             imagePlayer3.GetComponent<Image>().sprite = champ1;
+
+            imageAnim1.GetComponent<Image>().sprite = champ1;
+            //imageAnim2.GetComponent<Image>().sprite = champ1;
         }
         else if(PlayerPrefs.GetInt("IDPlayer")==2)
         {
             imagePlayer.GetComponent<Image>().sprite = champ2;
             imagePlayer2.GetComponent<Image>().sprite = champ2;
             imagePlayer3.GetComponent<Image>().sprite = champ2;
+
+             imageAnim1.GetComponent<Image>().sprite = champ2;
+            //imageAnim2.GetComponent<Image>().sprite = champ2;
         }
         else if(PlayerPrefs.GetInt("IDPlayer")==3)
         {
             imagePlayer.GetComponent<Image>().sprite = champ3;
             imagePlayer2.GetComponent<Image>().sprite = champ3;
             imagePlayer3.GetComponent<Image>().sprite = champ3;
+
+            imageAnim1.GetComponent<Image>().sprite = champ3;
+            //imageAnim2.GetComponent<Image>().sprite = champ3;
         }
         else if(PlayerPrefs.GetInt("IDPlayer")==4)
         {
             imagePlayer.GetComponent<Image>().sprite = champ4;
             imagePlayer2.GetComponent<Image>().sprite = champ4;
             imagePlayer3.GetComponent<Image>().sprite = champ4;
+
+            imageAnim1.GetComponent<Image>().sprite = champ4;
+            //imageAnim2.GetComponent<Image>().sprite = champ4;
         }
 
         subEnemy1.SetActive(true);

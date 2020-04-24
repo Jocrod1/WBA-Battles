@@ -57,6 +57,8 @@ public class MenuScript : Manager
     //boton cuando se elija en boxeador
     public void SelectChamp(string Tabla)
     {
+        PlayerPrefs.SetInt("money", 1000);
+
         //GlobalManager.GameplayData.IDPlayer = IDChamp;
         PlayerPrefs.SetInt("IDPlayer", IDChamp);
 
