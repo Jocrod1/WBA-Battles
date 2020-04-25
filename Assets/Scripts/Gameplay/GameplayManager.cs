@@ -57,11 +57,11 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        //int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        //int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
 
-        //IDPlayer = idp - 1;
-        //IDEnemy = 7 - ide;
+        IDPlayer = idp - 1;
+        IDEnemy = 7 - ide;
 
         Vector2 scr = new Vector2(Screen.width, Screen.height);
 
