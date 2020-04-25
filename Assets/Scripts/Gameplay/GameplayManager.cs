@@ -11,7 +11,9 @@ public class GameplayManager : Manager {
     public bool IsGameOver = false;
     [Header("Round Management")]
     public int NumersOfRounds;
-    public int CurrentRound;
+    public int CurrentRound = 1;
+    public Animator Bars;
+    public Animator Spawners;
 
     [Header("Prefabs Lists")]
     public List<GameObject> Players;
@@ -57,11 +59,11 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        //int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        //int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
 
-        //IDPlayer = idp - 1;
-        //IDEnemy = 7 - ide;
+        IDPlayer = idp - 1;
+        IDEnemy = 7 - ide;
 
         Vector2 scr = new Vector2(Screen.width, Screen.height);
 
@@ -113,6 +115,15 @@ public class GameplayManager : Manager {
 
     float timing = 0;
 
+    public void RoundEnded() {
+        timing = 0;
+        DisableCharacters();
+
+        
+
+        CurrentRound++;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -120,7 +131,7 @@ public class GameplayManager : Manager {
             return;
 
         AnimatorStateInfo stateInfo = HudManager.GameOverAnimator.GetCurrentAnimatorStateInfo(0);
-        if (ActivateTimer && StartTime != 0) {
+        if (ActivateTimer) {
             timing += Time.deltaTime;
             Timer = (TimeCount * 60) - timing;
 
@@ -133,7 +144,10 @@ public class GameplayManager : Manager {
             seconds += span.Seconds.ToString();
 
             TimerTxt.text = span.Minutes + ":" + seconds;
+        }
 
+        if(Timer <= 0) {
+            RoundEnded();
         }
 
         if (enemy.IsDefeated && !IsGameOver) {
@@ -164,7 +178,12 @@ public class GameplayManager : Manager {
         Player.enabled = true;
         enemy.enabled = true;
         ActivateTimer = true;
-        StartTime = Time.time;
+    }
+
+    public void DisableCharacters() {
+        Player.enabled = false;
+        enemy.enabled = false;
+        ActivateTimer = false;
     }
 
     IEnumerator LoadYourAsyncScene()
