@@ -8,15 +8,21 @@ public class CupLoad : MonoBehaviour
 {
     private AudioSource audioSrc;
 
+    //pantallas
     public GameObject smoke, smoke2, fight, diagram, wall, realShop;
 
-    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2;
+    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2;
 
-    public Sprite champ1, champ2, champ3, champ4, player1, player2, player3, player4, cartelPlayer, cartelEnemy;
+    public Sprite champ1, champ2, champ3, champ4, player1, player2, player3, player4;
+
+    public Sprite enemyCartel1,enemyCartel2,enemyCartel3;
+
+    public GameObject cartelPlayer, cartelEnemy;
+
+    public TextMeshProUGUI playerName, enemyName, title;
 
     void Start()
     {
-        PlayerPrefs.SetInt("IDEnemy", 10);
         Animator animator = menu.GetComponent<Animator>();
 
         audioSrc=GetComponent<AudioSource>();
@@ -30,6 +36,7 @@ public class CupLoad : MonoBehaviour
             imagePlayer3.GetComponent<Image>().sprite = champ1;
 
             cartelPlayer.GetComponent<Image>().sprite = player1;
+            playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ1;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ1;
@@ -41,6 +48,7 @@ public class CupLoad : MonoBehaviour
             imagePlayer3.GetComponent<Image>().sprite = champ2;
 
             cartelPlayer.GetComponent<Image>().sprite = player2;
+            playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ2;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ2;
@@ -52,6 +60,7 @@ public class CupLoad : MonoBehaviour
             imagePlayer3.GetComponent<Image>().sprite = champ3;
 
             cartelPlayer.GetComponent<Image>().sprite = player3;
+            playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ3;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ3;
@@ -63,6 +72,7 @@ public class CupLoad : MonoBehaviour
             imagePlayer3.GetComponent<Image>().sprite = champ4;
 
             cartelPlayer.GetComponent<Image>().sprite = player4;
+            playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ4;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ4;
@@ -80,6 +90,10 @@ public class CupLoad : MonoBehaviour
 
             imageAnimPlayer1.SetActive(true);
             imageAnimEnemy1.SetActive(true);
+            title.GetComponent<TextMeshProUGUI>().text="Quarter final";
+            
+            enemyName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel1;
 
             subEnemy1.SetActive(false);
             subEnemy2.SetActive(false);
@@ -93,12 +107,25 @@ public class CupLoad : MonoBehaviour
 
             imageAnimPlayer2.SetActive(true);
             imageAnimEnemy2.SetActive(true);
+            title.GetComponent<TextMeshProUGUI>().text="Semifinal";
+
+            enemyName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel2;
+
+            eliminateds1.SetActive(true);
 
             final.SetActive(false);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==12)
         {
             animator.SetInteger("Position", 2);
+
+            enemyName.GetComponent<TextMeshProUGUI>().text="Korona";
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel3;
+            title.GetComponent<TextMeshProUGUI>().text="Final";
+
+            eliminateds1.SetActive(true);
+            eliminateds2.SetActive(true);
         }
 
 
