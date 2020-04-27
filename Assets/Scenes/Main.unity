@@ -942,27 +942,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2178568826876566862, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6e141889e637b2946aaf9c1691781e16,
-        type: 3}
-    - target: {fileID: 2178568826876566862, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 2178568826876566862, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 2178568826876566862, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747, type: 3}
 --- !u!1 &122214063
@@ -7386,6 +7365,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 723232263737931953, guid: 0ee1dbfbc3259034997bb0df4410cc25,
+        type: 3}
+      propertyPath: Name
+      value: Charlotte Amato
+      objectReference: {fileID: 0}
     - target: {fileID: 723232263737931964, guid: 0ee1dbfbc3259034997bb0df4410cc25,
         type: 3}
       propertyPath: m_Name
@@ -8662,6 +8646,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Miguel Diaz (Enemy)
       objectReference: {fileID: 0}
+    - target: {fileID: 6607562371255432753, guid: 537cefcadcffe68498144f0b88cf54e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6607562371255432766, guid: 537cefcadcffe68498144f0b88cf54e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8716,27 +8705,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6607562371678161001, guid: 537cefcadcffe68498144f0b88cf54e6,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5be3fbaa8964fed4b8dc10c4a55bc8d1,
-        type: 3}
-    - target: {fileID: 6607562371678161001, guid: 537cefcadcffe68498144f0b88cf54e6,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 6607562371678161001, guid: 537cefcadcffe68498144f0b88cf54e6,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 6607562371678161001, guid: 537cefcadcffe68498144f0b88cf54e6,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537cefcadcffe68498144f0b88cf54e6, type: 3}
@@ -11749,27 +11717,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2100934203348737793, guid: 8ddbd574a2ac9b94ea9cff47e72fba6a,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 70dc63ac037c61041a05ebfca7f53128,
-        type: 3}
-    - target: {fileID: 2100934203348737793, guid: 8ddbd574a2ac9b94ea9cff47e72fba6a,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 2100934203348737793, guid: 8ddbd574a2ac9b94ea9cff47e72fba6a,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 2100934203348737793, guid: 8ddbd574a2ac9b94ea9cff47e72fba6a,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2100934203973980260, guid: 8ddbd574a2ac9b94ea9cff47e72fba6a,
         type: 3}
       propertyPath: m_Name
