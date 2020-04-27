@@ -192,12 +192,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 403a21657e2a9d345af9b02a4d7f3398, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27d10e06a8d40d7429ced183a1e44b5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.200001, y: 20.60488}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21877f6b0c906f942a3027c1a06bb732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Ray Rocker
+  Name: Alex Duran
   AttColl: {fileID: 55843247585548475}
   RecvColl: {fileID: 55843247786515536}
   BlockColl: {fileID: 55843248444383148}

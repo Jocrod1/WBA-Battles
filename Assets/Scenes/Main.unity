@@ -1983,27 +1983,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3081728706013077397, guid: 52620ec234dc5224892dfaea2a99888a,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9b32507cb929ceb4db3cfac3aedb25cf,
-        type: 3}
-    - target: {fileID: 3081728706013077397, guid: 52620ec234dc5224892dfaea2a99888a,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3081728706013077397, guid: 52620ec234dc5224892dfaea2a99888a,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3081728706013077397, guid: 52620ec234dc5224892dfaea2a99888a,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52620ec234dc5224892dfaea2a99888a, type: 3}
 --- !u!1 &320476650
@@ -7375,6 +7354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moicano Blue (Enemy)
       objectReference: {fileID: 0}
+    - target: {fileID: 723232263737931964, guid: 0ee1dbfbc3259034997bb0df4410cc25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 723232263737931967, guid: 0ee1dbfbc3259034997bb0df4410cc25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12363,27 +12347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 55843246559935545, guid: e00585c3c1cf5f147ae3f635cf3d0436,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 27d10e06a8d40d7429ced183a1e44b5a,
-        type: 3}
-    - target: {fileID: 55843246559935545, guid: e00585c3c1cf5f147ae3f635cf3d0436,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 55843246559935545, guid: e00585c3c1cf5f147ae3f635cf3d0436,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 20.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 55843246559935545, guid: e00585c3c1cf5f147ae3f635cf3d0436,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 55843246583590614, guid: e00585c3c1cf5f147ae3f635cf3d0436,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12443,6 +12406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ray Rocker (Enemy)
+      objectReference: {fileID: 0}
+    - target: {fileID: 55843246583590621, guid: e00585c3c1cf5f147ae3f635cf3d0436,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00585c3c1cf5f147ae3f635cf3d0436, type: 3}
