@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
     public GameplayManager manager;
 
     public void SetIntroBars() {
-        BarsAnimator.SetTrigger("Intro");
+        BarsAnimator.SetBool("Inside", true);
     }
 
     public void SetIntroSpawners() {
@@ -23,15 +23,4 @@ public class CameraManager : MonoBehaviour
         manager.EnableCharacters();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
