@@ -6,14 +6,33 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
+
+
 public class GameplayManager : Manager {
+
+    [System.Serializable]
+    public class RoundResults {
+        public List<TextMeshProUGUI> ResultJudges;
+    }
+    [System.Serializable]
+    public class JudgeResult {
+        public int Player;
+        public int Enemy;
+    }
 
     public bool IsGameOver = false;
     [Header("Round Management")]
     public int NumersOfRounds;
     public int CurrentRound = 1;
-    //public Animator Bars;
-    //public Animator Spawners;
+    public Animator Bars;
+    public Animator Spawners;
+    public Animator ResultsPoster;
+    public Button ContinueButton;
+
+    [Header("Results Management")]
+    public List<RoundResults> listResultsUI;
+    public JudgeResult[,] ResultsTable;
+    public float TimeWaitingAnim;
 
     [Header("Prefabs Lists")]
     public List<GameObject> Players;
@@ -54,6 +73,8 @@ public class GameplayManager : Manager {
     // Start is called before the first frame update
     void Start()
     {
+        ResultsTable = new JudgeResult[NumersOfRounds, NumersOfRounds];
+
         IsGameOver = false;
         Results.Win = false;
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
@@ -113,15 +134,47 @@ public class GameplayManager : Manager {
         TimerTxt.text = span.Minutes + ":" + seconds;
     }
 
+    public void SetTable() {
+
+    }
+
     float timing = 0;
 
     public void RoundEnded() {
         timing = 0;
+        Timer = (TimeCount * 60) - timing;
+        SetTable();
         DisableCharacters();
 
-        
+        Bars.SetBool("Inside", false);
+        Spawners.SetBool("Inside", false);
 
-        CurrentRound++;
+        StartCoroutine(LoadResults());
+    }
+    
+    IEnumerator LoadResults() {
+        yield return new WaitForSeconds(TimeWaitingAnim);
+
+        Player.gameObject.SetActive(false);
+        enemy.gameObject.SetActive(false);
+
+        ResultsPoster.gameObject.SetActive(true);
+        ResultsPoster.SetBool("Inside", true);
+
+        yield return new WaitForSeconds(0.3f);
+
+        ContinueButton.gameObject.SetActive(true);
+    }
+
+    public void Continue() {
+        if (CurrentRound > NumersOfRounds) {
+            CurrentRound++;
+        }
+        else {
+            Results.GameOver = true;
+            loadResultPanel();
+        }
+        
     }
 
     // Update is called once per frame
@@ -146,7 +199,7 @@ public class GameplayManager : Manager {
             TimerTxt.text = span.Minutes + ":" + seconds;
         }
 
-        if(Timer <= 0) {
+        if(Timer <= 0 && ActivateTimer) {
             RoundEnded();
         }
 
