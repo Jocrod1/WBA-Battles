@@ -88,7 +88,7 @@ public class BtnShop : MonoBehaviour
             Options.transform.position=Vector3.MoveTowards(Options.transform.position, new Vector3(optionsPosition.x, Options.transform.position.y, 0), speed * Time.deltaTime);
             Menu.transform.position=Vector3.MoveTowards(Menu.transform.position, new Vector3(menuPosition.x, Menu.transform.position.y, 0), speed * Time.deltaTime);
 
-            if(Shop.transform.position.x==shopPosition.x)
+            if(Menu.transform.position.x==menuPosition.x)
             {
                 moving=false;
                 closeShop=false;

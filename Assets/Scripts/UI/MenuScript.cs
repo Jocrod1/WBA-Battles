@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class MenuScript : MonoBehaviour
+public class MenuScript : Manager
 {
-    public GameObject Smoke, Selection, ButtonSelection;
+    public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation;
 
-    public int IDChamp;
+    public int IDChamp, IDMotivation;
+
+    private void Start() {
+        //valor default
+        PlayerPrefs.GetInt("IDEnemy", -1);
+    }
 
     public void playgame(string Level)
     {
@@ -26,6 +31,89 @@ public class MenuScript : MonoBehaviour
         {
             Animator animator = Smoke.GetComponent<Animator>();
             Animator animator2 = Selection.GetComponent<Animator>();
+            Animator animator3= Menu.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null && animator3!=null)
+            {
+                animator.SetBool("Open", true);
+                animator2.SetBool("Open", true);
+                animator3.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseNewGame()
+    {
+        if(Smoke!=null && Selection!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Selection.GetComponent<Animator>();
+            Animator animator3= Menu.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null && animator3!=null)
+            {
+                animator.SetBool("Open", false);
+                animator2.SetBool("Open", false);
+                animator3.SetBool("Open", false);
+            }
+        }
+    }
+
+    public void ContinueGame()
+    {
+        if(PlayerPrefs.GetInt("IDEnemy")<=7 && PlayerPrefs.GetInt("IDEnemy")>=0)
+        {
+            string Table="Table";
+            playgame(Table);
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")<=10 && PlayerPrefs.GetInt("IDEnemy")>=12)
+        {
+            string Table="Championship";
+            playgame(Table);
+        }
+    }
+
+    //boton cuando se elija en boxeador
+    public void SelectChamp(string Tabla)
+    {
+        PlayerPrefs.SetInt("money", 1000);
+
+        //GlobalManager.GameplayData.IDPlayer = IDChamp;
+        PlayerPrefs.SetInt("IDPlayer", IDChamp);
+        PlayerPrefs.SetInt("IDMotivation", IDMotivation);
+
+        //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
+        PlayerPrefs.SetInt("IDEnemy", 7);
+
+        playgame(Tabla);
+    }
+
+    public void Motivation1(string Tabla)
+    {
+        IDMotivation=1;
+        SelectChamp(Tabla);
+    }
+
+    public void Motivation2(string Tabla)
+    {
+        IDMotivation=2;
+        SelectChamp(Tabla);
+    }
+
+    public void Motivation3(string Tabla)
+    {
+        IDMotivation=3;
+        SelectChamp(Tabla);
+    }
+
+    public void Champ1()
+    {
+        IDChamp=1;
+
+        if(Smoke!=null && Motivation!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Motivation.GetComponent<Animator>();
 
             if(animator!=null && animator2!=null)
             {
@@ -35,39 +123,57 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    //boton cuando se elija en boxeador
-    public void SelectChamp()
-    {
-
-    }
-
-    public void Champ1()
-    {
-        IDChamp=1;
-
-        ButtonSelection.gameObject.SetActive(true);
-    }
-
     public void Champ2()
     {
         IDChamp=2;
 
-        ButtonSelection.gameObject.SetActive(true);
+        if(Smoke!=null && Motivation!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Motivation.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open", true);
+                animator2.SetBool("Open", true);
+            }
+        }
     }
 
     public void Champ3()
     {
         IDChamp=3;
 
-        ButtonSelection.gameObject.SetActive(true);
+        if(Smoke!=null && Motivation!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Motivation.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open", true);
+                animator2.SetBool("Open", true);
+            }
+        }
     }
 
     public void Champ4()
     {
         IDChamp=4;
 
-        ButtonSelection.gameObject.SetActive(true);
+        if(Smoke!=null && Motivation!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Motivation.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open", true);
+                animator2.SetBool("Open", true);
+            }
+        }
     }
+
 
 
 }
