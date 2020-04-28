@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 8580a2b2e79388b4994322fbca1def9b
+  - enabled: 1
+    path: Assets/Scenes/Table.unity
+    guid: eafc7593c5e10944db23f7a25b52d62d
+  - enabled: 1
+    path: Assets/Scenes/Results.unity
+    guid: d0e7ac76d0a1748428a0394aceb1b35c
+  - enabled: 1
+    path: Assets/Scenes/Championship.unity
+    guid: b6fd266a483a971409c9751b23171934
   m_configObjects: {}

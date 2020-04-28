@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : Character {
-
-    public PlayerScript Player;
+public class EnemyScript : Enemy {
 
     [Header("Probabilities")]
     public float InitProbToUpBlock;
@@ -253,7 +251,7 @@ public class EnemyScript : Character {
             BlockDir = 0;
         }
 
-        anim.SetFloat("Blockv", BlockDir);
+        anim.SetFloat("InputY", BlockDir);
 
         bool Trigg = Time.time - StartTime > time2NextCombo;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
+    public string Name;
     public Animator anim { get; private set; }
 
     [Header("Attack Colliders")]
@@ -64,6 +65,7 @@ public class Character : MonoBehaviour {
     [Header("States and Times")]
     public bool IsTired;
     public bool PunchFailed;
+    public bool IsDefeated = true;
 
     [Header("Punch Infos")]
     public PunchInfo PIBottom;
@@ -326,11 +328,8 @@ public class Character : MonoBehaviour {
     }
 
     public virtual void UpdateThis() {
-        if (pause)
+        if (PauseManager.GameIsPaused)
             return;
-
-
-
         UpdateStamina();
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         CurrentMaxStamina = Mathf.Clamp(CurrentMaxStamina, 0, MaxStamina);
@@ -338,7 +337,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual void FixedUpdatethis() {
-        if (pause)
+        if (PauseManager.GameIsPaused)
             return;
         stateinfo.GetStatesInfo(anim.GetCurrentAnimatorStateInfo(0));
         if (PunchFailed && (stateinfo.HardpunchFailed || stateinfo.NormalPunchFailed))
@@ -367,17 +366,19 @@ public class Character : MonoBehaviour {
             Trigger += "Right";
         else print("Error in X input of PunchInfo");
 
-        anim.SetTrigger(Trigger);
-
-        if (stateinfo.Punching || stateinfo.HardPunching) {
-            print("i get punch whlie i punch");
-            StartCoroutine(FailedRecuperation(punchInfo));
+        
+        if (CurrentHealth <= 0) {
+            Defeated(punchInfo);
+            return;
         }
 
 
-        if (CurrentHealth <= 0) {
-            Defeated();
-            return;
+        anim.SetTrigger(Trigger);
+
+        if (stateinfo.Punching || stateinfo.HardPunching)
+        {
+            print("i get punch whlie i punch");
+            StartCoroutine(FailedRecuperation(punchInfo));
         }
     }
 
@@ -410,7 +411,6 @@ public class Character : MonoBehaviour {
 
     public virtual void Tired() {
         StartCoroutine(TiredRecuperation());
-        print("tired");
     }
     IEnumerator TiredRecuperation()
     {
@@ -423,8 +423,25 @@ public class Character : MonoBehaviour {
         IsTired = false;
     }
 
-    public virtual void Defeated() {
-        print("Defeated");
+    public virtual void Defeated(PunchInfo punchInfo) {
+        string trigger = "Defeated";
+
+        if (punchInfo.PunchRawLocal.x == -1)
+            trigger += "Left";
+        else if (punchInfo.PunchRawLocal.x == 1)
+            trigger += "Right";
+        else
+            print("Error in X input of PunchInfo");
+
+        anim.SetTrigger(trigger);
+    }
+
+    public void Defeat() {
+        IsDefeated = true;
+    }
+
+    public virtual void Win() {
+        anim.SetTrigger("Win");
     }
 
     // Start is called before the first frame update
@@ -444,4 +461,8 @@ public class Character : MonoBehaviour {
         FixedUpdatethis();
         //WatchAttackColliders();
     }
+}
+
+public class Enemy : Character {
+    public PlayerScript Player;
 }

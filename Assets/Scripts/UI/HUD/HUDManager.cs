@@ -12,6 +12,8 @@ public class HUDManager : MonoBehaviour
     [Header("Enemy")]
     public Bars EnemyBars;
 
+    public Animator GameOverAnimator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,10 @@ public class HUDManager : MonoBehaviour
         PlayerBars.Manage();
         EnemyBars.Manage();
 
+    }
+
+    public void GameOver(string trigger) {
+        GameOverAnimator.SetTrigger(trigger);
     }
 
     [System.Serializable]

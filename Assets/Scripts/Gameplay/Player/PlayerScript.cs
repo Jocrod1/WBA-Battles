@@ -137,8 +137,8 @@ public class PlayerScript : Character {
                 isTap = true;
                 startTouch = Input.mousePosition;
                 doubleTap = Time.time - lastTap < doubleTapDelta;
-                print(Time.time - lastTap);
                 lastTap = Time.time;
+                taplocal = startTouch;
                 Touching = true;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
@@ -146,7 +146,8 @@ public class PlayerScript : Character {
                 startTouch = swipeDelta = Vector2.zero;
                 Touching = false;
                 EndTap = true;
-                if (isTap) {
+                if (isTap)
+                {
                     Tap = true;
                     isTap = false;
                 }
@@ -155,7 +156,8 @@ public class PlayerScript : Character {
             //Reset distance, get the new swipeDelta
             swipeDelta = Vector2.zero;
 
-            if (Touching) {
+            if (Touching)
+            {
                 Touchlocal = Input.mousePosition;
             }
 
@@ -168,29 +170,25 @@ public class PlayerScript : Character {
             if (startTouch != Vector2.zero && Touching)
                 swipeDelta = (Vector2)Input.mousePosition - startTouch;
 
-            if (swipeDelta.sqrMagnitude > sqrDeadzone)
+            if (Mathf.Abs(swipeDelta.x) > deadzone.x)
             {
+                isTap = false;
 
-                isTap = true;
-
-                float x = swipeDelta.x;
-                float y = swipeDelta.y;
-
-                if (Mathf.Abs(x) > Mathf.Abs(y))
-                {
-                    if (x < 0)
-                        swipeLeft = true;
-                    else
-                        swipeRight = true;
-                }
+                if (swipeDelta.x < 0)
+                    swipeLeft = true;
                 else
-                {
-                    if (y < 0)
-                        SwipeDown = true;
-                    else
-                        swipeUp = true;
-                }
-                startTouch = swipeDelta = Vector2.zero;
+                    swipeRight = true;
+
+                startTouch = new Vector2(Input.mousePosition.x, startTouch.y);
+            }
+            if (Mathf.Abs(swipeDelta.y) > deadzone.y)
+            {
+                isTap = false;
+
+                if (swipeDelta.y < 0)
+                    SwipeDown = true;
+                else
+                    swipeUp = true;
             }
         }
     }

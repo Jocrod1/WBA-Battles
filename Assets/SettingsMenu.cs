@@ -8,28 +8,30 @@ public class SettingsMenu : MonoBehaviour
     private int coins;
     private AudioSource audioSrc;
 
+    public Slider audioSlider;
+
     private void Start() {
 
         audioSrc=GetComponent<AudioSource>();
 
-        PlayerPrefs.SetInt("money", 1000);
+         //PlayerPrefs.SetInt("money", 1000);
+        GlobalManager.Money = 1000;
 
-        coins=PlayerPrefs.GetInt("money");
+        coins = GlobalManager.Money;
 
-
+        audioSlider.value = GlobalManager.SettingsData.Volume;
 
     }
 
 
     private void Update() {
-        audioSrc.volume=PlayerPrefs.GetFloat("volume");
-
-        print(PlayerPrefs.GetFloat("volume"));
+        audioSrc.volume = GlobalManager.SettingsData.Volume;
     }
 
     public void SetVolume(float vol)
     {
-        PlayerPrefs.SetFloat("volume",vol);
+         //PlayerPrefs.SetFloat("volume",vol);
+        GlobalManager.SettingsData.Volume = vol;
     }
 
 }
