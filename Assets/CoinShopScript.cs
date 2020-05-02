@@ -305,8 +305,4 @@ public class CoinShopScript : MonoBehaviour
         }
     }
 
-    public void playgame(string Level)
-    {
-        SceneManager.LoadScene(Level);
-    }
 }

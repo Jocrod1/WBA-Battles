@@ -11,7 +11,7 @@ public class PJLoad : Manager {
 
     public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup;
 
-    public GameObject fight, table;
+    public GameObject fight, table, championship, wallTable, buttonCartel;
  
     public Sprite champ1, champ2, champ3, champ4;
 
@@ -28,10 +28,8 @@ public class PJLoad : Manager {
         audioSrc=GetComponent<AudioSource>();
         audioSrc.volume=PlayerPrefs.GetFloat("volume");
 
-        btnCup.SetActive(false);
-        //positions= new float[position1, position2, position3, position4, position5, position6, position7, position8];
-
         int IDPlayer = GlobalManager.GameplayData.IDPlayer;
+
 
         if (IDPlayer == 1)
         {
@@ -187,8 +185,19 @@ public class PJLoad : Manager {
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==0)
         {
-            btnCup.SetActive(true);
-            PlayerPrefs.SetInt("IDEnemy", 10);
+            buttonCartel.SetActive(false);
+
+            if(wallTable!=null && championship!=null)
+            {
+                Animator animator = wallTable.GetComponent<Animator>();
+                Animator animator2 = championship.GetComponent<Animator>();
+
+                if(animator!=null && animator2!=null)
+                {
+                    animator.SetBool("Championship", true);
+                    animator2.SetBool("Championship", true);
+                }
+            }
 
             positions[0].GetComponent<TextMeshProUGUI>().text="2";
             positions[1].GetComponent<TextMeshProUGUI>().text="3";
@@ -211,6 +220,7 @@ public class PJLoad : Manager {
 
     public void goCup(string Level)
     {
+        PlayerPrefs.SetInt("IDEnemy", 12);
         SceneManager.LoadScene(Level);
     }
 

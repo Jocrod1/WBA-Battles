@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CupLoad : MonoBehaviour
 {
@@ -205,6 +206,11 @@ public class CupLoad : MonoBehaviour
                 animator2.SetBool("Open", false);
             }
         }
+    }
+
+    public void playgame(string Level)
+    {
+        SceneManager.LoadScene(Level);
     }
 
 }

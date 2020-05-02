@@ -85,6 +85,10 @@ public class MenuScript : Manager
         //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
         PlayerPrefs.SetInt("IDEnemy", 7);
 
+        PlayerPrefs.SetString("WaitOneHour", "-1");
+
+        Smoke.transform.SetSiblingIndex(0);
+
         playgame(Tabla);
     }
 
@@ -119,6 +123,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
@@ -136,6 +142,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
@@ -153,6 +161,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
@@ -170,6 +180,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
