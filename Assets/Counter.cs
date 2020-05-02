@@ -41,9 +41,8 @@
             strTime = strTime.Substring(3, (strTime).Length - 11);
             date.GetComponent<TextMeshProUGUI>().text=strTime;
 
-            if(strTime=="00:00")
+            if(timeInPref<=currentDate)
             {
-                print("hola");
                 playerPrefTime="-1";
                 PlayerPrefs.SetString("WaitOneHour", "-1");
             }
