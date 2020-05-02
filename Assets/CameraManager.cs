@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
     }
 
     public void SetIntroSpawners() {
-        SpawnersAnimator.SetTrigger("Intro");
+        SpawnersAnimator.SetBool("Inside", true);
     }
 
     public void EnableCharacters() {

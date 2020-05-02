@@ -9,11 +9,18 @@ public class MenuScript : Manager
 {
     public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation;
 
+    public Button btnContinue;
+
     public int IDChamp, IDMotivation;
 
     private void Start() {
         //valor default
         PlayerPrefs.GetInt("IDEnemy", -1);
+
+        if(PlayerPrefs.GetInt("IDEnemy")==-1)
+        {
+            btnContinue.interactable=false;
+        }
     }
 
     public void playgame(string Level)
@@ -85,6 +92,10 @@ public class MenuScript : Manager
         //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
         PlayerPrefs.SetInt("IDEnemy", 7);
 
+        PlayerPrefs.SetString("WaitOneHour", "-1");
+
+        Smoke.transform.SetSiblingIndex(0);
+
         playgame(Tabla);
     }
 
@@ -119,6 +130,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
@@ -136,6 +149,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
@@ -153,6 +168,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
@@ -170,6 +187,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(6);
             }
         }
     }
