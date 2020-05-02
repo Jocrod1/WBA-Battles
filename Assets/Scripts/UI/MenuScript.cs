@@ -9,11 +9,18 @@ public class MenuScript : Manager
 {
     public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation;
 
+    public Button btnContinue;
+
     public int IDChamp, IDMotivation;
 
     private void Start() {
         //valor default
         PlayerPrefs.GetInt("IDEnemy", -1);
+
+        if(PlayerPrefs.GetInt("IDEnemy")==-1)
+        {
+            btnContinue.interactable=false;
+        }
     }
 
     public void playgame(string Level)
