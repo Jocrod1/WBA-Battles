@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b29d74fc533490a4a979bf013a6db43f
+guid: 81f452cd09a41cb4e9ef56cff0439e99
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Legend M54
+  fontName: DiamondPlate
   fontNames:
-  - Legend M54
+  - DiamondPlate
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
