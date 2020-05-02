@@ -23,7 +23,7 @@ public class ResultsManager : MonoBehaviour
 
             //agregar una hora al tiempo en que termino la pelea
             oneHour= System.DateTime.Now;
-            duration = new System.TimeSpan(0, 0, 0, 10);
+            duration = new System.TimeSpan(0, 0, 0, 60);
             timeNextFight = oneHour.Add(duration);
 
             if (Results.Win) {
