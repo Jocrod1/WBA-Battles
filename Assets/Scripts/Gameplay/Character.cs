@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour {
 
     public string Name;
-    public Animator anim { get; private set; }
+    public Animator anim;
 
     [Header("Attack Colliders")]
     public Transform AttColl;
@@ -74,6 +74,11 @@ public class Character : MonoBehaviour {
     public PunchInfo PIHardUp;
 
     public Stateinfos stateinfo;
+
+    [Header("KnockOuts Manager")]
+    public int MaxKnockouts;
+    public int CurrentKnockouts = 0;
+    public bool KnockedOut;
 
 
 
@@ -255,8 +260,10 @@ public class Character : MonoBehaviour {
 
         [Header("Tired")]
         public bool Tired;
+        public bool Waiting;
         protected void GetTired() {
             Tired = StateInfo.IsName("Tired");
+            Waiting = StateInfo.IsName("Waiting");
         }
 
         public virtual void GetStatesInfo(AnimatorStateInfo StateInf) {
@@ -281,6 +288,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual void LoadData() {
+        CurrentKnockouts = 0;
         anim = GetComponent<Animator>();
 
         //Attack Colliders
@@ -434,10 +442,33 @@ public class Character : MonoBehaviour {
             print("Error in X input of PunchInfo");
 
         anim.SetTrigger(trigger);
+        CurrentKnockouts++;
+        if (CurrentKnockouts < 3)
+        {
+            KnockedOut = true;
+            anim.SetBool("Recovered", true);
+        }
     }
 
     public void Defeat() {
-        IsDefeated = true;
+        
+        if(CurrentKnockouts >= 3) {
+            IsDefeated = true;
+        }
+    }
+
+    public void Knocking() {
+        anim.SetTrigger("Inside");
+        anim.SetBool("Recovered", true);
+    }
+    public void unwait() {
+        anim.SetBool("Recovered", false);
+    }
+    public void RestoreHealth() {
+        CurrentHealth = MaxHealth;
+    }
+    public void RestoreStamina() {
+        CurrentStamina = CurrentMaxStamina;
     }
 
     public virtual void Win() {

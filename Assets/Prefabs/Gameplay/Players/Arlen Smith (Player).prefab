@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Arlen Smith
+  anim: {fileID: 0}
   AttColl: {fileID: 2272623803008170608}
   RecvColl: {fileID: 2272623802418840880}
   BlockColl: {fileID: 2272623802260968191}
@@ -1047,26 +1048,26 @@ MonoBehaviour:
     Hard: 0
     Damage: 0
     Stamina: 0
-  SD2Dodge: 40
+  SD2Dodge: 20
   IsTired: 0
   PunchFailed: 0
   IsDefeated: 0
   PIBottom:
     Hard: 0
-    Damage: 10
-    Stamina: 15
+    Damage: 8
+    Stamina: 10
   PIUp:
     Hard: 0
-    Damage: 15
-    Stamina: 15
+    Damage: 10
+    Stamina: 12
   PIHardBottom:
     Hard: 1
-    Damage: 25
-    Stamina: 30
+    Damage: 15
+    Stamina: 19
   PIHardUp:
     Hard: 1
-    Damage: 35
-    Stamina: 30
+    Damage: 20
+    Stamina: 23
   stateinfo:
     BlockIdle: 0
     BlockedUp: 0
@@ -1108,6 +1109,10 @@ MonoBehaviour:
     RecieveHardUpRight: 0
     RecieveHardPunch: 0
     Tired: 0
+    Waiting: 0
+  MaxKnockouts: 0
+  CurrentKnockouts: 0
+  KnockedOut: 0
   StaminaRecovering: 0.8
   deadzone: {x: 200, y: 100}
   doubleTapDelta: 0.5
@@ -1127,6 +1132,7 @@ MonoBehaviour:
   longTap: 1
   Sliding: 0
   taplocal: {x: 0, y: 0}
+  Wait: 0
 --- !u!50 &2272623802930359499
 Rigidbody2D:
   serializedVersion: 4

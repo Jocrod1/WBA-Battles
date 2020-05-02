@@ -151,12 +151,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsGameOver: 0
-  NumersOfRounds: 0
+  NumersOfRounds: 2
   CurrentRound: 0
   Bars: {fileID: 1193572764}
   Spawners: {fileID: 9521041}
   ResultsPoster: {fileID: 253104005}
   ContinueButton: {fileID: 2052331529}
+  WaitSecForKO: 0
   listResultsUI:
   - ResultJudges:
     - {fileID: 1924352376}
@@ -178,7 +179,15 @@ MonoBehaviour:
     - {fileID: 1048004015}
     - {fileID: 1186766352}
     - {fileID: 1091456552}
+  FinalResults:
+  - {fileID: 651943298}
+  - {fileID: 1870317269}
+  - {fileID: 1467992744}
   TimeWaitingAnim: 2
+  FinalResult: {fileID: 780951566}
+  WinColor: {r: 0.827451, g: 0.8392157, b: 0, a: 1}
+  DefeatColor: {r: 0.77254903, g: 0.023529412, b: 0.17254902, a: 1}
+  Speed: 0.2
   Players:
   - {fileID: 2272623802930359498, guid: e278c804802c9054cb5dc9e3106306be, type: 3}
   - {fileID: 1369671759334762757, guid: 7a67a509026425e478189795b4ca21eb, type: 3}
@@ -205,7 +214,7 @@ MonoBehaviour:
   IDPlayer: 0
   IDEnemy: 0
   TimerTxt: {fileID: 1204134714}
-  TimeCount: 0.1
+  TimeCount: 1
   Timer: 0
   ActivateTimer: 0
 --- !u!4 &7794975
@@ -3620,7 +3629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.75657576, b: 0.13697046, a: 0}
+  m_Color: {r: 0.827451, g: 0.8392157, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3638,7 +3647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Winner!
+  m_Text: TKO
 --- !u!222 &642396767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9888,7 +9897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: -0.59994507}
+  m_AnchoredPosition: {x: -6, y: -0.59993744}
   m_SizeDelta: {x: -12, y: -14.700012}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1721522374
@@ -11238,7 +11247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.13510145, b: 0.13510145, a: 0}
+  m_Color: {r: 0.77254903, g: 0.023529412, b: 0.17254902, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11256,7 +11265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Defeated!
+  m_Text: TKO
 --- !u!222 &1904544884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11956,7 +11965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: -0.59994507}
+  m_AnchoredPosition: {x: -6, y: -0.59993744}
   m_SizeDelta: {x: -12, y: -14.700012}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2023406516
@@ -12151,7 +12160,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2052331530}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7794974}
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2052331530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12926,7 +12946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: -0.59994507}
+  m_AnchoredPosition: {x: -6, y: -0.59993744}
   m_SizeDelta: {x: -12, y: -14.700012}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2131879237
