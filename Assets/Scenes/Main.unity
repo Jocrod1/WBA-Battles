@@ -212,7 +212,7 @@ MonoBehaviour:
   EnemyTxt: {fileID: 1337587696}
   Ring: {fileID: 1694301555}
   IDPlayer: 0
-  IDEnemy: 0
+  IDEnemy: 1
   TimerTxt: {fileID: 1204134714}
   TimeCount: 1
   Timer: 0

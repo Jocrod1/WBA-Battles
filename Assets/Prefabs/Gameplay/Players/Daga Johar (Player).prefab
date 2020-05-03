@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Daga Johar
+  anim: {fileID: 0}
   AttColl: {fileID: 1369671759395864511}
   RecvColl: {fileID: 1369671758773174527}
   BlockColl: {fileID: 1369671758664587056}
@@ -1053,20 +1054,20 @@ MonoBehaviour:
   IsDefeated: 0
   PIBottom:
     Hard: 0
-    Damage: 10
-    Stamina: 15
+    Damage: 8
+    Stamina: 10
   PIUp:
     Hard: 0
-    Damage: 15
-    Stamina: 15
+    Damage: 10
+    Stamina: 12
   PIHardBottom:
     Hard: 1
-    Damage: 25
-    Stamina: 30
+    Damage: 15
+    Stamina: 19
   PIHardUp:
     Hard: 1
-    Damage: 35
-    Stamina: 30
+    Damage: 20
+    Stamina: 23
   stateinfo:
     BlockIdle: 0
     BlockedUp: 0
@@ -1108,6 +1109,10 @@ MonoBehaviour:
     RecieveHardUpRight: 0
     RecieveHardPunch: 0
     Tired: 0
+    Waiting: 0
+  MaxKnockouts: 0
+  CurrentKnockouts: 0
+  KnockedOut: 0
   StaminaRecovering: 0.8
   deadzone: {x: 200, y: 100}
   doubleTapDelta: 0.5
@@ -1127,6 +1132,7 @@ MonoBehaviour:
   longTap: 1
   Sliding: 0
   taplocal: {x: 0, y: 0}
+  Wait: 0
 --- !u!50 &1369671759334762756
 Rigidbody2D:
   serializedVersion: 4
