@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.13333334
+        time: 0.11666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.21666667
+        time: 0.18333334
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -58,9 +58,9 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 5865623460396744092fdfc83e16f32b, type: 3}
-    - time: 0.13333334
+    - time: 0.11666667
       value: {fileID: 21300000, guid: 3c25b8f524f80fc458b6779e0220b201, type: 3}
-    - time: 0.33333334
+    - time: 0.28333333
       value: {fileID: 21300000, guid: 3c25b8f524f80fc458b6779e0220b201, type: 3}
     attribute: m_Sprite
     path: Renderer
@@ -96,7 +96,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.35000002
+    m_StopTime: 0.3
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -125,7 +125,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.13333334
+        time: 0.11666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -134,7 +134,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.21666667
+        time: 0.18333334
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -174,7 +174,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
+  - time: 0.23333333
     functionName: CheckFailPunch
     data: 
     objectReferenceParameter: {fileID: 0}

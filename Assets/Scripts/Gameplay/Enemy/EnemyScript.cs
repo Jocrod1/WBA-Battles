@@ -14,10 +14,13 @@ public class EnemyScript : Enemy {
 
     [System.Serializable]
     public enum Difficulties {
-        Easy,
-        Medium,
-        Hard,
-        Impossible
+        DanteGray,
+        KwanLee,
+        BlackDwayne,
+        CharlotteAmato,
+        MiguelRuiz,
+        AlexDuran,
+        Korona
     }
 
     int NPunchBottom;
@@ -41,26 +44,26 @@ public class EnemyScript : Enemy {
     }
 
     void BlockThinking() {
-        switch (Difficulty) {
-            case Difficulties.Easy:
-                {
+        //switch (Difficulty) {
+        //    case Difficulties.Easy:
+        //        {
 
-                    break;
-                }
-            case Difficulties.Medium:
-                {
-                    break;
-                }
-            case Difficulties.Hard:
-                {
-                    break;
-                }
-            case Difficulties.Impossible:
-                {
-                    break;
-                }
-            default: break;
-        }
+        //            break;
+        //        }
+        //    case Difficulties.Medium:
+        //        {
+        //            break;
+        //        }
+        //    case Difficulties.Hard:
+        //        {
+        //            break;
+        //        }
+        //    case Difficulties.Impossible:
+        //        {
+        //            break;
+        //        }
+        //    default: break;
+        //}
     }
 
 
@@ -126,8 +129,15 @@ public class EnemyScript : Enemy {
             return;
         }
 
-        anim.SetTrigger(Trigger);
+
         print("i failed punch");
+
+
+        if (!((Difficulty == Difficulties.AlexDuran || Difficulty == Difficulties.Korona) && Trigger == "PunchFailedHUpRight"))
+            return;
+
+        anim.SetTrigger(Trigger);
+
     }
 
     // Update is called once per frame
