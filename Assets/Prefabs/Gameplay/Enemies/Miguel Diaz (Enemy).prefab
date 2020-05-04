@@ -1140,6 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Miguel Diaz
+  anim: {fileID: 0}
   AttColl: {fileID: 6607562370654353224}
   RecvColl: {fileID: 6607562371374384348}
   BlockColl: {fileID: 6607562371523687743}
@@ -1172,11 +1173,11 @@ MonoBehaviour:
   PIHardBottom:
     Hard: 1
     Damage: 25
-    Stamina: 30
+    Stamina: 15
   PIHardUp:
     Hard: 1
     Damage: 35
-    Stamina: 30
+    Stamina: 15
   stateinfo:
     BlockIdle: 0
     BlockedUp: 0
@@ -1218,6 +1219,10 @@ MonoBehaviour:
     RecieveHardUpRight: 0
     RecieveHardPunch: 0
     Tired: 0
+    Waiting: 0
+  MaxKnockouts: 0
+  CurrentKnockouts: 0
+  KnockedOut: 0
   StaminaRecovering: 0.2
   Player: {fileID: 0}
   InitProbToUpBlock: 40

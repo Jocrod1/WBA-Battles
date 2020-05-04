@@ -397,11 +397,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: KORONA
+  anim: {fileID: 0}
   AttColl: {fileID: 3081728706944951627}
   RecvColl: {fileID: 3081728705453164157}
   BlockColl: {fileID: 3081728706639295420}
-  CurrentHealth: 100
-  MaxHealth: 100
+  CurrentHealth: 200
+  MaxHealth: 200
   CurrentStamina: 100
   MaxStamina: 100
   RecuperationPerSecond: 25
@@ -414,26 +415,26 @@ MonoBehaviour:
     Hard: 0
     Damage: 0
     Stamina: 0
-  SD2Dodge: 40
+  SD2Dodge: 20
   IsTired: 0
   PunchFailed: 0
   IsDefeated: 0
   PIBottom:
     Hard: 0
-    Damage: 10
-    Stamina: 15
+    Damage: 20
+    Stamina: 10
   PIUp:
     Hard: 0
-    Damage: 15
-    Stamina: 15
+    Damage: 25
+    Stamina: 10
   PIHardBottom:
     Hard: 1
-    Damage: 25
-    Stamina: 30
+    Damage: 35
+    Stamina: 10
   PIHardUp:
     Hard: 1
-    Damage: 35
-    Stamina: 30
+    Damage: 45
+    Stamina: 10
   stateinfo:
     BlockIdle: 0
     BlockedUp: 0
@@ -475,17 +476,21 @@ MonoBehaviour:
     RecieveHardUpRight: 0
     RecieveHardPunch: 0
     Tired: 0
+    Waiting: 0
+  MaxKnockouts: 0
+  CurrentKnockouts: 0
+  KnockedOut: 0
   StaminaRecovering: 0.2
   Player: {fileID: 0}
-  InitProbToUpBlock: 40
+  InitProbToUpBlock: 50
   MaxProb2UpBlock: 0
-  InitProbToBottomBlock: 25
+  InitProbToBottomBlock: 37
   MaxProb2BottomBlock: 0
   IncrProbBlock: 0
-  Difficulty: 0
-  ProbtoDodge: 25
+  Difficulty: 6
+  ProbtoDodge: 38
   RecuperationTime: 2
-  ClampedTimeA: 3
+  ClampedTimeA: 4
   ClampedTimeB: 5
   time2NextCombo: 0
   actualtime: 0
