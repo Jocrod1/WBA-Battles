@@ -224,4 +224,9 @@ public class PJLoad : Manager {
         SceneManager.LoadScene(Level);
     }
 
+    public void returnMenu(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
+
 }
