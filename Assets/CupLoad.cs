@@ -213,4 +213,9 @@ public class CupLoad : MonoBehaviour
         SceneManager.LoadScene(Level);
     }
 
+    public void returnMenu(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
+
 }
