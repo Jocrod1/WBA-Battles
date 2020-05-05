@@ -51,7 +51,7 @@ public class ResultsManager : MonoBehaviour
 
                 PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
 
-                if(idEnemy>=12 && idEnemy<=10)
+                if(idEnemy>=10 && idEnemy<=12)
                 {
                     idEnemy=idEnemy-1;
                     PlayerPrefs.SetInt("IDEnemy", idEnemy);

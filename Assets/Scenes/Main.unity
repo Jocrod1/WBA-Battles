@@ -201,6 +201,10 @@ MonoBehaviour:
   - {fileID: 723232263737931964, guid: 0ee1dbfbc3259034997bb0df4410cc25, type: 3}
   - {fileID: 55843246583590621, guid: e00585c3c1cf5f147ae3f635cf3d0436, type: 3}
   - {fileID: 3081728705665372400, guid: 52620ec234dc5224892dfaea2a99888a, type: 3}
+  PowerEnemies:
+  - {fileID: 948292197678677768, guid: 083c607eadac5af4394ab0946076ac9b, type: 3}
+  - {fileID: 279061792482231829, guid: 29308858ad850a748a312c45c4de6181, type: 3}
+  - {fileID: 4785552978250715424, guid: f891567dcdbd71a4989fca31ba6b2e88, type: 3}
   SelectedPlayer: {fileID: 0}
   SelectedEnemy: {fileID: 0}
   PlayerSpawner: {fileID: 2006739565}

@@ -65,6 +65,7 @@ public class GameplayManager : Manager {
     [Header("Prefabs Lists")]
     public List<GameObject> Players;
     public List<GameObject> Enemies;
+    public List<GameObject> PowerEnemies;
 
     [Header("Selected Prefabs")]
     public GameObject SelectedPlayer;
@@ -128,7 +129,30 @@ public class GameplayManager : Manager {
 
 
         SelectedPlayer = Players[IDPlayer];
-        SelectedEnemy = Enemies[IDEnemy];
+
+        if (ide >= 10 && ide <= 12) {
+
+            int HE = PlayerPrefs.GetInt("health", 0);
+            int ST = PlayerPrefs.GetInt("stamina", 0);
+            int DA = PlayerPrefs.GetInt("damage", 0);
+
+            if (HE == 0 && ST == 0 && DA == 0)
+            {
+                IDEnemy = 12 - ide;
+                SelectedEnemy = PowerEnemies[IDEnemy];
+            }
+            else {
+                IDEnemy = 16 - ide;
+                SelectedEnemy = Enemies[IDEnemy];
+            }
+            
+        }
+        else if (ide >= 1 && ide <= 7) {
+            SelectedEnemy = Enemies[IDEnemy];
+        }
+        else {
+            print("Error: invalid IDEnemy Input");
+        }
 
         RealPlayer = Instantiate(SelectedPlayer, PlayerSpawner);
         RealPlayer.transform.localPosition = Vector3.zero;
