@@ -31,7 +31,7 @@ public class Character : MonoBehaviour {
     [Header("Stamina")]
     public float CurrentStamina;
     public float MaxStamina;
-    float CurrentMaxStamina;
+    public float CurrentMaxStamina;
     public float RecuperationPerSecond;
 
     [Header("Recuperation Times")]

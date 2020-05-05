@@ -1,18 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- using System;
+using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultsManager : MonoBehaviour
 {
+    [Serializable]
+    public class MotivationPanel {
+        public List<Sprite> Motivation;
+    }
+
+    [Serializable]
+    public class PlayersPanels {
+        public MotivationPanel ArlenSmithMP;
+        public MotivationPanel DagaJoharMP;
+        public MotivationPanel IrinaJonesMP;
+        public MotivationPanel AngelisNadaiMP;
+    }
+
+    public Image ImagePanel;
+
     public TextMeshProUGUI ResultText;
 
     private DateTime oneHour, timeNextFight;
     private TimeSpan duration;
 
     private int idEnemy;
+
+    [Header("Panel List")]
+    public List<MotivationPanel> playersLoosePanels;
 
     // Start is called before the first frame update
     void Start()
@@ -50,11 +69,37 @@ public class ResultsManager : MonoBehaviour
             else {
                 ResultText.text = "YOU LOOSE";
                 ResultText.color = new Color(140f, 0, 0);
+
+                PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
+
+                SetLoosePanel();
+
+                idEnemy = 7;
+                PlayerPrefs.SetInt("IDEnemy", idEnemy);
             }
+
+            PlayerPrefs.SetInt("health", 0);
+            PlayerPrefs.SetInt("stamina", 0);
+            PlayerPrefs.SetInt("damage", 0);
+
         }
 
     }
 
+    public void SetLoosePanel() {
+        int IdPlayer = PlayerPrefs.GetInt("IDPlayer", 0);
+        int IdMotivation = PlayerPrefs.GetInt("IDMotivation", 0);
+
+        if (IdMotivation == 0 || IdPlayer == 0) {
+            print("ERROR: Id nulo");
+            return;
+        }
+
+        IdPlayer--;
+        IdMotivation--;
+
+        ImagePanel.sprite = playersLoosePanels[IdPlayer].Motivation[IdMotivation];
+    }
 
     public void goTable()
     {

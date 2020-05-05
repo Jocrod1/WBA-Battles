@@ -8,42 +8,44 @@ using UnityEngine.SceneManagement;
 public class CoinShopScript : MonoBehaviour
 {
     public GameObject smoke, error, fight, table, wall, realShop;
-    private int coins, health, defence, damage;
+    private int coins, health, stamina, damage;
 
     public TextMeshProUGUI healthText, defenceText, damageText, coinText, healthCount, defenceCount, damageCount;
 
     public Button btnHealth, btnDefence, btnDamage;
 
-    private int countHealth, countDefence, countDamage;
+    private int countHealth, countStamina, countDamage;
+
+    float MaxHealth, CurrentHealth;
 
     private void Start() {
 
         countHealth=0;
-        countDefence=0;
+        countStamina=0;
         countDamage=0;
 
         coins=PlayerPrefs.GetInt("money");
-        health=PlayerPrefs.GetInt("health");
-        defence=PlayerPrefs.GetInt("defence");
-        damage=PlayerPrefs.GetInt("damage");
+        health=PlayerPrefs.GetInt("health", 0);
+        stamina=PlayerPrefs.GetInt("stamina", 0);
+        damage=PlayerPrefs.GetInt("damage", 0);
 
         Color();
 
-        healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
-        defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
-        damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
+        healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health", -1) + "/100";
+        defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("stamina", -1) + "/100";
+        damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage", -1) + "/100";
 
         coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
 
-        healthCount.GetComponent<TextMeshProUGUI>().text= countHealth + "/4";
-        defenceCount.GetComponent<TextMeshProUGUI>().text= countDefence + "/4";
-        damageCount.GetComponent<TextMeshProUGUI>().text= countDamage + "/4";
+        healthCount.GetComponent<TextMeshProUGUI>().text= health + "/4";
+        defenceCount.GetComponent<TextMeshProUGUI>().text= stamina + "/4";
+        damageCount.GetComponent<TextMeshProUGUI>().text= damage + "/4";
     }
 
 
     public void Coin100Health()
     {
-        if(countHealth>=4)
+        if(health >= 4)
         {
             
         }
@@ -56,8 +58,8 @@ public class CoinShopScript : MonoBehaviour
             else
             {
                 coins-=100;
-                health=100;
-                countHealth+=1;
+                health += 1;
+
 
                 Color();
 
@@ -66,16 +68,14 @@ public class CoinShopScript : MonoBehaviour
 
                 healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                healthCount.GetComponent<TextMeshProUGUI>().text= countHealth + "/4";
-                defenceCount.GetComponent<TextMeshProUGUI>().text= countDefence + "/4";
-                damageCount.GetComponent<TextMeshProUGUI>().text= countDamage + "/4";
+                healthCount.GetComponent<TextMeshProUGUI>().text= health + "/4";
             }
         }
     }
 
     public void Coin100Defence()
     {
-        if(countDefence>=4)
+        if(stamina >= 4)
         {
             
         }
@@ -88,23 +88,22 @@ public class CoinShopScript : MonoBehaviour
             else
             {
                 coins-=100;
-                defence=100;
-                countDefence+=1;
+                stamina += 1;
 
                 Color();
                 PlayerPrefs.SetInt("money", coins);
-                PlayerPrefs.SetInt("defence", defence);
+                PlayerPrefs.SetInt("stamina", stamina);
 
                 defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                defenceCount.GetComponent<TextMeshProUGUI>().text= countDefence + "/4";
+                defenceCount.GetComponent<TextMeshProUGUI>().text= stamina + "/4";
             }
         }
     }
 
     public void Coin100Damage()
     {
-        if(countDamage>=4)
+        if(damage >= 4)
         {
             
         }
@@ -117,8 +116,7 @@ public class CoinShopScript : MonoBehaviour
             else
             {
                 coins-=100;
-                damage=100;
-                countDamage+=1;
+                damage += 1;
 
                 Color();
                 PlayerPrefs.SetInt("money", coins);
@@ -126,7 +124,7 @@ public class CoinShopScript : MonoBehaviour
 
                 damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                damageCount.GetComponent<TextMeshProUGUI>().text= countDamage + "/4";
+                damageCount.GetComponent<TextMeshProUGUI>().text= damage + "/4";
             }
         }
     }
@@ -146,15 +144,15 @@ public class CoinShopScript : MonoBehaviour
             healthText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
         }
 
-        if(defence>=0 && defence<=50)
+        if(stamina>=0 && stamina<=50)
         {
             defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
         }
-        else if(defence>=51 && defence<=70)
+        else if(stamina>=51 && stamina<=70)
         {
             defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
         }
-        else if(defence>=71 && defence<=100)
+        else if(stamina>=71 && stamina<=100)
         {
             defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
         }
@@ -184,7 +182,7 @@ public class CoinShopScript : MonoBehaviour
             btnHealth.GetComponent<Image>().color= new Color32(255, 255, 255,255);
         }
 
-        if(countDefence==4)
+        if(countStamina==4)
         {
             btnDefence.GetComponent<Image>().color= new Color32(125, 255, 0,255);
         }

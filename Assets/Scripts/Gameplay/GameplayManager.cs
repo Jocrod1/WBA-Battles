@@ -149,6 +149,8 @@ public class GameplayManager : Manager {
         PlayerTxt.text = Player.Name;
         EnemyTxt.text = enemy.Name;
 
+        SetStats();
+
         Player.Wait = true;
         enemy.enabled = false;
 
@@ -163,6 +165,32 @@ public class GameplayManager : Manager {
         seconds += span.Seconds.ToString();
 
         TimerTxt.text = span.Minutes + ":" + seconds;
+    }
+
+    public void SetStats() {
+        int health = PlayerPrefs.GetInt("health", 0);
+        int stamina = PlayerPrefs.GetInt("stamina", 0);
+        int damage = PlayerPrefs.GetInt("damage", 0);
+
+        if (health != 0) {
+            Player.MaxHealth = Player.MaxHealth * health;
+            Player.CurrentHealth = Player.MaxHealth;
+        }
+
+        if (stamina != 0) {
+            Player.MaxStamina = Player.MaxStamina * stamina;
+            Player.CurrentMaxStamina = Player.MaxStamina;
+            Player.CurrentStamina = Player.CurrentMaxStamina;
+        }
+
+        if (damage != 0) {
+            float Booster = (damage * 2 / 4) + 1;
+
+            Player.PIBottom.Damage = Player.PIBottom.Damage * Booster;
+            Player.PIUp.Damage = Player.PIUp.Damage * Booster;
+            Player.PIHardBottom.Damage = Player.PIHardBottom.Damage * Booster;
+            Player.PIHardUp.Damage = Player.PIHardUp.Damage * Booster;
+        }
     }
 
     public void SetTable() {
@@ -576,9 +604,15 @@ public class GameplayManager : Manager {
         enemy.enabled = false;
         ActivateTimer = false;
     }
+    [Header("Black Panel")]
+    public Animator BlackPanel;
+    //public Animator CameraAnim;
 
     IEnumerator LoadYourAsyncScene()
     {
+        BlackPanel.SetTrigger("Out");
+
+        yield return new WaitForSeconds(0.5f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Results");
 
