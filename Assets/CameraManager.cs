@@ -17,6 +17,7 @@ public class CameraManager : MonoBehaviour
 
     public void SetIntroSpawners() {
         SpawnersAnimator.SetBool("Inside", true);
+        manager.PublicCheering(false);
     }
 
     public void EnableCharacters() {

@@ -99,6 +99,10 @@ public class GameplayManager : Manager {
     public bool ActivateTimer;
     float StartTime;
 
+    [Header("Cheer Public")]
+    public List<Animator> CheerPublic;
+    public float Transitiontime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -177,6 +181,8 @@ public class GameplayManager : Manager {
 
         Player.Wait = true;
         enemy.enabled = false;
+
+        StartCoroutine(Celebrate(true));
 
         float initialtime = TimeCount * 60;
 
@@ -525,6 +531,9 @@ public class GameplayManager : Manager {
         //while (!(Player.stateinfo.Waiting && enemy.stateinfo.Waiting)) {
         //    yield return null;
         //}
+
+        StartCoroutine(Celebrate(true));
+
         yield return new WaitForSeconds(3);
 
         if (Pl)
@@ -540,6 +549,8 @@ public class GameplayManager : Manager {
         Spawners.SetBool("EnemyKO", false);
 
         yield return new WaitForSeconds(TimeWaitingAnim);
+
+        StartCoroutine(Celebrate(false));
 
         EnableCharacters();
         Player.unwait();
@@ -628,6 +639,34 @@ public class GameplayManager : Manager {
         enemy.enabled = false;
         ActivateTimer = false;
     }
+
+    public void PublicCheering(bool Cel) {
+        StartCoroutine(Celebrate(Cel));
+    }
+
+    IEnumerator Celebrate(bool Value) {
+        List<Animator> Aux = new List<Animator>();
+
+        foreach (Animator item in CheerPublic) {
+            Aux.Add(item);
+        }
+
+        float delta = Transitiontime / Aux.Count;
+
+        while (Aux.Count > 0) {
+            if (Aux.Count <= 0)
+                break;
+
+            int id = UnityEngine.Random.Range(0, (Aux.Count - 1));
+
+            Aux[id].SetBool("Celebration", Value);
+
+            Aux.RemoveAt(id);
+
+            yield return new WaitForSeconds(delta);
+        }
+    }
+
     [Header("Black Panel")]
     public Animator BlackPanel;
     //public Animator CameraAnim;
