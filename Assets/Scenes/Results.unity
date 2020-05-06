@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 851347}
   - component: {fileID: 851346}
   - component: {fileID: 851345}
-  - component: {fileID: 851348}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -205,19 +204,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &851348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76126dd9b75cc7479972d3c328cb132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idEnemy: 0
 --- !u!1 &353395516
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +311,25 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a37dedf58655720449847f3b910c6c0a, type: 3}
     - {fileID: 21300000, guid: 8fad6f6660cfd514e832004df2496eb7, type: 3}
     - {fileID: 21300000, guid: 362edf48a95e6db49aee7ac38a7161af, type: 3}
+  playersWinPanels:
+  - Motivation:
+    - {fileID: 21300000, guid: 96cbe87c33d59824ea9b4e9c343fe599, type: 3}
+    - {fileID: 21300000, guid: 4abb24a280600c842a33acbf049d1f06, type: 3}
+    - {fileID: 21300000, guid: d63dc01a3baee6844937281b8d0024f1, type: 3}
+  - Motivation:
+    - {fileID: 21300000, guid: a660240138852664f9857544b344262d, type: 3}
+    - {fileID: 21300000, guid: 5787edc8b49849642874e8f108c58290, type: 3}
+    - {fileID: 21300000, guid: 55226012e1369974aa70a1278196ead5, type: 3}
+  - Motivation:
+    - {fileID: 21300000, guid: 2ad222916ab2b224daba4501001999f7, type: 3}
+    - {fileID: 21300000, guid: 4e44aac5790a7f2499780b3b86ef27e0, type: 3}
+    - {fileID: 21300000, guid: 3a1b42d3b21a684439fe538df3108767, type: 3}
+  - Motivation:
+    - {fileID: 21300000, guid: 21356c6d1fa2a654da6713d2331d51de, type: 3}
+    - {fileID: 21300000, guid: 56bc85843d27b6147af4484aea492e75, type: 3}
+    - {fileID: 21300000, guid: 85f6da320f0a6604b8f422d1e366e559, type: 3}
+  Idp: 0
+  idm: 0
 --- !u!1 &670311459
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +629,7 @@ GameObject:
   - component: {fileID: 965102090}
   - component: {fileID: 965102089}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Imagen de las motivaciones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,7 +962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
