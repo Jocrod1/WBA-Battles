@@ -65,6 +65,7 @@ public class GameplayManager : Manager {
     [Header("Prefabs Lists")]
     public List<GameObject> Players;
     public List<GameObject> Enemies;
+    public List<GameObject> PowerEnemies;
 
     [Header("Selected Prefabs")]
     public GameObject SelectedPlayer;
@@ -98,6 +99,10 @@ public class GameplayManager : Manager {
     public bool ActivateTimer;
     float StartTime;
 
+    [Header("Cheer Public")]
+    public List<Animator> CheerPublic;
+    public float Transitiontime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -128,7 +133,30 @@ public class GameplayManager : Manager {
 
 
         SelectedPlayer = Players[IDPlayer];
-        SelectedEnemy = Enemies[IDEnemy];
+
+        if (ide >= 10 && ide <= 12) {
+
+            int HE = PlayerPrefs.GetInt("health", 0);
+            int ST = PlayerPrefs.GetInt("stamina", 0);
+            int DA = PlayerPrefs.GetInt("damage", 0);
+
+            if (HE == 0 && ST == 0 && DA == 0)
+            {
+                IDEnemy = 12 - ide;
+                SelectedEnemy = PowerEnemies[IDEnemy];
+            }
+            else {
+                IDEnemy = 16 - ide;
+                SelectedEnemy = Enemies[IDEnemy];
+            }
+            
+        }
+        else if (ide >= 1 && ide <= 7) {
+            SelectedEnemy = Enemies[IDEnemy];
+        }
+        else {
+            print("Error: invalid IDEnemy Input");
+        }
 
         RealPlayer = Instantiate(SelectedPlayer, PlayerSpawner);
         RealPlayer.transform.localPosition = Vector3.zero;
@@ -153,6 +181,8 @@ public class GameplayManager : Manager {
 
         Player.Wait = true;
         enemy.enabled = false;
+
+        StartCoroutine(Celebrate(true));
 
         float initialtime = TimeCount * 60;
 
@@ -501,6 +531,9 @@ public class GameplayManager : Manager {
         //while (!(Player.stateinfo.Waiting && enemy.stateinfo.Waiting)) {
         //    yield return null;
         //}
+
+        StartCoroutine(Celebrate(true));
+
         yield return new WaitForSeconds(3);
 
         if (Pl)
@@ -516,6 +549,8 @@ public class GameplayManager : Manager {
         Spawners.SetBool("EnemyKO", false);
 
         yield return new WaitForSeconds(TimeWaitingAnim);
+
+        StartCoroutine(Celebrate(false));
 
         EnableCharacters();
         Player.unwait();
@@ -604,6 +639,34 @@ public class GameplayManager : Manager {
         enemy.enabled = false;
         ActivateTimer = false;
     }
+
+    public void PublicCheering(bool Cel) {
+        StartCoroutine(Celebrate(Cel));
+    }
+
+    IEnumerator Celebrate(bool Value) {
+        List<Animator> Aux = new List<Animator>();
+
+        foreach (Animator item in CheerPublic) {
+            Aux.Add(item);
+        }
+
+        float delta = Transitiontime / Aux.Count;
+
+        while (Aux.Count > 0) {
+            if (Aux.Count <= 0)
+                break;
+
+            int id = UnityEngine.Random.Range(0, (Aux.Count - 1));
+
+            Aux[id].SetBool("Celebration", Value);
+
+            Aux.RemoveAt(id);
+
+            yield return new WaitForSeconds(delta);
+        }
+    }
+
     [Header("Black Panel")]
     public Animator BlackPanel;
     //public Animator CameraAnim;
