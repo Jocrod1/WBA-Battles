@@ -8,18 +8,14 @@ public class ReceptorScript : MonoBehaviour
     public PunchInfo Info;
     public Character Charctr;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void Blocked() {
+        Charctr.BlockedSound();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Punched() {
+        Charctr.PunchedSound();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Reciever")

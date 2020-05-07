@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
     private int coins;
     private AudioSource audioSrc;
+
+    public AudioMixer MXr;
 
     public Slider audioSlider;
 

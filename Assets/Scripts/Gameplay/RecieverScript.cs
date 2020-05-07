@@ -33,12 +33,15 @@ public class RecieverScript : MonoBehaviour
         {
             Recieve = true;
             Charctr.PunchRecieved = true;
-            PunchInfo info = collision.transform.GetComponent<ReceptorScript>().Info;
+            ReceptorScript RS = collision.transform.GetComponent<ReceptorScript>();
+            PunchInfo info = RS.Info;
             if (gameObject.transform.parent.name.Contains("Blocking")) {
                 Charctr.Blocked(info);
+                RS.Blocked();
                 return;
             }
             Charctr.Damaged(info);
+            RS.Punched();
         }
     }
 }

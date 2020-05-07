@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Character : MonoBehaviour {
 
@@ -80,7 +81,19 @@ public class Character : MonoBehaviour {
     public int CurrentKnockouts = 0;
     public bool KnockedOut;
 
+    [Header("Audio")]
+    public AudioSource AS;
+    public AudioClip PunchFX;
+    public AudioClip AirSwoosh;
+    public AudioClip BlockedFX;
 
+    public void BlockedSound() {
+        PlayClip(AS, BlockedFX);
+    }
+
+    public void PunchedSound() {
+        PlayClip(AS, PunchFX);
+    }
 
     #region FunctionsForAnimations
 
@@ -285,11 +298,13 @@ public class Character : MonoBehaviour {
 
     public virtual void DoPunch() {
         Punch = true;
+        PlayClip(AS, AirSwoosh);
     }
 
     public virtual void LoadData() {
         CurrentKnockouts = 0;
         anim = GetComponent<Animator>();
+        AS = GetComponent<AudioSource>();
 
         //Attack Colliders
         UpAttColl = AttColl.GetChild(0).GetComponent<BoxCollider2D>();
@@ -473,6 +488,12 @@ public class Character : MonoBehaviour {
 
     public virtual void Win() {
         anim.SetTrigger("Win");
+    }
+
+    public void PlayClip(AudioSource A, AudioClip Clip)
+    {
+        A.clip = Clip;
+        A.Play();
     }
 
     // Start is called before the first frame update

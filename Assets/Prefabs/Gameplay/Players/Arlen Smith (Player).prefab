@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 2272623802930359502}
   - component: {fileID: 2272623802930359503}
   - component: {fileID: 2272623802930359499}
+  - component: {fileID: 6635107915119896219}
   m_Layer: 0
   m_Name: Arlen Smith (Player)
   m_TagString: Untagged
@@ -1038,6 +1039,7 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentStamina: 100
   MaxStamina: 100
+  CurrentMaxStamina: 0
   RecuperationPerSecond: 20
   TiredRecuperationTime: 3
   PFailedRecuperationTime: 0.7
@@ -1113,6 +1115,10 @@ MonoBehaviour:
   MaxKnockouts: 0
   CurrentKnockouts: 0
   KnockedOut: 0
+  AS: {fileID: 0}
+  PunchFX: {fileID: 8300000, guid: 59e351a52a5fff94eadc41bc0884dee0, type: 3}
+  AirSwoosh: {fileID: 8300000, guid: 4f2b060edecbf14469ef919b742ced25, type: 3}
+  BlockedFX: {fileID: 8300000, guid: 3e9ba8cf1864c8343b8111504a330a8b, type: 3}
   StaminaRecovering: 0.8
   deadzone: {x: 200, y: 100}
   doubleTapDelta: 0.5
@@ -1154,6 +1160,103 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!82 &6635107915119896219
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272623802930359498}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: cf501e1bdce3848489e8c930a0d0525d,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2272623803008170611
 GameObject:
   m_ObjectHideFlags: 0
