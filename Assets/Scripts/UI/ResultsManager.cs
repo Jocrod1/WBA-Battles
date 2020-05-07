@@ -21,7 +21,7 @@ public class ResultsManager : MonoBehaviour
         public MotivationPanel AngelisNadaiMP;
     }
 
-    public Image ImagePanel;
+    public GameObject imagePanel;
 
     public TextMeshProUGUI ResultText;
 
@@ -33,6 +33,8 @@ public class ResultsManager : MonoBehaviour
     [Header("Panel List")]
     public List<MotivationPanel> playersLoosePanels;
     public List<MotivationPanel> playersWinPanels;
+
+    public Sprite[] winChamp1, winChamp2, winChamp3, winChamp4, loseChamp1, loseChamp2,loseChamp3, loseChamp4;
 
     public enum Result {
         Win,
@@ -52,7 +54,7 @@ public class ResultsManager : MonoBehaviour
 
         if (Results.Win)
         {
-            ResultText.text = "YOU WON!!!";
+            ResultText.text = "YOU WON";
             ResultText.color = new Color(203f, 166f, 54f);
 
             PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
@@ -73,10 +75,78 @@ public class ResultsManager : MonoBehaviour
                 idEnemy = idEnemy - 1;
                 PlayerPrefs.SetInt("IDEnemy", idEnemy);
             }
+
+
+
+            //BACKGROUND
+            
+                if(PlayerPrefs.GetInt("IDPlayer")==1)
+                    {
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp1[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp1[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp1[2];
+                        }
+
+                    }
+                    else if(PlayerPrefs.GetInt("IDPlayer")==2)
+                    {   
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp2[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp2[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp2[2];
+                        }
+                    }
+                    else if(PlayerPrefs.GetInt("IDPlayer")==3)
+                    {
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp3[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp3[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp3[2];
+                        }
+                    }
+                    else if(PlayerPrefs.GetInt("IDPlayer")==4)
+                    { 
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp4[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp4[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = winChamp4[2];
+                        }
+                    }
+
+
         }
         else
         {
-            ResultText.text = "YOU LOOSE";
+            ResultText.text = "YOU LOSE";
             ResultText.color = new Color(140f, 0, 0);
 
             PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
@@ -85,6 +155,71 @@ public class ResultsManager : MonoBehaviour
 
             idEnemy = 7;
             PlayerPrefs.SetInt("IDEnemy", idEnemy);
+
+
+
+            //BACKGROUND
+                if(PlayerPrefs.GetInt("IDPlayer")==1)
+                    {
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp1[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp1[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp1[2];
+                        }
+
+                    }
+                    else if(PlayerPrefs.GetInt("IDPlayer")==2)
+                    {   
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp2[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp2[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp2[2];
+                        }
+                    }
+                    else if(PlayerPrefs.GetInt("IDPlayer")==3)
+                    {
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp3[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp3[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp3[2];
+                        }
+                    }
+                    else if(PlayerPrefs.GetInt("IDPlayer")==4)
+                    { 
+                        if(PlayerPrefs.GetInt("IDMotivation")==1)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp4[0];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==2)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp4[1];
+                        }
+                        else if(PlayerPrefs.GetInt("IDMotivation")==3)
+                        {
+                            imagePanel.GetComponent<Image>().sprite = loseChamp4[2];
+                        }
+                    }
         }
 
         PlayerPrefs.SetInt("health", 0);
@@ -112,10 +247,12 @@ public class ResultsManager : MonoBehaviour
         IdPlayer--;
         IdMotivation--;
 
+/*
         if (!win)
             ImagePanel.sprite = playersLoosePanels[Idp].Motivation[idm];
         else
-            ImagePanel.sprite = playersWinPanels[Idp].Motivation[idm];
+            ImagePanel.sprite = playersWinPanels[Idp].Motivation[idm];¨
+            */
     }
 
     public void goTable()
