@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Championship.unity
     guid: b6fd266a483a971409c9751b23171934
+  - enabled: 1
+    path: Assets/Scenes/Gym.unity
+    guid: c8e15bdc3b12013498fd16fcbdf44929
   m_configObjects: {}

@@ -13,6 +13,8 @@ public class MenuScript : Manager
 
     public int IDChamp, IDMotivation;
 
+    public Animator BlackPanel;
+
     private void Start() {
         //valor default
         PlayerPrefs.GetInt("IDEnemy", -1);
@@ -25,8 +27,24 @@ public class MenuScript : Manager
 
     public void playgame(string Level)
     {
-        SceneManager.LoadScene(Level);
+        StartCoroutine(LoadYourAsyncScene(Level));
     }
+
+    IEnumerator LoadYourAsyncScene(string level)
+    {
+        BlackPanel.SetTrigger("Out");
+
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
     public void Quit()
     {
         Application.Quit();
@@ -96,7 +114,7 @@ public class MenuScript : Manager
 
         Smoke.transform.SetSiblingIndex(0);
 
-        playgame(Tabla);
+        playgame("Gym");
     }
 
     public void Motivation1(string Tabla)

@@ -90,11 +90,27 @@
             }
         }
         else {
-            SceneManager.LoadScene(Level);
+            StartCoroutine(LoadYourAsyncScene(Level));
         }
     }
 
-    
+    public Animator BlackPanel;
+    IEnumerator LoadYourAsyncScene(string level)
+    {
+        BlackPanel.SetTrigger("Out");
+
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
+
     public void closeTimeMenu()
     {
         if(smoke!=null && timeMenu!=null)

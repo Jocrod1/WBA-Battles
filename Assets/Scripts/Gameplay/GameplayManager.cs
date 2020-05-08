@@ -6,8 +6,6 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-
-
 public class GameplayManager : Manager {
 
     [System.Serializable]
@@ -605,6 +603,7 @@ public class GameplayManager : Manager {
             DisableCharacters();
             Bars.SetBool("Inside", false);
             Spawners.SetBool("EnemyKO", true);
+            PublicCheering(true);
         }
         if (Player.IsDefeated && !IsGameOver) {
             enemy.Win();
@@ -615,6 +614,7 @@ public class GameplayManager : Manager {
             DisableCharacters();
             Bars.SetBool("Inside", false);
             Spawners.SetBool("EnemyKO", true);
+            PublicCheering(true);
         }
 
         if ((stateInfo.IsName("WinnerF") || stateInfo.IsName("DefeatedF")) && !Results.GameOver) {
