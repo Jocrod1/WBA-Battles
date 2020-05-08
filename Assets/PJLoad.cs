@@ -221,12 +221,29 @@ public class PJLoad : Manager {
     public void goCup(string Level)
     {
         PlayerPrefs.SetInt("IDEnemy", 12);
-        SceneManager.LoadScene(Level);
+        StartCoroutine(LoadYourAsyncScene(Level));
     }
 
     public void returnMenu(string Level)
     {
-        SceneManager.LoadScene(Level);
+        StartCoroutine(LoadYourAsyncScene(Level));
+    }
+
+    public Animator BlackPanel;
+
+    IEnumerator LoadYourAsyncScene(string level)
+    {
+        BlackPanel.SetTrigger("Out");
+
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 
 }
