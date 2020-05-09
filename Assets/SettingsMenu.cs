@@ -28,7 +28,7 @@ public class SettingsMenu : MonoBehaviour
 
 
     private void Update() {
-        audioSrc.volume = GlobalManager.SettingsData.Volume;
+        //audioSrc.volume = GlobalManager.SettingsData.Volume;
     }
 
     public void SetVolume(float vol)
