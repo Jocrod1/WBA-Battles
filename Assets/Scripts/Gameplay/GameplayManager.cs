@@ -104,6 +104,9 @@ public class GameplayManager : Manager {
     public List<Animator> CheerPublic;
     public float Transitiontime;
 
+    
+    public CameraManager cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -165,11 +168,11 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = 1;//PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = 1;//PlayerPrefs.GetInt("IDEnemy", 0);
 
-        IDPlayer = idp - 1;
-        IDEnemy = 7 - ide;
+        //IDPlayer = idp - 1;
+        //IDEnemy = 7 - ide;
 
         Vector2 scr = new Vector2(Screen.width, Screen.height);
 
@@ -222,6 +225,11 @@ public class GameplayManager : Manager {
         enemy.MaxKnockouts = 3;
 
         enemy.Player = Player;
+
+        cam = Camera.main.gameObject.GetComponent<CameraManager>();
+
+        Player.cam = cam;
+        enemy.cam = cam;
 
         HudManager.PlayerBars.Player = Player;
         HudManager.EnemyBars.Player = enemy;

@@ -270,6 +270,7 @@ MonoBehaviour:
   - {fileID: 1587250671}
   - {fileID: 1587250670}
   Transitiontime: 0.5
+  cam: {fileID: 0}
   BlackPanel: {fileID: 257408177}
 --- !u!4 &7794975
 Transform:
@@ -1443,7 +1444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &253104004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5259,6 +5260,8 @@ MonoBehaviour:
   BarsAnimator: {fileID: 1193572764}
   SpawnersAnimator: {fileID: 9521041}
   manager: {fileID: 7794974}
+  Shaking: 0
+  OriginalPos: {x: 0, y: 0, z: 0}
 --- !u!95 &876752475
 Animator:
   serializedVersion: 3
@@ -7614,7 +7617,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 172.68185, y: 129.38754}
-  m_SizeDelta: {x: 131.69644, y: 0}
+  m_SizeDelta: {x: 131.69644, y: 131.69644}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1250534506
 MonoBehaviour:
@@ -7778,7 +7781,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -165.78178, y: 130.6}
-  m_SizeDelta: {x: 131.475, y: 0}
+  m_SizeDelta: {x: 131.475, y: 131.475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1267686049
 MonoBehaviour:

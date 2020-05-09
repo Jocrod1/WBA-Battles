@@ -87,6 +87,11 @@ public class Character : MonoBehaviour {
     public AudioClip AirSwoosh;
     public AudioClip BlockedFX;
 
+    [Header("Camera Shake")]
+    public CameraManager cam;
+    float Duration = 0.06f;
+    float Magnitude = 0.1f;
+
     public void BlockedSound() {
         PlayClip(AS, BlockedFX);
     }
@@ -389,12 +394,15 @@ public class Character : MonoBehaviour {
             Trigger += "Right";
         else print("Error in X input of PunchInfo");
 
-        
+        if (!punchInfo.Hard)
+            cam.CamShake(0.06f, 0.1f);
+        else
+            cam.CamShake(0.2f, 0.3f);
+
         if (CurrentHealth <= 0) {
             Defeated(punchInfo);
             return;
         }
-
 
         anim.SetTrigger(Trigger);
 
