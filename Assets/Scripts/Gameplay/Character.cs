@@ -82,10 +82,7 @@ public class Character : MonoBehaviour {
     public bool KnockedOut;
 
     [Header("Audio")]
-    public AudioSource AS;
-    public AudioClip PunchFX;
-    public AudioClip AirSwoosh;
-    public AudioClip BlockedFX;
+    public AudioManager audioManager;
 
     [Header("Camera Shake")]
     public CameraManager cam;
@@ -93,11 +90,11 @@ public class Character : MonoBehaviour {
     float Magnitude = 0.1f;
 
     public void BlockedSound() {
-        PlayClip(AS, BlockedFX);
+        audioManager.PlaySound("Blocked");
     }
 
     public void PunchedSound() {
-        PlayClip(AS, PunchFX);
+        audioManager.PlaySound("PunchHit");
     }
 
     #region FunctionsForAnimations
@@ -303,13 +300,13 @@ public class Character : MonoBehaviour {
 
     public virtual void DoPunch() {
         Punch = true;
-        PlayClip(AS, AirSwoosh);
+        audioManager.PlaySound("AirSwoosh");
     }
 
     public virtual void LoadData() {
         CurrentKnockouts = 0;
         anim = GetComponent<Animator>();
-        AS = GetComponent<AudioSource>();
+        audioManager = GetComponent<AudioManager>();
 
         //Attack Colliders
         UpAttColl = AttColl.GetChild(0).GetComponent<BoxCollider2D>();
