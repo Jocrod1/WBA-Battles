@@ -11,7 +11,7 @@ public class PJLoad : Manager {
 
     public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup;
 
-    public GameObject fight, table, championship, wallTable, buttonCartel;
+    public GameObject fight, table, championship, wallTable, buttonCartel, buttonExit;
  
     public Sprite champ1, champ2, champ3, champ4;
 
@@ -129,6 +129,13 @@ public class PJLoad : Manager {
             fightName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
             cartelEnemy.GetComponent<Image>().sprite = enemy5;
 
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                buttonCartel.SetActive(false);
+                buttonExit.SetActive(false);
+                Classified();
+            }
+
             positions[3].GetComponent<TextMeshProUGUI>().text="5";
             positions[4].GetComponent<TextMeshProUGUI>().text="6";
             positions[5].GetComponent<TextMeshProUGUI>().text="7";
@@ -150,6 +157,13 @@ public class PJLoad : Manager {
             fightName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
             cartelEnemy.GetComponent<Image>().sprite = enemy6;
 
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                buttonCartel.SetActive(false);
+                buttonExit.SetActive(false);
+                Classified();
+            }
+
             positions[2].GetComponent<TextMeshProUGUI>().text="4";
             positions[3].GetComponent<TextMeshProUGUI>().text="5";
             positions[4].GetComponent<TextMeshProUGUI>().text="6";
@@ -167,6 +181,13 @@ public class PJLoad : Manager {
         {
             fightName.GetComponent<TextMeshProUGUI>().text="Korona";
             cartelEnemy.GetComponent<Image>().sprite = enemy7;
+
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                buttonCartel.SetActive(false);
+                buttonExit.SetActive(false);
+                Classified();
+            }
 
             positions[1].GetComponent<TextMeshProUGUI>().text="3";
             positions[2].GetComponent<TextMeshProUGUI>().text="4";
@@ -186,18 +207,9 @@ public class PJLoad : Manager {
         else if(PlayerPrefs.GetInt("IDEnemy")==0)
         {
             buttonCartel.SetActive(false);
+            buttonExit.SetActive(false);
 
-            if(wallTable!=null && championship!=null)
-            {
-                Animator animator = wallTable.GetComponent<Animator>();
-                Animator animator2 = championship.GetComponent<Animator>();
-
-                if(animator!=null && animator2!=null)
-                {
-                    animator.SetBool("Championship", true);
-                    animator2.SetBool("Championship", true);
-                }
-            }
+            Classified();
 
             positions[0].GetComponent<TextMeshProUGUI>().text="2";
             positions[1].GetComponent<TextMeshProUGUI>().text="3";
@@ -215,6 +227,21 @@ public class PJLoad : Manager {
             names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[0].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+        }
+    }
+
+    public void Classified()
+    {
+        if(wallTable!=null && championship!=null)
+        {
+            Animator animator = wallTable.GetComponent<Animator>();
+            Animator animator2 = championship.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Championship", true);
+                animator2.SetBool("Championship", true);
+            }
         }
     }
 

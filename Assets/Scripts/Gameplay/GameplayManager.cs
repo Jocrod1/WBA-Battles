@@ -59,6 +59,9 @@ public class GameplayManager : Manager {
     public Color WinColor;
     public Color DefeatColor;
     public float Speed;
+    public GameObject cartelPlayer, cartelEnemy;
+    public Sprite[] playerCartel, enemyCartel;
+
 
     [Header("Prefabs Lists")]
     public List<GameObject> Players;
@@ -101,9 +104,63 @@ public class GameplayManager : Manager {
     public List<Animator> CheerPublic;
     public float Transitiontime;
 
+    
+    public CameraManager cam;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        /* PARTE CARAS DEL CARTEL */
+        int IDPlayer = GlobalManager.GameplayData.IDPlayer;
+
+
+        if (IDPlayer == 1)
+        {
+            cartelPlayer.GetComponent<Image>().sprite = playerCartel[0];
+        }
+        else if (IDPlayer == 2)
+        {
+            cartelPlayer.GetComponent<Image>().sprite = playerCartel[1];
+        }
+        else if (IDPlayer == 3)
+        {
+            cartelPlayer.GetComponent<Image>().sprite = playerCartel[2];
+        }
+        else if (IDPlayer == 4)
+        {
+            cartelPlayer.GetComponent<Image>().sprite = playerCartel[3];
+        }
+
+        if(PlayerPrefs.GetInt("IDEnemy")==7)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[0];
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==6)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[1];
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==5)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[2];
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==4)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[3];
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==3)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[4];
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==2)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[5];
+        }
+        else if(PlayerPrefs.GetInt("IDEnemy")==1)
+        {
+            cartelEnemy.GetComponent<Image>().sprite = enemyCartel[6];
+        }
+        ///////////////////////////
 
 
         IsGameOver = false;
@@ -111,11 +168,11 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = 1;//PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = 1;//PlayerPrefs.GetInt("IDEnemy", 0);
 
-        IDPlayer = idp - 1;
-        IDEnemy = 7 - ide;
+        //IDPlayer = idp - 1;
+        //IDEnemy = 7 - ide;
 
         Vector2 scr = new Vector2(Screen.width, Screen.height);
 
@@ -168,6 +225,11 @@ public class GameplayManager : Manager {
         enemy.MaxKnockouts = 3;
 
         enemy.Player = Player;
+
+        cam = Camera.main.gameObject.GetComponent<CameraManager>();
+
+        Player.cam = cam;
+        enemy.cam = cam;
 
         HudManager.PlayerBars.Player = Player;
         HudManager.EnemyBars.Player = enemy;

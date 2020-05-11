@@ -85,7 +85,7 @@ public class CupLoad : MonoBehaviour
         subPlayer.SetActive(true);
         final.SetActive(true);
 
-        if(PlayerPrefs.GetInt("IDEnemy")==10)
+        if(PlayerPrefs.GetInt("IDEnemy")==12)
         {
             animator.SetInteger("Position", 0);
 
@@ -117,7 +117,7 @@ public class CupLoad : MonoBehaviour
 
             final.SetActive(false);
         }
-        else if(PlayerPrefs.GetInt("IDEnemy")==12)
+        else if(PlayerPrefs.GetInt("IDEnemy")==10)
         {
             animator.SetInteger("Position", 2);
 

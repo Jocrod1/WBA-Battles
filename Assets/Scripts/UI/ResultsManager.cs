@@ -36,6 +36,9 @@ public class ResultsManager : MonoBehaviour
 
     public Sprite[] winChamp1, winChamp2, winChamp3, winChamp4, loseChamp1, loseChamp2,loseChamp3, loseChamp4;
 
+    private bool winZone;
+
+
     public enum Result {
         Win,
         Defeat
@@ -46,6 +49,7 @@ public class ResultsManager : MonoBehaviour
     {
         Results.GameOver = false;
         idEnemy = PlayerPrefs.GetInt("IDEnemy");
+        PlayerPrefs.SetInt("WinZoneInLose", 0);
 
         //agregar una hora al tiempo en que termino la pelea
         oneHour = System.DateTime.Now;
@@ -153,8 +157,17 @@ public class ResultsManager : MonoBehaviour
 
             SetPanel(false);
 
-            idEnemy = 7;
-            PlayerPrefs.SetInt("IDEnemy", idEnemy);
+            
+            if (idEnemy >= 1 && idEnemy <= 3)
+            {
+                PlayerPrefs.SetInt("WinZoneInLose", 1);
+            }
+            else {
+                PlayerPrefs.SetInt("WinZoneInLose", 0);
+                PlayerPrefs.SetInt("IDEnemy", 7);
+            }
+
+
 
 
 
@@ -257,15 +270,32 @@ public class ResultsManager : MonoBehaviour
 
     public void goTable()
     {
-        if(idEnemy>=0 && idEnemy<=7)
+        if (Results.Win)
         {
-            string Table="Table";
-            playgame(Table);
+            if(idEnemy>=0 && idEnemy<=7)
+            {
+                string Table="Table";
+                playgame(Table);
+            }
+            else if(idEnemy>=10 && idEnemy<=13)
+            {
+                string Table="Championship";
+                playgame(Table);
+            }
         }
-        else if(idEnemy>=10 && idEnemy<=13)
+        else
         {
-            string Table="Championship";
-            playgame(Table);
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                string Table="Table";
+                playgame(Table);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("IDEnemy", -1);
+                string Table="Menu";
+                playgame(Table);
+            }
         }
 
     }
