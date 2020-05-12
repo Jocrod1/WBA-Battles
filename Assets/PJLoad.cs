@@ -9,13 +9,13 @@ public class PJLoad : Manager {
 
     private AudioSource audioSrc;
 
-    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup;
+    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup, flagPlayer;
 
     public GameObject fight, table, championship, wallTable, buttonCartel, buttonExit;
  
     public Sprite champ1, champ2, champ3, champ4;
 
-    public Sprite enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7, player1,player2,player3,player4; 
+    public Sprite enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7, player1,player2,player3,player4, flag1,flag2,flag3,flag4; 
  
     public TextMeshProUGUI playerName, fightName, cartelName;
 
@@ -35,28 +35,32 @@ public class PJLoad : Manager {
         {
             imagePlayer.GetComponent<Image>().sprite = champ1;
             cartelPlayer.GetComponent<Image>().sprite = player1;
-            playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
+            flagPlayer.GetComponent<Image>().sprite = flag1;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Arlen Smith";
             cartelName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
         }
         else if (IDPlayer == 2)
         {
             imagePlayer.GetComponent<Image>().sprite = champ2;
             cartelPlayer.GetComponent<Image>().sprite = player2;
-            playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
+            flagPlayer.GetComponent<Image>().sprite = flag2;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Daga Johar";
             cartelName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
         }
         else if (IDPlayer == 3)
         {
             imagePlayer.GetComponent<Image>().sprite = champ3;
             cartelPlayer.GetComponent<Image>().sprite = player3;
-            playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
+            flagPlayer.GetComponent<Image>().sprite = flag3;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Irina Jones";
             cartelName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
         }
         else if (IDPlayer == 4)
         {
             imagePlayer.GetComponent<Image>().sprite = champ4;
             cartelPlayer.GetComponent<Image>().sprite = player4;
-            playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
+            flagPlayer.GetComponent<Image>().sprite = flag4;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Angenis Nadai";
             cartelName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
         }
 
