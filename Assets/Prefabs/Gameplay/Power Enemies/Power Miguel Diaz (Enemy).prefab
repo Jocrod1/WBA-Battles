@@ -810,6 +810,7 @@ GameObject:
   - component: {fileID: 948292197678677765}
   - component: {fileID: 948292197678677770}
   - component: {fileID: 948292197678677771}
+  - component: {fileID: -832374343473907163}
   m_Layer: 0
   m_Name: Power Miguel Diaz (Enemy)
   m_TagString: Untagged
@@ -977,6 +978,8 @@ MonoBehaviour:
   MaxKnockouts: 0
   CurrentKnockouts: 0
   KnockedOut: 0
+  audioManager: {fileID: 0}
+  cam: {fileID: 0}
   StaminaRecovering: 0.2
   Player: {fileID: 0}
   InitProbToUpBlock: 40
@@ -1012,6 +1015,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-832374343473907163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948292197678677768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1d85f434144fd4c9da0e58ab60d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Name: PunchHit
+    Clip: {fileID: 8300000, guid: 59e351a52a5fff94eadc41bc0884dee0, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Name: AirSwoosh
+    Clip: {fileID: 8300000, guid: 4f2b060edecbf14469ef919b742ced25, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Name: Blocked
+    Clip: {fileID: 8300000, guid: 3e9ba8cf1864c8343b8111504a330a8b, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
 --- !u!1 &948292197797694954
 GameObject:
   m_ObjectHideFlags: 0

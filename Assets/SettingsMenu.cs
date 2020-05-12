@@ -11,7 +11,7 @@ public class SettingsMenu : MonoBehaviour
 
     public AudioMixer MXr;
 
-    public Slider audioSlider;
+    public Slider MasterVolume, SFXVolume, MusicVolume;
 
     private void Start() {
 
@@ -22,7 +22,32 @@ public class SettingsMenu : MonoBehaviour
 
         coins = GlobalManager.Money;
 
-        audioSlider.value = GlobalManager.SettingsData.Volume;
+        float defValue = -80f;
+
+        //Master Volume
+        float master = PlayerPrefs.GetFloat("MasterVol", defValue);
+        if(master == defValue)
+            PlayerPrefs.SetFloat("MasterVol", defValue);
+        MasterVolume.value = master;
+        MXr.SetFloat("MasterVol", master);
+
+
+
+        //Sound FXs Volume
+        float sfx = PlayerPrefs.GetFloat("SFXVol", defValue);
+        if (sfx == defValue)
+            PlayerPrefs.SetFloat("SFXVol", defValue);
+        SFXVolume.value = sfx;
+        MXr.SetFloat("SFXVol", sfx);
+
+
+
+        //Music Volume
+        float music = PlayerPrefs.GetFloat("MusicVol", defValue);
+        if (music == defValue)
+            PlayerPrefs.SetFloat("MusicVol", defValue);
+        MusicVolume.value = music;
+        MXr.SetFloat("MusicVol", music);
 
     }
 
@@ -31,10 +56,21 @@ public class SettingsMenu : MonoBehaviour
         //audioSrc.volume = GlobalManager.SettingsData.Volume;
     }
 
-    public void SetVolume(float vol)
+    public void SetMasterVolume(float vol)
     {
-         //PlayerPrefs.SetFloat("volume",vol);
-        GlobalManager.SettingsData.Volume = vol;
+        PlayerPrefs.SetFloat("MasterVol",vol);
+        MXr.SetFloat("MasterVol", vol);
+    }
+
+    public void SetFXVolume(float vol)
+    {
+        PlayerPrefs.SetFloat("SFXVol",vol);
+        MXr.SetFloat("SFXVol", vol);
+    }
+    public void SetMusicVolume(float vol)
+    {
+        PlayerPrefs.SetFloat("MusicVol",vol);
+        MXr.SetFloat("MusicVol", vol);
     }
 
 }
