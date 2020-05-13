@@ -59,7 +59,7 @@ public class Character : MonoBehaviour {
     bool pause = false;
 
     public bool Punch;
-    public PunchInfo info;
+    public PunchInfo info { get; set; }
 
     public float SD2Dodge = 30;
 
@@ -300,7 +300,10 @@ public class Character : MonoBehaviour {
 
     public virtual void DoPunch() {
         Punch = true;
-        audioManager.PlaySound("AirSwoosh");
+        if(!info.Hard)
+            audioManager.PlaySound("NormalPunchAir");
+        else
+            audioManager.PlaySound("HardPunchAir");
     }
 
     public virtual void LoadData() {

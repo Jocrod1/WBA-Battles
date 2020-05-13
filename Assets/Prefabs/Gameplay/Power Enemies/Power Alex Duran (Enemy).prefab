@@ -726,10 +726,6 @@ MonoBehaviour:
   PunchEnded: 0
   PunchRecieved: 0
   Punch: 0
-  info:
-    Hard: 0
-    Damage: 0
-    Stamina: 0
   SD2Dodge: 5
   IsTired: 0
   PunchFailed: 0
@@ -855,16 +851,24 @@ MonoBehaviour:
     PlayOnAwake: 0
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
-    Name: AirSwoosh
-    Clip: {fileID: 8300000, guid: 4f2b060edecbf14469ef919b742ced25, type: 3}
+    Name: Blocked
+    Clip: {fileID: 8300000, guid: 3e9ba8cf1864c8343b8111504a330a8b, type: 3}
     volume: 1
     pitch: 1
     Loop: 0
     PlayOnAwake: 0
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
-    Name: Blocked
-    Clip: {fileID: 8300000, guid: 3e9ba8cf1864c8343b8111504a330a8b, type: 3}
+    Name: NormalPunchAir
+    Clip: {fileID: 8300000, guid: c8d79625beba03b479a053959f637d2c, type: 3}
+    volume: 1
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Name: HardPunchAir
+    Clip: {fileID: 8300000, guid: ad61d673ea8365e4185b2a1e3330c2b9, type: 3}
     volume: 1
     pitch: 1
     Loop: 0
