@@ -112,7 +112,7 @@ public class GameplayManager : Manager {
     {
 
         /* PARTE CARAS DEL CARTEL */
-        int IDPlayer = GlobalManager.GameplayData.IDPlayer;
+        int IDPlayer = PlayerPrefs.GetInt("IDPlayer", 0);
 
 
         if (IDPlayer == 1)
@@ -168,8 +168,8 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
-        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = 3; //PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = 12;//PlayerPrefs.GetInt("IDEnemy", 0);
 
         IDPlayer = idp - 1;
         IDEnemy = 7 - ide;
@@ -183,7 +183,7 @@ public class GameplayManager : Manager {
         }
 
 
-        if (IDPlayer < 0 || IDEnemy < 0)
+        if (idp <= 0 || ide <= 0)
             return;
 
 
