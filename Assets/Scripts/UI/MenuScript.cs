@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MenuScript : Manager
 {
-    public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation;
+    public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation, Tutorial, Options;
 
     public Button btnContinue;
 
@@ -211,6 +211,85 @@ public class MenuScript : Manager
         }
     }
 
+    public void ReturnMotivation()
+    {
+        IDChamp=0;
+
+        if(Smoke!=null && Motivation!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Motivation.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open", false);
+                animator2.SetBool("Open", false);
+
+                Smoke.transform.SetSiblingIndex(0);
+            }
+        }
+    }
+
+
+    public void OpenTutorial()
+    {
+        if(Tutorial!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseTutorial()
+    {
+        if(Tutorial!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", false);
+                animator2.SetBool("Open", false);
+            }
+        }
+    }
+
+    public void OpenOptions()
+    {
+        if(Options!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Options.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open3", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseOptions()
+    {
+        if(Options!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Options.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open3", false);
+                animator2.SetBool("Open", false);
+            }
+        }
+    }
 
 
 }

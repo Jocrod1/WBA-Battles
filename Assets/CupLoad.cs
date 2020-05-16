@@ -12,15 +12,15 @@ public class CupLoad : MonoBehaviour
     //pantallas
     public GameObject smoke, smoke2, fight, diagram, wall, realShop;
 
-    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2;
+    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2, vs;
 
     public Sprite champ1, champ2, champ3, champ4, player1, player2, player3, player4;
 
     public Sprite enemyCartel1,enemyCartel2,enemyCartel3;
 
-    public GameObject cartelPlayer, cartelEnemy;
+    public GameObject cartelPlayer, cartelEnemy, finalImage;
 
-    public TextMeshProUGUI playerName, enemyName, title;
+    public TextMeshProUGUI playerName, enemyName, title, finalName;
 
     void Start()
     {
@@ -28,6 +28,8 @@ public class CupLoad : MonoBehaviour
 
         audioSrc=GetComponent<AudioSource>();
         audioSrc.volume=PlayerPrefs.GetFloat("volume");
+
+        PlayerPrefs.SetInt("IDEnemy",10);
 
 
         if(PlayerPrefs.GetInt("IDPlayer")==1)
@@ -38,6 +40,9 @@ public class CupLoad : MonoBehaviour
 
             cartelPlayer.GetComponent<Image>().sprite = player1;
             playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
+
+            finalName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
+            finalImage.GetComponent<Image>().sprite = player1;
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ1;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ1;
@@ -51,6 +56,9 @@ public class CupLoad : MonoBehaviour
             cartelPlayer.GetComponent<Image>().sprite = player2;
             playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
 
+            finalName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
+            finalImage.GetComponent<Image>().sprite = player2;
+
             imageAnimPlayer1.GetComponent<Image>().sprite = champ2;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ2;
         }
@@ -62,6 +70,9 @@ public class CupLoad : MonoBehaviour
 
             cartelPlayer.GetComponent<Image>().sprite = player3;
             playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
+
+            finalName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
+            finalImage.GetComponent<Image>().sprite = player3;
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ3;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ3;
@@ -75,6 +86,9 @@ public class CupLoad : MonoBehaviour
             cartelPlayer.GetComponent<Image>().sprite = player4;
             playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
 
+            finalName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
+            finalImage.GetComponent<Image>().sprite = player4;
+
             imageAnimPlayer1.GetComponent<Image>().sprite = champ4;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ4;
         }
@@ -87,7 +101,6 @@ public class CupLoad : MonoBehaviour
 
         if(PlayerPrefs.GetInt("IDEnemy")==12)
         {
-            animator.SetInteger("Position", 0);
 
             imageAnimPlayer1.SetActive(true);
             imageAnimEnemy1.SetActive(true);
@@ -101,10 +114,10 @@ public class CupLoad : MonoBehaviour
             subEnemy3.SetActive(false);
             subPlayer.SetActive(false);
             final.SetActive(false);
+            vs.SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==11)
         {
-            animator.SetInteger("Position", 1);
 
             imageAnimPlayer2.SetActive(true);
             imageAnimEnemy2.SetActive(true);
@@ -116,10 +129,10 @@ public class CupLoad : MonoBehaviour
             eliminateds1.SetActive(true);
 
             final.SetActive(false);
+            vs.SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==10)
         {
-            animator.SetInteger("Position", 2);
 
             enemyName.GetComponent<TextMeshProUGUI>().text="Korona";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel3;
@@ -127,6 +140,7 @@ public class CupLoad : MonoBehaviour
 
             eliminateds1.SetActive(true);
             eliminateds2.SetActive(true);
+            vs.SetActive(false);
         }
 
 
