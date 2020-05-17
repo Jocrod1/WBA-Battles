@@ -31,6 +31,8 @@
 
      private void Update() {
 
+        playerPrefTime=PlayerPrefs.GetString("WaitOneHour");
+
         if(playerPrefTime!="-1")
         {
             btnFight.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);

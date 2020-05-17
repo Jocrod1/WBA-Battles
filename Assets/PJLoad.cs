@@ -11,7 +11,7 @@ public class PJLoad : Manager {
 
     public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup, flagPlayer;
 
-    public GameObject fight, table, championship, wallTable, buttonCartel, buttonExit;
+    public GameObject fight, table, championship, tutorial, wallTable, buttonCartel, buttonExit;
  
     public Sprite champ1, champ2, champ3, champ4;
 
@@ -289,6 +289,36 @@ public class PJLoad : Manager {
         while (!asyncLoad.isDone)
         {
             yield return null;
+        }
+    }
+
+    public void OpenTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", false);
+                animator2.SetBool("Open", false);
+            }
         }
     }
 

@@ -65,6 +65,7 @@ public class CoinShopScript : MonoBehaviour
 
                 PlayerPrefs.SetInt("money", coins);
                 PlayerPrefs.SetInt("health", health);
+                PlayerPrefs.SetString("WaitOneHour", "-1");
 
                 healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
@@ -93,6 +94,7 @@ public class CoinShopScript : MonoBehaviour
                 Color();
                 PlayerPrefs.SetInt("money", coins);
                 PlayerPrefs.SetInt("stamina", stamina);
+                PlayerPrefs.SetString("WaitOneHour", "-1");
 
                 defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
@@ -121,6 +123,7 @@ public class CoinShopScript : MonoBehaviour
                 Color();
                 PlayerPrefs.SetInt("money", coins);
                 PlayerPrefs.SetInt("damage", damage);
+                PlayerPrefs.SetString("WaitOneHour", "-1");
 
                 damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";

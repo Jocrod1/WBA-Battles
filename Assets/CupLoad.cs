@@ -10,7 +10,7 @@ public class CupLoad : MonoBehaviour
     private AudioSource audioSrc;
 
     //pantallas
-    public GameObject smoke, smoke2, fight, diagram, wall, realShop;
+    public GameObject smoke, smoke2, fight, diagram, wall, realShop, tutorial;
 
     public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2, vs;
 
@@ -28,8 +28,6 @@ public class CupLoad : MonoBehaviour
 
         audioSrc=GetComponent<AudioSource>();
         audioSrc.volume=PlayerPrefs.GetFloat("volume");
-
-        PlayerPrefs.SetInt("IDEnemy",10);
 
 
         if(PlayerPrefs.GetInt("IDPlayer")==1)
@@ -230,6 +228,36 @@ public class CupLoad : MonoBehaviour
     public void returnMenu(string Level)
     {
         SceneManager.LoadScene(Level);
+    }
+
+    public void OpenTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", false);
+                animator2.SetBool("Open", false);
+            }
+        }
     }
 
 }
