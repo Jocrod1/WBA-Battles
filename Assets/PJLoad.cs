@@ -93,7 +93,6 @@ public class PJLoad : Manager {
 
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==5)
         {
@@ -107,8 +106,6 @@ public class PJLoad : Manager {
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==4)
         {
@@ -124,9 +121,6 @@ public class PJLoad : Manager {
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==3)
         {
@@ -151,10 +145,6 @@ public class PJLoad : Manager {
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
-            eliminated[3].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==2)
         {
@@ -181,10 +171,6 @@ public class PJLoad : Manager {
             names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
-            eliminated[3].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==1)
         {
@@ -213,10 +199,6 @@ public class PJLoad : Manager {
             names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
-            eliminated[3].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==0)
         {
@@ -242,10 +224,6 @@ public class PJLoad : Manager {
             names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[0].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
-            eliminated[3].SetActive(true);
         }
     }
 

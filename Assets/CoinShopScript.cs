@@ -10,7 +10,7 @@ public class CoinShopScript : MonoBehaviour
     public GameObject smoke, error, fight, table, wall, realShop;
     private int coins, health, stamina, damage;
 
-    public TextMeshProUGUI healthText, defenceText, damageText, coinText, healthCount, defenceCount, damageCount;
+    public TextMeshProUGUI healthText, defenceText, damageText, coinText, coin2Text, healthCount, defenceCount, damageCount;
 
     public Button btnHealth, btnDefence, btnDamage;
 
@@ -36,6 +36,7 @@ public class CoinShopScript : MonoBehaviour
         damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage", -1) + "/100";
 
         coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
+        coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
 
         healthCount.GetComponent<TextMeshProUGUI>().text= health + "/4";
         defenceCount.GetComponent<TextMeshProUGUI>().text= stamina + "/4";
@@ -69,6 +70,7 @@ public class CoinShopScript : MonoBehaviour
 
                 healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
+                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
                 healthCount.GetComponent<TextMeshProUGUI>().text= health + "/4";
             }
         }
@@ -98,6 +100,7 @@ public class CoinShopScript : MonoBehaviour
 
                 defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
+                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
                 defenceCount.GetComponent<TextMeshProUGUI>().text= stamina + "/4";
             }
         }
@@ -127,6 +130,7 @@ public class CoinShopScript : MonoBehaviour
 
                 damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
                 coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
+                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
                 damageCount.GetComponent<TextMeshProUGUI>().text= damage + "/4";
             }
         }
