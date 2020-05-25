@@ -101,6 +101,7 @@ public class GameplayManager : Manager {
     float StartTime;
 
     [Header("Cheer Public")]
+    public List<Animator> PublicBg;
     public List<Animator> CheerPublic;
     public float Transitiontime;
 
@@ -715,6 +716,14 @@ public class GameplayManager : Manager {
 
         float delta = Transitiontime / Aux.Count;
 
+        if (Value) {
+            foreach (Animator item in PublicBg)
+            {
+                item.SetBool("Celebration", Value);
+            }
+
+        }
+
         while (Aux.Count > 0) {
             if (Aux.Count <= 0)
                 break;
@@ -726,6 +735,15 @@ public class GameplayManager : Manager {
             Aux.RemoveAt(id);
 
             yield return new WaitForSeconds(delta);
+        }
+
+        if (!Value)
+        {
+            foreach (Animator item in PublicBg)
+            {
+                item.SetBool("Celebration", Value);
+            }
+
         }
     }
 
