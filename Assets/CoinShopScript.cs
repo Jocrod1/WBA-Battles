@@ -10,19 +10,19 @@ public class CoinShopScript : MonoBehaviour
     public GameObject smoke, error, fight, table, wall, realShop;
     private int coins, health, stamina, damage;
 
-    public TextMeshProUGUI healthText, defenceText, damageText, coinText, coin2Text, healthCount, defenceCount, damageCount;
+    public TextMeshProUGUI healthText, defenceText, damageText, coinText, coin2Text;
 
     public Button btnHealth, btnDefence, btnDamage;
 
-    private int countHealth, countStamina, countDamage;
+    public Sprite btnYellow, btnGreen;
 
     float MaxHealth, CurrentHealth;
 
-    private void Start() {
+    public int valueCoins;
 
-        countHealth=0;
-        countStamina=0;
-        countDamage=0;
+    public GameObject[] textButton, activatedButton;
+
+    private void Start() {
 
         coins=PlayerPrefs.GetInt("money");
         health=PlayerPrefs.GetInt("health", 0);
@@ -31,186 +31,146 @@ public class CoinShopScript : MonoBehaviour
 
         Color();
 
-        healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health", -1) + "/100";
-        defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("stamina", -1) + "/100";
-        damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage", -1) + "/100";
-
-        coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-        coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-
-        healthCount.GetComponent<TextMeshProUGUI>().text= health + "/4";
-        defenceCount.GetComponent<TextMeshProUGUI>().text= stamina + "/4";
-        damageCount.GetComponent<TextMeshProUGUI>().text= damage + "/4";
+        coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money").ToString();
+        coin2Text.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
     }
 
 
     public void Coin100Health()
     {
-        if(health >= 4)
+        if(health >= 1)
         {
             
         }
         else
         {
-            if(coins<100)
+            if(coins<valueCoins)
             {
                 NoCoin();
             }
             else
             {
-                coins-=100;
+                coins-=valueCoins;
                 health += 1;
 
-
-                Color();
 
                 PlayerPrefs.SetInt("money", coins);
                 PlayerPrefs.SetInt("health", health);
                 PlayerPrefs.SetString("WaitOneHour", "-1");
 
-                healthText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("health") + "/100";
-                coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                healthCount.GetComponent<TextMeshProUGUI>().text= health + "/4";
+                Color();
+
+
+                coinText.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
+                coin2Text.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
             }
         }
     }
 
     public void Coin100Defence()
     {
-        if(stamina >= 4)
+        if(stamina >= 1)
         {
             
         }
         else
         {
-            if(coins<100)
+            if(coins<valueCoins)
             {
                 NoCoin();
             }
             else
             {
-                coins-=100;
+                coins-=valueCoins;
                 stamina += 1;
 
-                Color();
+
                 PlayerPrefs.SetInt("money", coins);
                 PlayerPrefs.SetInt("stamina", stamina);
                 PlayerPrefs.SetString("WaitOneHour", "-1");
 
-                defenceText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("defence") + "/100";
-                coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                defenceCount.GetComponent<TextMeshProUGUI>().text= stamina + "/4";
+                Color();
+
+                coinText.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
+                coin2Text.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
             }
         }
     }
 
     public void Coin100Damage()
     {
-        if(damage >= 4)
+        if(damage >= 1)
         {
             
         }
         else
         {
-            if(coins<100)
+            if(coins<valueCoins)
             {
                 NoCoin();
             }
             else
             {
-                coins-=100;
+                coins-=valueCoins;
                 damage += 1;
 
-                Color();
+
                 PlayerPrefs.SetInt("money", coins);
                 PlayerPrefs.SetInt("damage", damage);
                 PlayerPrefs.SetString("WaitOneHour", "-1");
 
-                damageText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("damage") + "/100";
-                coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money") + " coins";
-                damageCount.GetComponent<TextMeshProUGUI>().text= damage + "/4";
+                Color();
+
+                coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money").ToString();
+                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money").ToString();
             }
         }
     }
 
     private void Color() {
         
-        if(health>=0 && health<=49)
+        if(health==1)
         {
-            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            btnHealth.GetComponent<Image>().sprite = btnGreen;
+            textButton[0].SetActive(false);
+            activatedButton[0].SetActive(true);
         }
-        else if(health>=50 && health<=70)
-        {
-            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
-        }
-        else if(health>=71 && health<=100)
-        {
-            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+        else {
+            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            btnHealth.GetComponent<Image>().sprite = btnYellow;
+            textButton[0].SetActive(true);
+            activatedButton[0].SetActive(false);
         }
 
-        if(stamina>=0 && stamina<=50)
+        if(stamina==1)
         {
-            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            btnDefence.GetComponent<Image>().sprite = btnGreen;
+            textButton[1].SetActive(false);
+            activatedButton[1].SetActive(true);
         }
-        else if(stamina>=51 && stamina<=70)
+        else
         {
-            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
-        }
-        else if(stamina>=71 && stamina<=100)
-        {
-            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
-        }
-        
-        if(damage>=0 && damage<=50)
-        {
-            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
-        }
-        else if(damage>=51 && damage<=70)
-        {
-            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 205, 66,255);
-        }
-        else if(damage>=71 && damage<=100)
-        {
-            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
-        }
-        
-        if(countHealth==4)
-        {
-            btnHealth.GetComponent<Image>().color= new Color32(125, 255, 0,255);
-        }
-        else if(coins<=99)
-        {
-            btnHealth.GetComponent<Image>().color= new Color32(255, 0, 5,255);
-        }
-        else{
-            btnHealth.GetComponent<Image>().color= new Color32(255, 255, 255,255);
+            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            btnDefence.GetComponent<Image>().sprite = btnYellow;
+            textButton[1].SetActive(true);
+            activatedButton[1].SetActive(false);
         }
 
-        if(countStamina==4)
+        if(damage==1)
         {
-            btnDefence.GetComponent<Image>().color= new Color32(125, 255, 0,255);
+            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            btnDamage.GetComponent<Image>().sprite = btnGreen;
+            textButton[2].SetActive(false);
+            activatedButton[2].SetActive(true);
         }
-        else if(coins<=99)
+        else
         {
-            btnDefence.GetComponent<Image>().color= new Color32(255, 0, 5,255);
-        }
-        else{
-            btnDefence.GetComponent<Image>().color= new Color32(255, 255, 255,255);
-        }
-
-        if(countDamage==4)
-        {
-            btnDamage.GetComponent<Image>().color= new Color32(125, 255, 0,255);
-        }
-        else if(coins<=99)
-        {
-            btnDamage.GetComponent<Image>().color= new Color32(255, 0, 5,255);
-        }
-        else{
-            btnDamage.GetComponent<Image>().color= new Color32(255, 255, 255,255);
+            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            btnDamage.GetComponent<Image>().sprite = btnYellow;
+            textButton[2].SetActive(true);
+            activatedButton[2].SetActive(false);
         }
         
     }

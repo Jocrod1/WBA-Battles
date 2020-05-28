@@ -7,13 +7,15 @@
  
  public class Counter : MonoBehaviour
  {
-     public GameObject smoke, timeMenu;
+     public GameObject smoke, timeMenu, btnCartel;
 
     private DateTime currentDate, timeInPref;
 
     private string strTime, playerPrefTime;
 
     public TextMeshProUGUI date, btnFight;
+
+    public Sprite btnRed, btnGreen;
 
     void Start()
      {
@@ -36,6 +38,7 @@
         if(playerPrefTime!="-1")
         {
             btnFight.GetComponent<TextMeshProUGUI>().color= new Color32(255, 0, 5,255);
+            btnCartel.GetComponent<Image>().sprite = btnRed;
 
             currentDate= System.DateTime.Now;
 
@@ -53,6 +56,7 @@
 
             //cuando no hay tiempo de espera
             btnFight.GetComponent<TextMeshProUGUI>().color= new Color32(125, 255, 0,255);
+            btnCartel.GetComponent<Image>().sprite = btnGreen;
 
 
             if(smoke!=null && timeMenu!=null)

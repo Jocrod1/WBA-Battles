@@ -149,7 +149,7 @@ public class MenuScript : Manager
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
 
-                Smoke.transform.SetSiblingIndex(6);
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
@@ -168,7 +168,7 @@ public class MenuScript : Manager
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
 
-                Smoke.transform.SetSiblingIndex(6);
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
@@ -187,7 +187,7 @@ public class MenuScript : Manager
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
 
-                Smoke.transform.SetSiblingIndex(6);
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
@@ -206,7 +206,7 @@ public class MenuScript : Manager
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
 
-                Smoke.transform.SetSiblingIndex(6);
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
