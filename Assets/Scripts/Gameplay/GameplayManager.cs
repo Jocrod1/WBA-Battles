@@ -264,18 +264,18 @@ public class GameplayManager : Manager {
         int damage = PlayerPrefs.GetInt("damage", 0);
 
         if (health != 0) {
-            Player.MaxHealth = Player.MaxHealth * health;
+            Player.MaxHealth = Player.MaxHealth * 6;
             Player.CurrentHealth = Player.MaxHealth;
         }
 
         if (stamina != 0) {
-            Player.MaxStamina = Player.MaxStamina * stamina;
+            Player.MaxStamina = Player.MaxStamina * 6;
             Player.CurrentMaxStamina = Player.MaxStamina;
             Player.CurrentStamina = Player.CurrentMaxStamina;
         }
 
         if (damage != 0) {
-            float Booster = (damage * 2 / 4) + 1;
+            float Booster = 6; //(damage * 2 / 4) + 1;
 
             Player.PIBottom.Damage = Player.PIBottom.Damage * Booster;
             Player.PIUp.Damage = Player.PIUp.Damage * Booster;
@@ -600,18 +600,21 @@ public class GameplayManager : Manager {
 
         StartCoroutine(Celebrate(true));
 
-        yield return new WaitForSeconds(3);
+        if(!Pl)
+            yield return new WaitForSeconds(3);
 
-        Counting = true;
+        if (Pl) {
+            Counting = true;
 
-        CountAnim.SetTrigger("Count");
+            CountAnim.SetTrigger("Count");
 
-        yield return new WaitWhile(() => Counting);
+            yield return new WaitWhile(() => Counting);
 
-        if (Pl)
-            Player.anim.SetTrigger("Continue");
+            if (Pl)
+                Player.anim.SetTrigger("Continue");
 
-        yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
+        }
 
         if (Pl)
             Player.RestoreHealth();
