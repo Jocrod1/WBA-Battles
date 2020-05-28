@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &140838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415356}
+  - component: {fileID: 11401350}
+  m_Layer: 0
+  m_Name: IAPManagerPro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 486.2852, y: 196.7006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11401350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e21e63649e3642b6823ac6065d80047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    currencyList: []
+    inventoryList: []
+    abilityList: []
+    gameList: []
+    packageList: []
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    advancedSettings:
+      testMode: 0
+      receiptValidation: 0
+      GooglePublicKey: 
+      MoolahAppKey: 
+      MoolahHashKey: 
+      TizenGroupId: 
+    databaseSettings:
+      datastorePath: gamesave/data.dat
+      playerPrefPrefix: GAMESAVE_
+      datastoreType: 0
+      cryptoHash: HASH_KEY_HERE
+    uiSettings:
+      errorDialog: {fileID: 0}
+      confirmDialog: {fileID: 0}
+      currencyErrorString: Not enough %currency_title%.
+      buyConfirmString: Buy %title% with %price% %currency_title%.
+      abilityConfirmString: Upgrade %title% with %price% %currency_title%.
+      iapConfirmString: Buy %title% with %price% %currency_title% ?
+      consumeConfirmString: Use %amount_consume% of %title%?
+    fetchDataOnStart: 0
+  OnIAPInitialized:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIAPInitializeFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIAPPurchaseStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIAPProcessPurchase:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIAPPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIAPPurchaseDeferred:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIAPTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCurrencyUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInventoryUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAbilityUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPackageUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameLevelUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCurrencyNotEnough:
+    m_PersistentCalls:
+      m_Calls: []

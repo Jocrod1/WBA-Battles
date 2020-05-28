@@ -720,8 +720,8 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 0
-    Collab: 0
+    Build: 1
+    Collab: 1
     ErrorHub: 0
     Hub: 0
     UNet: 1
@@ -737,10 +737,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 8ae5a0e8-bdcd-47b4-bc9c-eb52e670b32f
+  cloudProjectId: a962180c-7484-4c61-ad1c-cff09bbc8e7d
   framebufferDepthMemorylessMode: 0
-  projectName: BCEGame
-  organizationId: ramonkoudsi
+  projectName: 8 AND GET UP
+  organizationId: wallbangjocrod
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

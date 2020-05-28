@@ -169,8 +169,8 @@ public class GameplayManager : Manager {
         //IDPlayer = GlobalManager.GameplayData.IDPlayer - 1;
         //IDEnemy = GlobalManager.GameplayData.IDEnemy - 1 ;
 
-        int idp = 3; //PlayerPrefs.GetInt("IDPlayer", 0);
-        int ide = 12;//PlayerPrefs.GetInt("IDEnemy", 0);
+        int idp = PlayerPrefs.GetInt("IDPlayer", 0);
+        int ide = PlayerPrefs.GetInt("IDEnemy", 0);
 
         IDPlayer = idp - 1;
         IDEnemy = 7 - ide;
@@ -588,6 +588,11 @@ public class GameplayManager : Manager {
         StartCoroutine(CharacterKOd(false));
     }
 
+    [Header("Count Management")]
+    public bool Counting;
+
+    public Animator CountAnim;
+
     IEnumerator CharacterKOd(bool Pl) {
         //while (!(Player.stateinfo.Waiting && enemy.stateinfo.Waiting)) {
         //    yield return null;
@@ -596,6 +601,17 @@ public class GameplayManager : Manager {
         StartCoroutine(Celebrate(true));
 
         yield return new WaitForSeconds(3);
+
+        Counting = true;
+
+        CountAnim.SetTrigger("Count");
+
+        yield return new WaitWhile(() => Counting);
+
+        if (Pl)
+            Player.anim.SetTrigger("Continue");
+
+        yield return new WaitForSeconds(1);
 
         if (Pl)
             Player.RestoreHealth();
