@@ -275,6 +275,7 @@ MonoBehaviour:
   - {fileID: 1587250671}
   - {fileID: 1587250670}
   Transitiontime: 0.5
+  AM: {fileID: 0}
   cam: {fileID: 0}
   Counting: 0
   MoneyMotivation:
@@ -324,8 +325,9 @@ MonoBehaviour:
   Sounds:
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
+    Source: {fileID: 0}
     Name: Cheering
-    Clip: {fileID: 8300000, guid: 4bdef937a1d61e042886557aee316e9f, type: 3}
+    Clip: {fileID: 8300000, guid: 2aa02757667399d42b9c362055a108e2, type: 3}
     volume: 1
     pitch: 1
     Loop: 1

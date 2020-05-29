@@ -782,7 +782,7 @@ public class GameplayManager : Manager {
             {
                 item.SetBool("Celebration", Value);
             }
-            CheeringSound = AM.PlaySound("Cheer");
+            CheeringSound = AM.PlaySound("Cheering");
         }
 
         while (Aux.Count > 0) {

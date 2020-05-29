@@ -22,6 +22,8 @@ public class CoinShopScript : MonoBehaviour
 
     public GameObject[] textButton, activatedButton;
 
+    public AudioManager AM;
+
     private void Start() {
 
         coins=PlayerPrefs.GetInt("money");
@@ -38,7 +40,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Health()
     {
-        if(health >= 1)
+        AM.PlaySound("Btn");
+
+        if (health >= 1)
         {
             
         }
@@ -69,7 +73,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Defence()
     {
-        if(stamina >= 1)
+        AM.PlaySound("Btn");
+
+        if (stamina >= 1)
         {
             
         }
@@ -99,7 +105,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void Coin100Damage()
     {
-        if(damage >= 1)
+        AM.PlaySound("Btn");
+
+        if (damage >= 1)
         {
             
         }
@@ -178,7 +186,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void OpenFight()
     {
-        if(fight!=null && table!=null)
+        AM.PlaySound("Btn");
+
+        if (fight!=null && table!=null)
         {
             Animator animator2 = fight.GetComponent<Animator>();
             Animator animator3 = table.GetComponent<Animator>();
@@ -193,7 +203,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void CloseFight()
     {
-        if(fight!=null && table!=null)
+        AM.PlaySound("Return");
+
+        if (fight!=null && table!=null)
         {
             Animator animator2 = fight.GetComponent<Animator>();
             Animator animator3 = table.GetComponent<Animator>();
@@ -208,7 +220,9 @@ public class CoinShopScript : MonoBehaviour
 
     private void NoCoin()
     {
-        if(smoke!=null && error!=null)
+        AM.PlaySound("Return");
+
+        if (smoke!=null && error!=null)
         {
             Animator animator = smoke.GetComponent<Animator>();
             Animator animator2 = error.GetComponent<Animator>();
@@ -238,7 +252,9 @@ public class CoinShopScript : MonoBehaviour
     
     public void OpenShop()
     {
-        if(smoke!=null && realShop!=null)
+        AM.PlaySound("Btn");
+
+        if (smoke!=null && realShop!=null)
         {
             Animator animator = smoke.GetComponent<Animator>();
             Animator animator2 = realShop.GetComponent<Animator>();
@@ -255,7 +271,9 @@ public class CoinShopScript : MonoBehaviour
 
     public void CloseShop()
     {
-        if(smoke!=null && realShop!=null)
+        AM.PlaySound("Return");
+
+        if (smoke!=null && realShop!=null)
         {
             Animator animator = smoke.GetComponent<Animator>();
             Animator animator2 = realShop.GetComponent<Animator>();

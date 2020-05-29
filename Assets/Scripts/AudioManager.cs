@@ -49,7 +49,15 @@ public class AudioManager : MonoBehaviour {
             Sounds[i].SetSource(obj.AddComponent<AudioSource>());
         }
 
-        PlaySound("BgMusic");
+        for (int i = 0; i < Sounds.Count; i++)
+        {
+            if (Sounds[i].PlayOnAwake)
+            {
+                Sounds[i].Play();
+            }
+        }
+
+        //PlaySound("BgMusic");
     }
 
     public Sound PlaySound(string name) {

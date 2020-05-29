@@ -15,6 +15,8 @@ public class MenuScript : Manager
 
     public Animator BlackPanel;
 
+    public AudioManager AM;
+
     private void Start() {
         //valor default
         PlayerPrefs.GetInt("IDEnemy", -1);
@@ -69,7 +71,9 @@ public class MenuScript : Manager
 
     public void CloseNewGame()
     {
-        if(Smoke!=null && Selection!=null)
+        AM.PlaySound("Return");
+
+        if (Smoke!=null && Selection!=null)
         {
             Animator animator = Smoke.GetComponent<Animator>();
             Animator animator2 = Selection.GetComponent<Animator>();
@@ -213,7 +217,9 @@ public class MenuScript : Manager
 
     public void ReturnMotivation()
     {
-        IDChamp=0;
+        AM.PlaySound("Return");
+
+        IDChamp =0;
 
         if(Smoke!=null && Motivation!=null)
         {
@@ -233,7 +239,9 @@ public class MenuScript : Manager
 
     public void OpenTutorial()
     {
-        if(Tutorial!=null && Menu!=null)
+        AM.PlaySound("Btn");
+
+        if (Tutorial!=null && Menu!=null)
         {
             Animator animator = Menu.GetComponent<Animator>();
             Animator animator2 = Tutorial.GetComponent<Animator>();
@@ -248,7 +256,9 @@ public class MenuScript : Manager
 
     public void CloseTutorial()
     {
-        if(Tutorial!=null && Menu!=null)
+        AM.PlaySound("Return");
+
+        if (Tutorial!=null && Menu!=null)
         {
             Animator animator = Menu.GetComponent<Animator>();
             Animator animator2 = Tutorial.GetComponent<Animator>();
@@ -263,6 +273,8 @@ public class MenuScript : Manager
 
     public void OpenOptions()
     {
+        AM.PlaySound("Btn");
+
         if(Options!=null && Menu!=null)
         {
             Animator animator = Menu.GetComponent<Animator>();
@@ -278,7 +290,9 @@ public class MenuScript : Manager
 
     public void CloseOptions()
     {
-        if(Options!=null && Menu!=null)
+        AM.PlaySound("Return");
+
+        if (Options!=null && Menu!=null)
         {
             Animator animator = Menu.GetComponent<Animator>();
             Animator animator2 = Options.GetComponent<Animator>();
