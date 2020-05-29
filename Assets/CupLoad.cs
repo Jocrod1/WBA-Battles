@@ -104,7 +104,7 @@ public class CupLoad : MonoBehaviour
             imageAnimEnemy1.SetActive(true);
             title.GetComponent<TextMeshProUGUI>().text="Quarter final";
             
-            enemyName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
+            enemyName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel1;
 
             subEnemy1.SetActive(false);
@@ -121,7 +121,7 @@ public class CupLoad : MonoBehaviour
             imageAnimEnemy2.SetActive(true);
             title.GetComponent<TextMeshProUGUI>().text="Semifinal";
 
-            enemyName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
+            enemyName.GetComponent<TextMeshProUGUI>().text="Alex Duran";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel2;
 
             eliminateds1.SetActive(true);

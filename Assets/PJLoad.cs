@@ -109,7 +109,7 @@ public class PJLoad : Manager {
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==4)
         {
-            fightName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
+            fightName.GetComponent<TextMeshProUGUI>().text="Charlotte A";
             cartelEnemy.GetComponent<Image>().sprite = enemy4;
 
             positions[4].GetComponent<TextMeshProUGUI>().text="6";
@@ -124,7 +124,7 @@ public class PJLoad : Manager {
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==3)
         {
-            fightName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
+            fightName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
             cartelEnemy.GetComponent<Image>().sprite = enemy5;
 
             if(PlayerPrefs.GetInt("WinZoneInLose")==1)
@@ -148,7 +148,7 @@ public class PJLoad : Manager {
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==2)
         {
-            fightName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
+            fightName.GetComponent<TextMeshProUGUI>().text="Alex Duran";
             cartelEnemy.GetComponent<Image>().sprite = enemy6;
 
             if(PlayerPrefs.GetInt("WinZoneInLose")==1)
