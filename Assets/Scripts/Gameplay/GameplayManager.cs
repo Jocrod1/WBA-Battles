@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.Audio;
 
 public class GameplayManager : Manager {
 
@@ -104,13 +105,18 @@ public class GameplayManager : Manager {
     public List<Animator> PublicBg;
     public List<Animator> CheerPublic;
     public float Transitiontime;
+    public AudioManager AM;
 
     
     public CameraManager cam;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        AM = GetComponent<AudioManager>();
 
         /* PARTE CARAS DEL CARTEL */
         int IDPlayer = PlayerPrefs.GetInt("IDPlayer", 0);
@@ -239,6 +245,8 @@ public class GameplayManager : Manager {
         EnemyTxt.text = enemy.Name;
 
         SetStats();
+
+        SetMotivationImg();
 
         Player.Wait = true;
         enemy.enabled = false;
@@ -591,7 +599,13 @@ public class GameplayManager : Manager {
     [Header("Count Management")]
     public bool Counting;
 
+    public List<Sprite> MoneyMotivation;
+    public List<Sprite> FamilyMotivation;
+    public List<Sprite> FameMotivation;
+
     public Animator CountAnim;
+
+    public Image MotivationImg;
 
     IEnumerator CharacterKOd(bool Pl) {
         //while (!(Player.stateinfo.Waiting && enemy.stateinfo.Waiting)) {
@@ -613,7 +627,7 @@ public class GameplayManager : Manager {
             if (Pl)
                 Player.anim.SetTrigger("Continue");
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
         }
 
         if (Pl)
@@ -635,6 +649,32 @@ public class GameplayManager : Manager {
         EnableCharacters();
         Player.unwait();
         enemy.unwait();
+    }
+
+    public void SetMotivationImg() {
+        Sprite Motiv;
+
+        int IdPlayer = PlayerPrefs.GetInt("IDPlayer", 0);
+        int IdMotivation = PlayerPrefs.GetInt("IDMotivation", 0);
+
+        if (IdMotivation == 1)
+        {
+            Motiv = MoneyMotivation[IDPlayer];
+        }
+        else if (IdMotivation == 2)
+        {
+            Motiv = FamilyMotivation[IDPlayer];
+        }
+        else if (IdMotivation == 3) {
+            Motiv = FameMotivation[IDPlayer];
+        }
+        else
+        {
+            print("ERROR on the input");
+            Motiv = null;
+        }
+
+        MotivationImg.sprite = Motiv;
     }
 
     // Update is called once per frame
@@ -726,6 +766,8 @@ public class GameplayManager : Manager {
         StartCoroutine(Celebrate(Cel));
     }
 
+    Sound CheeringSound;
+
     IEnumerator Celebrate(bool Value) {
         List<Animator> Aux = new List<Animator>();
 
@@ -740,7 +782,7 @@ public class GameplayManager : Manager {
             {
                 item.SetBool("Celebration", Value);
             }
-
+            CheeringSound = AM.PlaySound("Cheer");
         }
 
         while (Aux.Count > 0) {
@@ -762,6 +804,8 @@ public class GameplayManager : Manager {
             {
                 item.SetBool("Celebration", Value);
             }
+
+            CheeringSound.Source.Pause();
 
         }
     }

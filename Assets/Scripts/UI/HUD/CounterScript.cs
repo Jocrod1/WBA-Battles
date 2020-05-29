@@ -14,8 +14,8 @@ public class CounterScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Counter = 1;
-        Timer.text = Counter.ToString();
+        Counter = 0;
+        //Timer.text = Counter.ToString();
         Anim  = GetComponent<Animator>();
     }
 
@@ -29,8 +29,12 @@ public class CounterScript : MonoBehaviour
 
     public void incr() {
         if (Counter >= 8)
+        {
             Anim.SetTrigger("Continue");
-        else {
+            Counter = 0;
+        }
+        else
+        {
             Counter++;
             Timer.text = Counter.ToString();
         }

@@ -8,7 +8,7 @@ public class Sound {
 
     public AudioMixerGroup mixerGroup;
 
-    private AudioSource Source;
+    public AudioSource Source;
 
     public string Name;
     public AudioClip Clip;
@@ -52,13 +52,15 @@ public class AudioManager : MonoBehaviour {
         PlaySound("BgMusic");
     }
 
-    public void PlaySound(string name) {
+    public Sound PlaySound(string name) {
         for (int i = 0; i < Sounds.Count; i++) {
             if(Sounds[i].Name == name) {
                 Sounds[i].Play();
-                return;
+                return Sounds[i];
             }
         }
+
+        return null;
     }
 
 }
