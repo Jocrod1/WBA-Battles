@@ -591,6 +591,10 @@ public class GameplayManager : Manager {
     [Header("Count Management")]
     public bool Counting;
 
+    public List<Sprite> MoneyMotivation;
+    public List<Sprite> FamilyMotivation;
+    public List<Sprite> FameMotivation;
+
     public Animator CountAnim;
 
     IEnumerator CharacterKOd(bool Pl) {
@@ -613,7 +617,7 @@ public class GameplayManager : Manager {
             if (Pl)
                 Player.anim.SetTrigger("Continue");
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
         }
 
         if (Pl)
@@ -635,6 +639,10 @@ public class GameplayManager : Manager {
         EnableCharacters();
         Player.unwait();
         enemy.unwait();
+    }
+
+    public void SetMotivationImg() {
+    
     }
 
     // Update is called once per frame

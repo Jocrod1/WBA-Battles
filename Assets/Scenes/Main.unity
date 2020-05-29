@@ -276,6 +276,21 @@ MonoBehaviour:
   Transitiontime: 0.5
   cam: {fileID: 0}
   Counting: 0
+  MoneyMotivation:
+  - {fileID: 21300000, guid: cd5604d0f874fae4d9a9a08daefe4118, type: 3}
+  - {fileID: 21300000, guid: e693d373a9c0ee84395650a695df4b71, type: 3}
+  - {fileID: 21300000, guid: 3ba47e57eec44274cb59da673631152b, type: 3}
+  - {fileID: 21300000, guid: 2b0afbce3f0e9c349832aabc7f612d27, type: 3}
+  FamilyMotivation:
+  - {fileID: 21300000, guid: 6d930705ee6e1704a8ce73405b089bf0, type: 3}
+  - {fileID: 21300000, guid: 2a22acb3c278289419554b60e457a51d, type: 3}
+  - {fileID: 21300000, guid: 313b7c1d68707cb44800d8cde30d2f90, type: 3}
+  - {fileID: 21300000, guid: aa218a92dd468a54c9b990cb614e1964, type: 3}
+  FameMotivation:
+  - {fileID: 21300000, guid: 61129c4fa2b8806458d5982cae185dbb, type: 3}
+  - {fileID: 21300000, guid: ce6a6fed64dc02d4c91ad73dd41e2edd, type: 3}
+  - {fileID: 21300000, guid: 459a29205eba01e4cab719465d55cd81, type: 3}
+  - {fileID: 21300000, guid: a15a0068d020ee847a9ef16ab98e7501, type: 3}
   CountAnim: {fileID: 1310468355}
   BlackPanel: {fileID: 257408177}
 --- !u!4 &7794975
@@ -3072,6 +3087,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465340409}
   m_CullTransparentMesh: 0
+--- !u!1001 &466565974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2006739565}
+    m_Modifications:
+    - target: {fileID: 9105590021828233867, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_Name
+      value: Irina Jones (Player)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 117ad3421186b9945b67b9f056363395, type: 3}
+--- !u!4 &466565975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9105590021828233968, guid: 117ad3421186b9945b67b9f056363395,
+    type: 3}
+  m_PrefabInstance: {fileID: 466565974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471735398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,7 +5431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 297f941f6940e0647b1e26becddb1ac5, type: 2}
   m_sharedMaterial: {fileID: -8055775433329113371, guid: 297f941f6940e0647b1e26becddb1ac5,
@@ -8746,7 +8836,7 @@ MonoBehaviour:
   GM: {fileID: 7794974}
   Anim: {fileID: 0}
   Timer: {fileID: 800691404}
-  Counter: 1
+  Counter: 0
 --- !u!95 &1310468355
 Animator:
   serializedVersion: 3
@@ -13575,7 +13665,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.17, z: -5.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 466565975}
   m_Father: {fileID: 9521042}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
