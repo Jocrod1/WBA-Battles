@@ -530,33 +530,37 @@ MonoBehaviour:
   Sounds:
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
+    Source: {fileID: 0}
     Name: PunchHit
     Clip: {fileID: 8300000, guid: 59e351a52a5fff94eadc41bc0884dee0, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     Loop: 0
     PlayOnAwake: 0
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
+    Source: {fileID: 0}
     Name: Blocked
     Clip: {fileID: 8300000, guid: 3e9ba8cf1864c8343b8111504a330a8b, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     Loop: 0
     PlayOnAwake: 0
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
+    Source: {fileID: 0}
     Name: NormalPunchAir
     Clip: {fileID: 8300000, guid: c8d79625beba03b479a053959f637d2c, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     Loop: 0
     PlayOnAwake: 0
   - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
       type: 2}
+    Source: {fileID: 0}
     Name: HardPunchAir
     Clip: {fileID: 8300000, guid: ad61d673ea8365e4185b2a1e3330c2b9, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     Loop: 0
     PlayOnAwake: 0

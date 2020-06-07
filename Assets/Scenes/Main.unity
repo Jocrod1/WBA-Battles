@@ -328,7 +328,7 @@ MonoBehaviour:
     Source: {fileID: 0}
     Name: Cheering
     Clip: {fileID: 8300000, guid: 2aa02757667399d42b9c362055a108e2, type: 3}
-    volume: 1
+    volume: 0.13
     pitch: 1
     Loop: 1
     PlayOnAwake: 0
@@ -8748,7 +8748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

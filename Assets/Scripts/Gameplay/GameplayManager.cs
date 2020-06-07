@@ -62,6 +62,8 @@ public class GameplayManager : Manager {
     public float Speed;
     public GameObject cartelPlayer, cartelEnemy;
     public Sprite[] playerCartel, enemyCartel;
+    public GameObject BonusRound4, BonusRound5;
+    public RectTransform TableT;
 
 
     [Header("Prefabs Lists")]
@@ -220,6 +222,8 @@ public class GameplayManager : Manager {
             print("Error: invalid IDEnemy Input");
         }
 
+        SetBonusRounds(ide);
+
         RealPlayer = Instantiate(SelectedPlayer, PlayerSpawner);
         RealPlayer.transform.localPosition = Vector3.zero;
         RealEnemy = Instantiate(SelectedEnemy, EnemySpawner);
@@ -264,6 +268,24 @@ public class GameplayManager : Manager {
         seconds += span.Seconds.ToString();
 
         TimerTxt.text = span.Minutes + ":" + seconds;
+    }
+
+    public void SetBonusRounds(int IdEnemy) {
+        if (IdEnemy >= 10 && IdEnemy <= 12) {
+            TableT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, TableT.rect.height + 100f);
+
+            BonusRound4.SetActive(true);
+            BonusRound5.SetActive(true);
+
+            for (int i = 3; i < listResultsUI.Count; i++) {
+                RoundResults RR = listResultsUI[i];
+                for (int j = 0; j < RR.ResultJudges.Count; j++) {
+                    RR.ResultJudges[j].gameObject.SetActive(true);
+                }
+            }
+
+            NumersOfRounds = 4;
+        }
     }
 
     public void SetStats() {
