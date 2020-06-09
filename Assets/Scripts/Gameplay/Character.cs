@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Character : MonoBehaviour {
 
     public string Name;
-    public Animator anim { get; private set; }
+    public Animator anim;
 
     [Header("Attack Colliders")]
     public Transform AttColl;
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour {
     [Header("Stamina")]
     public float CurrentStamina;
     public float MaxStamina;
-    float CurrentMaxStamina;
+    public float CurrentMaxStamina;
     public float RecuperationPerSecond;
 
     [Header("Recuperation Times")]
@@ -58,7 +59,7 @@ public class Character : MonoBehaviour {
     bool pause = false;
 
     public bool Punch;
-    public PunchInfo info;
+    public PunchInfo info { get; set; }
 
     public float SD2Dodge = 30;
 
@@ -75,7 +76,26 @@ public class Character : MonoBehaviour {
 
     public Stateinfos stateinfo;
 
+    [Header("KnockOuts Manager")]
+    public int MaxKnockouts;
+    public int CurrentKnockouts = 0;
+    public bool KnockedOut;
 
+    [Header("Audio")]
+    public AudioManager audioManager;
+
+    [Header("Camera Shake")]
+    public CameraManager cam;
+    float Duration = 0.06f;
+    float Magnitude = 0.1f;
+
+    public void BlockedSound() {
+        audioManager.PlaySound("Blocked");
+    }
+
+    public void PunchedSound() {
+        audioManager.PlaySound("PunchHit");
+    }
 
     #region FunctionsForAnimations
 
@@ -255,8 +275,10 @@ public class Character : MonoBehaviour {
 
         [Header("Tired")]
         public bool Tired;
+        public bool Waiting;
         protected void GetTired() {
             Tired = StateInfo.IsName("Tired");
+            Waiting = StateInfo.IsName("Waiting");
         }
 
         public virtual void GetStatesInfo(AnimatorStateInfo StateInf) {
@@ -278,10 +300,16 @@ public class Character : MonoBehaviour {
 
     public virtual void DoPunch() {
         Punch = true;
+        if(!info.Hard)
+            audioManager.PlaySound("NormalPunchAir");
+        else
+            audioManager.PlaySound("HardPunchAir");
     }
 
     public virtual void LoadData() {
+        CurrentKnockouts = 0;
         anim = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>();
 
         //Attack Colliders
         UpAttColl = AttColl.GetChild(0).GetComponent<BoxCollider2D>();
@@ -366,12 +394,15 @@ public class Character : MonoBehaviour {
             Trigger += "Right";
         else print("Error in X input of PunchInfo");
 
-        
+        if (!punchInfo.Hard)
+            cam.CamShake(0.06f, 0.1f);
+        else
+            cam.CamShake(0.2f, 0.3f);
+
         if (CurrentHealth <= 0) {
             Defeated(punchInfo);
             return;
         }
-
 
         anim.SetTrigger(Trigger);
 
@@ -434,14 +465,43 @@ public class Character : MonoBehaviour {
             print("Error in X input of PunchInfo");
 
         anim.SetTrigger(trigger);
+        CurrentKnockouts++;
+        if (CurrentKnockouts < 3)
+        {
+            KnockedOut = true;
+            anim.SetBool("Recovered", true);
+        }
     }
 
     public void Defeat() {
-        IsDefeated = true;
+        
+        if(CurrentKnockouts >= 3) {
+            IsDefeated = true;
+        }
+    }
+
+    public void Knocking() {
+        anim.SetTrigger("Inside");
+        anim.SetBool("Recovered", true);
+    }
+    public void unwait() {
+        anim.SetBool("Recovered", false);
+    }
+    public void RestoreHealth() {
+        CurrentHealth = MaxHealth;
+    }
+    public void RestoreStamina() {
+        CurrentStamina = CurrentMaxStamina;
     }
 
     public virtual void Win() {
         anim.SetTrigger("Win");
+    }
+
+    public void PlayClip(AudioSource A, AudioClip Clip)
+    {
+        A.clip = Clip;
+        A.Play();
     }
 
     // Start is called before the first frame update

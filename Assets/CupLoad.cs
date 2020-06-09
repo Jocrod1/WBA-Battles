@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CupLoad : MonoBehaviour
 {
     private AudioSource audioSrc;
 
     //pantallas
-    public GameObject smoke, smoke2, fight, diagram, wall, realShop;
+    public GameObject smoke, smoke2, fight, diagram, wall, realShop, tutorial;
 
-    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2;
+    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2, vs;
 
     public Sprite champ1, champ2, champ3, champ4, player1, player2, player3, player4;
 
     public Sprite enemyCartel1,enemyCartel2,enemyCartel3;
 
-    public GameObject cartelPlayer, cartelEnemy;
+    public GameObject cartelPlayer, cartelEnemy, finalImage;
 
-    public TextMeshProUGUI playerName, enemyName, title;
+    public TextMeshProUGUI playerName, enemyName, title, finalName;
 
     void Start()
     {
@@ -38,6 +39,9 @@ public class CupLoad : MonoBehaviour
             cartelPlayer.GetComponent<Image>().sprite = player1;
             playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
 
+            finalName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
+            finalImage.GetComponent<Image>().sprite = player1;
+
             imageAnimPlayer1.GetComponent<Image>().sprite = champ1;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ1;
         }
@@ -49,6 +53,9 @@ public class CupLoad : MonoBehaviour
 
             cartelPlayer.GetComponent<Image>().sprite = player2;
             playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
+
+            finalName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
+            finalImage.GetComponent<Image>().sprite = player2;
 
             imageAnimPlayer1.GetComponent<Image>().sprite = champ2;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ2;
@@ -62,6 +69,9 @@ public class CupLoad : MonoBehaviour
             cartelPlayer.GetComponent<Image>().sprite = player3;
             playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
 
+            finalName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
+            finalImage.GetComponent<Image>().sprite = player3;
+
             imageAnimPlayer1.GetComponent<Image>().sprite = champ3;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ3;
         }
@@ -74,6 +84,9 @@ public class CupLoad : MonoBehaviour
             cartelPlayer.GetComponent<Image>().sprite = player4;
             playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
 
+            finalName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
+            finalImage.GetComponent<Image>().sprite = player4;
+
             imageAnimPlayer1.GetComponent<Image>().sprite = champ4;
             imageAnimPlayer2.GetComponent<Image>().sprite = champ4;
         }
@@ -84,15 +97,14 @@ public class CupLoad : MonoBehaviour
         subPlayer.SetActive(true);
         final.SetActive(true);
 
-        if(PlayerPrefs.GetInt("IDEnemy")==10)
+        if(PlayerPrefs.GetInt("IDEnemy")==12)
         {
-            animator.SetInteger("Position", 0);
 
             imageAnimPlayer1.SetActive(true);
             imageAnimEnemy1.SetActive(true);
             title.GetComponent<TextMeshProUGUI>().text="Quarter final";
             
-            enemyName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
+            enemyName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel1;
 
             subEnemy1.SetActive(false);
@@ -100,25 +112,25 @@ public class CupLoad : MonoBehaviour
             subEnemy3.SetActive(false);
             subPlayer.SetActive(false);
             final.SetActive(false);
+            vs.SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==11)
         {
-            animator.SetInteger("Position", 1);
 
             imageAnimPlayer2.SetActive(true);
             imageAnimEnemy2.SetActive(true);
             title.GetComponent<TextMeshProUGUI>().text="Semifinal";
 
-            enemyName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
+            enemyName.GetComponent<TextMeshProUGUI>().text="Alex Duran";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel2;
 
             eliminateds1.SetActive(true);
 
             final.SetActive(false);
+            vs.SetActive(true);
         }
-        else if(PlayerPrefs.GetInt("IDEnemy")==12)
+        else if(PlayerPrefs.GetInt("IDEnemy")==10)
         {
-            animator.SetInteger("Position", 2);
 
             enemyName.GetComponent<TextMeshProUGUI>().text="Korona";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel3;
@@ -126,6 +138,7 @@ public class CupLoad : MonoBehaviour
 
             eliminateds1.SetActive(true);
             eliminateds2.SetActive(true);
+            vs.SetActive(false);
         }
 
 
@@ -202,6 +215,46 @@ public class CupLoad : MonoBehaviour
                 smoke2.transform.SetSiblingIndex(0);
 
                 animator.SetBool("Open", false);
+                animator2.SetBool("Open", false);
+            }
+        }
+    }
+
+    public void playgame(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
+
+    public void returnMenu(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
+
+    public void OpenTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", false);
                 animator2.SetBool("Open", false);
             }
         }

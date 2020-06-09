@@ -7,19 +7,46 @@ using UnityEngine.UI;
 
 public class MenuScript : Manager
 {
-    public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation;
+    public GameObject Smoke, Selection, ButtonSelection, Menu, Motivation, Tutorial, Options;
+
+    public Button btnContinue;
 
     public int IDChamp, IDMotivation;
+
+    public Animator BlackPanel;
+
+    public AudioManager AM;
 
     private void Start() {
         //valor default
         PlayerPrefs.GetInt("IDEnemy", -1);
+
+        if(PlayerPrefs.GetInt("IDEnemy")==-1)
+        {
+            btnContinue.interactable=false;
+        }
     }
 
     public void playgame(string Level)
     {
-        SceneManager.LoadScene(Level);
+        StartCoroutine(LoadYourAsyncScene(Level));
     }
+
+    IEnumerator LoadYourAsyncScene(string level)
+    {
+        BlackPanel.SetTrigger("Out");
+
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
     public void Quit()
     {
         Application.Quit();
@@ -44,7 +71,9 @@ public class MenuScript : Manager
 
     public void CloseNewGame()
     {
-        if(Smoke!=null && Selection!=null)
+        AM.PlaySound("Return");
+
+        if (Smoke!=null && Selection!=null)
         {
             Animator animator = Smoke.GetComponent<Animator>();
             Animator animator2 = Selection.GetComponent<Animator>();
@@ -66,7 +95,7 @@ public class MenuScript : Manager
             string Table="Table";
             playgame(Table);
         }
-        else if(PlayerPrefs.GetInt("IDEnemy")<=10 && PlayerPrefs.GetInt("IDEnemy")>=12)
+        else if(PlayerPrefs.GetInt("IDEnemy")<=12 && PlayerPrefs.GetInt("IDEnemy")>=10)
         {
             string Table="Championship";
             playgame(Table);
@@ -85,7 +114,11 @@ public class MenuScript : Manager
         //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
         PlayerPrefs.SetInt("IDEnemy", 7);
 
-        playgame(Tabla);
+        PlayerPrefs.SetString("WaitOneHour", "-1");
+
+        Smoke.transform.SetSiblingIndex(0);
+
+        playgame("Gym");
     }
 
     public void Motivation1(string Tabla)
@@ -119,6 +152,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
@@ -136,6 +171,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
@@ -153,6 +190,8 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
@@ -170,10 +209,101 @@ public class MenuScript : Manager
             {
                 animator.SetBool("Open", true);
                 animator2.SetBool("Open", true);
+
+                Smoke.transform.SetSiblingIndex(5);
             }
         }
     }
 
+    public void ReturnMotivation()
+    {
+        AM.PlaySound("Return");
+
+        IDChamp =0;
+
+        if(Smoke!=null && Motivation!=null)
+        {
+            Animator animator = Smoke.GetComponent<Animator>();
+            Animator animator2 = Motivation.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open", false);
+                animator2.SetBool("Open", false);
+
+                Smoke.transform.SetSiblingIndex(0);
+            }
+        }
+    }
+
+
+    public void OpenTutorial()
+    {
+        AM.PlaySound("Btn");
+
+        if (Tutorial!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseTutorial()
+    {
+        AM.PlaySound("Return");
+
+        if (Tutorial!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", false);
+                animator2.SetBool("Open", false);
+            }
+        }
+    }
+
+    public void OpenOptions()
+    {
+        AM.PlaySound("Btn");
+
+        if(Options!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Options.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open3", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseOptions()
+    {
+        AM.PlaySound("Return");
+
+        if (Options!=null && Menu!=null)
+        {
+            Animator animator = Menu.GetComponent<Animator>();
+            Animator animator2 = Options.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open3", false);
+                animator2.SetBool("Open", false);
+            }
+        }
+    }
 
 
 }

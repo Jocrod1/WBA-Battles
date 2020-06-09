@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 1369671759334762763}
   - component: {fileID: 1369671759334762752}
   - component: {fileID: 1369671759334762756}
+  - component: {fileID: -321967029174774039}
   m_Layer: 0
   m_Name: Daga Johar (Player)
   m_TagString: Untagged
@@ -990,7 +991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369671759334762757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.3, y: -4.17, z: -5.88}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1369671759088256440}
@@ -1030,6 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Daga Johar
+  anim: {fileID: 0}
   AttColl: {fileID: 1369671759395864511}
   RecvColl: {fileID: 1369671758773174527}
   BlockColl: {fileID: 1369671758664587056}
@@ -1037,36 +1039,33 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentStamina: 100
   MaxStamina: 100
+  CurrentMaxStamina: 0
   RecuperationPerSecond: 20
   TiredRecuperationTime: 3
   PFailedRecuperationTime: 0.7
   PunchEnded: 0
   PunchRecieved: 0
   Punch: 0
-  info:
-    Hard: 0
-    Damage: 0
-    Stamina: 0
   SD2Dodge: 40
   IsTired: 0
   PunchFailed: 0
   IsDefeated: 0
   PIBottom:
     Hard: 0
-    Damage: 10
-    Stamina: 15
+    Damage: 8
+    Stamina: 10
   PIUp:
     Hard: 0
-    Damage: 15
-    Stamina: 15
+    Damage: 10
+    Stamina: 12
   PIHardBottom:
     Hard: 1
-    Damage: 25
-    Stamina: 30
+    Damage: 15
+    Stamina: 19
   PIHardUp:
     Hard: 1
-    Damage: 35
-    Stamina: 30
+    Damage: 20
+    Stamina: 23
   stateinfo:
     BlockIdle: 0
     BlockedUp: 0
@@ -1108,6 +1107,12 @@ MonoBehaviour:
     RecieveHardUpRight: 0
     RecieveHardPunch: 0
     Tired: 0
+    Waiting: 0
+  MaxKnockouts: 0
+  CurrentKnockouts: 0
+  KnockedOut: 0
+  audioManager: {fileID: 0}
+  cam: {fileID: 0}
   StaminaRecovering: 0.8
   deadzone: {x: 200, y: 100}
   doubleTapDelta: 0.5
@@ -1127,6 +1132,7 @@ MonoBehaviour:
   longTap: 1
   Sliding: 0
   taplocal: {x: 0, y: 0}
+  Wait: 0
 --- !u!50 &1369671759334762756
 Rigidbody2D:
   serializedVersion: 4
@@ -1148,6 +1154,55 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-321967029174774039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369671759334762757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1d85f434144fd4c9da0e58ab60d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Source: {fileID: 0}
+    Name: PunchHit
+    Clip: {fileID: 8300000, guid: 59e351a52a5fff94eadc41bc0884dee0, type: 3}
+    volume: 0.6
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Source: {fileID: 0}
+    Name: Blocked
+    Clip: {fileID: 8300000, guid: 3e9ba8cf1864c8343b8111504a330a8b, type: 3}
+    volume: 0.6
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Source: {fileID: 0}
+    Name: NormalPunchAir
+    Clip: {fileID: 8300000, guid: c8d79625beba03b479a053959f637d2c, type: 3}
+    volume: 0.6
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
+  - mixerGroup: {fileID: -2675944013693961490, guid: cf501e1bdce3848489e8c930a0d0525d,
+      type: 2}
+    Source: {fileID: 0}
+    Name: HardPunchAir
+    Clip: {fileID: 8300000, guid: ad61d673ea8365e4185b2a1e3330c2b9, type: 3}
+    volume: 0.6
+    pitch: 1
+    Loop: 0
+    PlayOnAwake: 0
 --- !u!1 &1369671759395864508
 GameObject:
   m_ObjectHideFlags: 0

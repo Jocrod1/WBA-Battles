@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbb5f05aca884ceabbdf7a942fa4b97, type: 3}
+  m_Name: IAPEditorSettingsDictionary
+  m_EditorClassIdentifier: 
+  version: 1
+  _keys:
+  - 82f8fa60f7f18466f931ed3d26b13cc6
+  - 2302e4fb8c67c42db9fdcf6a6afe7a20
+  - db9596d0ff1a04ffaaa3365a552bb407
+  - 45c7e33a55d4241359799873d4c19013
+  - 94fc960744dc04d73a777922992f0d5d
+  - ad3a885d38ad04effb8fd9b204a30614
+  _values:
+  - key: 82f8fa60f7f18466f931ed3d26b13cc6
+    currencyList:
+    - none
+    inventoryList: []
+    abilityList: []
+    gameList: []
+    packageList: []
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+  - key: 2302e4fb8c67c42db9fdcf6a6afe7a20
+    currencyList:
+    - none
+    - coin
+    - diamond
+    inventoryList:
+    - remove_ads
+    - portion_1
+    - portion_4
+    abilityList:
+    - magnet
+    - shield
+    - doublecoin
+    gameList:
+    - GAME_PACK_1
+    - GAME_PACK_2
+    - GAME_PACK_3
+    packageList:
+    - gem_package_1
+    - gem_package_2
+    - gem_package_3
+    - remove_ads
+    - bonus_package_1
+    - coins_package_1
+    - coins_package_2
+    - coins_package_3
+    - unlock_game_level
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - COINS_PACKAGE
+  - key: db9596d0ff1a04ffaaa3365a552bb407
+    currencyList:
+    - none
+    - coin
+    - diamond
+    inventoryList:
+    - remove_ads
+    - portion_1
+    - portion_4
+    - skin_1
+    - skin_2
+    abilityList:
+    - magnet
+    - shield
+    gameList:
+    - GAME_PACK_1
+    packageList:
+    - gem_package_1
+    - gem_package_2
+    - gem_package_3
+    - remove_ads
+    - bonus_package_1
+    - coins_package_1
+    - coins_package_2
+    - coins_package_3
+    - unlock_game_level
+    - unlock_game_level_subscription
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - COINS_PACKAGE
+    - SKIN
+  - key: 45c7e33a55d4241359799873d4c19013
+    currencyList:
+    - none
+    - coin
+    - diamond
+    inventoryList:
+    - remove_ads
+    - portion_1
+    - portion_4
+    abilityList:
+    - magnet
+    - shield
+    - doublecoin
+    gameList:
+    - GAME_PACK_1
+    - GAME_PACK_2
+    - GAME_PACK_3
+    packageList:
+    - gem_package_1
+    - gem_package_2
+    - gem_package_3
+    - remove_ads
+    - bonus_package_1
+    - coins_package_1
+    - coins_package_2
+    - coins_package_3
+    - unlock_game_level
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - COINS_PACKAGE
+  - key: 94fc960744dc04d73a777922992f0d5d
+    currencyList:
+    - none
+    - coin
+    - diamond
+    inventoryList:
+    - remove_ads
+    - portion_1
+    - portion_4
+    - armour_1
+    - armour_2
+    abilityList:
+    - magnet
+    - shield
+    - doublecoin
+    gameList:
+    - GAME_PACK_1
+    - GAME_PACK_2
+    - GAME_PACK_3
+    packageList:
+    - taptheball_currency_1
+    - taptheball_currency_2
+    - taptheball_currency_3
+    - remove_ads
+    - taptheball_powerpack_1
+    - coins_package_1
+    - coins_package_2
+    - coins_package_3
+    - unlock_game_level
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - COINS_PACKAGE
+    - ARMOUR
+  - key: ad3a885d38ad04effb8fd9b204a30614
+    currencyList:
+    - none
+    - coin
+    - diamond
+    inventoryList:
+    - potion_small
+    abilityList:
+    - magnet_powerup
+    gameList: []
+    packageList:
+    - diamond_package_1
+    - diamond_package_2
+    - diamond_package_3
+    - coin_package_1
+    - coin_package_2
+    - coin_package_3
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2

@@ -198,6 +198,8 @@ public class PlayerScript : Character {
 
     public Vector2 taplocal;
 
+    public bool Wait;
+
     
 
 
@@ -217,6 +219,9 @@ public class PlayerScript : Character {
         //ScreenManagement
         ScreentoScale = new Vector2(100f / Screen.width, 100f / Screen.height);
         GesturesExecution();
+
+        if (Wait)
+            return;
 
         AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(0);
         bool IdleState = stateinfo.IsName("BlockV");

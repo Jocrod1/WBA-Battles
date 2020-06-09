@@ -9,13 +9,13 @@ public class PJLoad : Manager {
 
     private AudioSource audioSrc;
 
-    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup;
+    public GameObject playerTable, imagePlayer, cartelPlayer, cartelEnemy, btnCup, flagPlayer;
 
-    public GameObject fight, table;
+    public GameObject fight, table, championship, tutorial, wallTable, buttonCartel, buttonExit;
  
     public Sprite champ1, champ2, champ3, champ4;
 
-    public Sprite enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7, player1,player2,player3,player4; 
+    public Sprite enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7, player1,player2,player3,player4, flag1,flag2,flag3,flag4; 
  
     public TextMeshProUGUI playerName, fightName, cartelName;
 
@@ -28,37 +28,39 @@ public class PJLoad : Manager {
         audioSrc=GetComponent<AudioSource>();
         audioSrc.volume=PlayerPrefs.GetFloat("volume");
 
-        btnCup.SetActive(false);
-        //positions= new float[position1, position2, position3, position4, position5, position6, position7, position8];
-
         int IDPlayer = GlobalManager.GameplayData.IDPlayer;
+
 
         if (IDPlayer == 1)
         {
             imagePlayer.GetComponent<Image>().sprite = champ1;
             cartelPlayer.GetComponent<Image>().sprite = player1;
-            playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
+            flagPlayer.GetComponent<Image>().sprite = flag1;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Arlen Smith";
             cartelName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
         }
         else if (IDPlayer == 2)
         {
             imagePlayer.GetComponent<Image>().sprite = champ2;
             cartelPlayer.GetComponent<Image>().sprite = player2;
-            playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
+            flagPlayer.GetComponent<Image>().sprite = flag2;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Daga Johar";
             cartelName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
         }
         else if (IDPlayer == 3)
         {
             imagePlayer.GetComponent<Image>().sprite = champ3;
             cartelPlayer.GetComponent<Image>().sprite = player3;
-            playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
+            flagPlayer.GetComponent<Image>().sprite = flag3;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Irina Jones";
             cartelName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
         }
         else if (IDPlayer == 4)
         {
             imagePlayer.GetComponent<Image>().sprite = champ4;
             cartelPlayer.GetComponent<Image>().sprite = player4;
-            playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
+            flagPlayer.GetComponent<Image>().sprite = flag4;
+            playerName.GetComponent<TextMeshProUGUI>().text=" Angenis Nadai";
             cartelName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
         }
 
@@ -91,7 +93,6 @@ public class PJLoad : Manager {
 
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==5)
         {
@@ -105,12 +106,10 @@ public class PJLoad : Manager {
             names[6].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==4)
         {
-            fightName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
+            fightName.GetComponent<TextMeshProUGUI>().text="Charlotte A";
             cartelEnemy.GetComponent<Image>().sprite = enemy4;
 
             positions[4].GetComponent<TextMeshProUGUI>().text="6";
@@ -122,14 +121,18 @@ public class PJLoad : Manager {
             names[5].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==3)
         {
-            fightName.GetComponent<TextMeshProUGUI>().text="Moicano Blue";
+            fightName.GetComponent<TextMeshProUGUI>().text="Miguel Ruiz";
             cartelEnemy.GetComponent<Image>().sprite = enemy5;
+
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                buttonCartel.SetActive(false);
+                buttonExit.SetActive(false);
+                Classified();
+            }
 
             positions[3].GetComponent<TextMeshProUGUI>().text="5";
             positions[4].GetComponent<TextMeshProUGUI>().text="6";
@@ -142,15 +145,18 @@ public class PJLoad : Manager {
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
 
-            eliminated[0].SetActive(true);
-            eliminated[1].SetActive(true);
-            eliminated[2].SetActive(true);
-            eliminated[3].SetActive(true);
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==2)
         {
-            fightName.GetComponent<TextMeshProUGUI>().text="Ray Rocker";
+            fightName.GetComponent<TextMeshProUGUI>().text="Alex Duran";
             cartelEnemy.GetComponent<Image>().sprite = enemy6;
+
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                buttonCartel.SetActive(false);
+                buttonExit.SetActive(false);
+                Classified();
+            }
 
             positions[2].GetComponent<TextMeshProUGUI>().text="4";
             positions[3].GetComponent<TextMeshProUGUI>().text="5";
@@ -164,11 +170,19 @@ public class PJLoad : Manager {
             names[4].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==1)
         {
             fightName.GetComponent<TextMeshProUGUI>().text="Korona";
             cartelEnemy.GetComponent<Image>().sprite = enemy7;
+
+            if(PlayerPrefs.GetInt("WinZoneInLose")==1)
+            {
+                buttonCartel.SetActive(false);
+                buttonExit.SetActive(false);
+                Classified();
+            }
 
             positions[1].GetComponent<TextMeshProUGUI>().text="3";
             positions[2].GetComponent<TextMeshProUGUI>().text="4";
@@ -184,11 +198,14 @@ public class PJLoad : Manager {
             names[3].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==0)
         {
-            btnCup.SetActive(true);
-            PlayerPrefs.SetInt("IDEnemy", 10);
+            buttonCartel.SetActive(false);
+            buttonExit.SetActive(false);
+
+            Classified();
 
             positions[0].GetComponent<TextMeshProUGUI>().text="2";
             positions[1].GetComponent<TextMeshProUGUI>().text="3";
@@ -206,12 +223,81 @@ public class PJLoad : Manager {
             names[2].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[1].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
             names[0].GetComponent<TextMeshProUGUI>().color= new Color(1f,1f,1f,0.5f);
+
+        }
+    }
+
+    public void Classified()
+    {
+        if(wallTable!=null && championship!=null)
+        {
+            Animator animator = wallTable.GetComponent<Animator>();
+            Animator animator2 = championship.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Championship", true);
+                animator2.SetBool("Championship", true);
+            }
         }
     }
 
     public void goCup(string Level)
     {
-        SceneManager.LoadScene(Level);
+        PlayerPrefs.SetInt("IDEnemy", 12);
+        StartCoroutine(LoadYourAsyncScene(Level));
+    }
+
+    public void returnMenu(string Level)
+    {
+        StartCoroutine(LoadYourAsyncScene(Level));
+    }
+
+    public Animator BlackPanel;
+
+    IEnumerator LoadYourAsyncScene(string level)
+    {
+        BlackPanel.SetTrigger("Out");
+
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    public void OpenTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", true);
+                animator2.SetBool("Open", true);
+            }
+        }
+    }
+
+    public void CloseTutorial()
+    {
+        if(tutorial!=null && fight!=null)
+        {
+            Animator animator = fight.GetComponent<Animator>();
+            Animator animator2 = tutorial.GetComponent<Animator>();
+
+            if(animator!=null && animator2!=null)
+            {
+                animator.SetBool("Open2", false);
+                animator2.SetBool("Open", false);
+            }
+        }
     }
 
 }
