@@ -11,6 +11,8 @@ public class SettingsMenu : MonoBehaviour
 
     public AudioMixer MXr;
 
+    public static bool FirstTime = true;
+
     public Slider MasterVolume, SFXVolume, MusicVolume;
 
     private void Start() {
@@ -22,7 +24,28 @@ public class SettingsMenu : MonoBehaviour
 
         coins = GlobalManager.Money;
 
-        float defValue = -80f;
+        float defValue = 10;
+
+        if (FirstTime) {
+            //Master Volume
+            MasterVolume.value = defValue;
+            MXr.SetFloat("MasterVol", defValue);
+            PlayerPrefs.SetFloat("MasterVol", defValue);
+
+            //SFX Volume
+            SFXVolume.value = defValue;
+            MXr.SetFloat("SFXVol", defValue);
+            PlayerPrefs.SetFloat("SFXVol", defValue);
+
+            //Music Volume
+            MusicVolume.value = defValue;
+            MXr.SetFloat("MusicVol", defValue);
+            PlayerPrefs.SetFloat("SFXVol", defValue);
+
+
+            //Cut Routine
+            return;
+        }
 
         //Master Volume
         float master = PlayerPrefs.GetFloat("MasterVol", defValue);
