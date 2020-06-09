@@ -205,7 +205,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31.95
+  m_fontSize: 54.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50.65
+  m_fontSize: 62.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 73.8
+  m_fontSize: 80
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 14
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2333,7 +2333,7 @@ MonoBehaviour:
     spaceCount: 6
     wordCount: 7
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2587,7 +2587,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 70.5
+  m_fontSize: 74.7
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4187,7 +4187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 894.4833, y: -142.98991}
+  m_AnchoredPosition: {x: 894.4833, y: -238.43489}
   m_SizeDelta: {x: 357.7933, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &308023944
@@ -4677,7 +4677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 178.89665, y: -142.98991}
+  m_AnchoredPosition: {x: 178.89665, y: -238.43489}
   m_SizeDelta: {x: 357.7933, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &426443952
@@ -6692,7 +6692,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 32.85
+  m_fontSize: 53.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8258,7 +8258,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40.45
+  m_fontSize: 53.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10195,7 +10195,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 52.05
+  m_fontSize: 82.2
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10741,20 +10741,12 @@ MonoBehaviour:
   damageText: {fileID: 1074207515}
   coinText: {fileID: 985521547}
   coin2Text: {fileID: 1664438235}
+  healthCount: {fileID: 0}
+  defenceCount: {fileID: 0}
+  damageCount: {fileID: 0}
   btnHealth: {fileID: 207256496}
   btnDefence: {fileID: 752960828}
   btnDamage: {fileID: 2041179757}
-  btnYellow: {fileID: 21300000, guid: e0b6188e60f75b444988925be932417f, type: 3}
-  btnGreen: {fileID: 21300000, guid: fa7f84274472bc245b0be12f872b8b53, type: 3}
-  valueCoins: 100
-  textButton:
-  - {fileID: 304537001}
-  - {fileID: 651392846}
-  - {fileID: 94022}
-  activatedButton:
-  - {fileID: 2033089757}
-  - {fileID: 1662967454}
-  - {fileID: 1162142282}
 --- !u!114 &1002607796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10769,11 +10761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoke: {fileID: 75957870}
   timeMenu: {fileID: 1882716502}
-  btnCartel: {fileID: 1732329606}
   date: {fileID: 41650260}
   btnFight: {fileID: 187452277}
-  btnRed: {fileID: 21300000, guid: ca11f9b0ff37a57438dbaa4553de042f, type: 3}
-  btnGreen: {fileID: 21300000, guid: 9789e1efa4dde6a4db1b8f08bf9ff752, type: 3}
   BlackPanel: {fileID: 75957872}
 --- !u!1 &1004271104
 GameObject:
@@ -11463,7 +11452,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40.45
+  m_fontSize: 46.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12443,7 +12432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8931875, y: 0.42960873}
   m_AnchorMax: {x: 0.97200006, y: 0.5703913}
-  m_AnchoredPosition: {x: -0.75, y: 0.32619095}
+  m_AnchoredPosition: {x: -0.75, y: 0.32618713}
   m_SizeDelta: {x: -0.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246774936
@@ -12761,7 +12750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 536.68994, y: -142.98991}
+  m_AnchoredPosition: {x: 536.68994, y: -238.43489}
   m_SizeDelta: {x: 357.7933, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286385043
@@ -12992,7 +12981,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 108.75
+  m_fontSize: 181.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14010,7 +13999,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 61
+  m_fontSize: 87.6
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14221,7 +14210,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 56.85
+  m_fontSize: 94.7
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16503,7 +16492,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 51.45
+  m_fontSize: 86.05
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17328,7 +17317,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 57.95
+  m_fontSize: 72.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17374,7 +17363,7 @@ MonoBehaviour:
     spaceCount: 4
     wordCount: 5
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -18136,7 +18125,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40.45
+  m_fontSize: 43.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18479,7 +18468,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 75.15
+  m_fontSize: 130.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19518,7 +19507,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 33.75
+  m_fontSize: 55.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20245,7 +20234,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 98.15
+  m_fontSize: 148.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
