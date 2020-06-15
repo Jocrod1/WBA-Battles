@@ -20,6 +20,7 @@ MonoBehaviour:
   - 45c7e33a55d4241359799873d4c19013
   - 94fc960744dc04d73a777922992f0d5d
   - ad3a885d38ad04effb8fd9b204a30614
+  - eafc7593c5e10944db23f7a25b52d62d
   _values:
   - key: 82f8fa60f7f18466f931ed3d26b13cc6
     currencyList:
@@ -197,3 +198,19 @@ MonoBehaviour:
     - Ability
     - Reserved 1
     - Reserved 2
+  - key: eafc7593c5e10944db23f7a25b52d62d
+    currencyList:
+    - none
+    - coin
+    inventoryList: []
+    abilityList: []
+    gameList: []
+    packageList:
+    - gold100
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - coin
