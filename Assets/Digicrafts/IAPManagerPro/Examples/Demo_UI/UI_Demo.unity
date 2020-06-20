@@ -2271,10 +2271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45449bffafb934e6fa004a300c3b3e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storePanel: {fileID: 211742939}
-  gemPanel: {fileID: 4013559}
-  coinPanel: {fileID: 1857951667}
-  upgradePanel: {fileID: 1936051065}
 --- !u!4 &865741497
 Transform:
   m_ObjectHideFlags: 0

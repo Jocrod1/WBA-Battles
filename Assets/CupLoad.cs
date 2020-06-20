@@ -12,7 +12,7 @@ public class CupLoad : MonoBehaviour
     //pantallas
     public GameObject smoke, smoke2, fight, diagram, wall, realShop, tutorial;
 
-    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imagePlayer3, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, eliminateds1, eliminateds2, vs;
+    public GameObject subEnemy1, subEnemy2, subEnemy3, subPlayer, final, menu, imagePlayer, imagePlayer2, imageAnimPlayer1, imageAnimPlayer2, imageAnimEnemy1, imageAnimEnemy2, imageAnimFinal, eliminateds1, eliminateds2, vs;
 
     public Sprite champ1, champ2, champ3, champ4, player1, player2, player3, player4;
 
@@ -34,7 +34,6 @@ public class CupLoad : MonoBehaviour
         {
             imagePlayer.GetComponent<Image>().sprite = champ1;
             imagePlayer2.GetComponent<Image>().sprite = champ1;
-            imagePlayer3.GetComponent<Image>().sprite = champ1;
 
             cartelPlayer.GetComponent<Image>().sprite = player1;
             playerName.GetComponent<TextMeshProUGUI>().text="Arlen Smith";
@@ -49,7 +48,6 @@ public class CupLoad : MonoBehaviour
         {
             imagePlayer.GetComponent<Image>().sprite = champ2;
             imagePlayer2.GetComponent<Image>().sprite = champ2;
-            imagePlayer3.GetComponent<Image>().sprite = champ2;
 
             cartelPlayer.GetComponent<Image>().sprite = player2;
             playerName.GetComponent<TextMeshProUGUI>().text="Daga Johar";
@@ -64,7 +62,6 @@ public class CupLoad : MonoBehaviour
         {
             imagePlayer.GetComponent<Image>().sprite = champ3;
             imagePlayer2.GetComponent<Image>().sprite = champ3;
-            imagePlayer3.GetComponent<Image>().sprite = champ3;
 
             cartelPlayer.GetComponent<Image>().sprite = player3;
             playerName.GetComponent<TextMeshProUGUI>().text="Irina Jones";
@@ -79,7 +76,6 @@ public class CupLoad : MonoBehaviour
         {
             imagePlayer.GetComponent<Image>().sprite = champ4;
             imagePlayer2.GetComponent<Image>().sprite = champ4;
-            imagePlayer3.GetComponent<Image>().sprite = champ4;
 
             cartelPlayer.GetComponent<Image>().sprite = player4;
             playerName.GetComponent<TextMeshProUGUI>().text="Angenis Nadai";
@@ -119,6 +115,7 @@ public class CupLoad : MonoBehaviour
 
             imageAnimPlayer2.SetActive(true);
             imageAnimEnemy2.SetActive(true);
+            
             title.GetComponent<TextMeshProUGUI>().text="Semifinal";
 
             enemyName.GetComponent<TextMeshProUGUI>().text="Alex Duran";
@@ -131,6 +128,7 @@ public class CupLoad : MonoBehaviour
         }
         else if(PlayerPrefs.GetInt("IDEnemy")==10)
         {
+            imageAnimFinal.SetActive(true);
 
             enemyName.GetComponent<TextMeshProUGUI>().text="Korona";
             cartelEnemy.GetComponent<Image>().sprite = enemyCartel3;

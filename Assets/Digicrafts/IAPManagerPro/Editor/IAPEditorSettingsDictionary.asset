@@ -16,11 +16,12 @@ MonoBehaviour:
   _keys:
   - 82f8fa60f7f18466f931ed3d26b13cc6
   - 2302e4fb8c67c42db9fdcf6a6afe7a20
-  - db9596d0ff1a04ffaaa3365a552bb407
   - 45c7e33a55d4241359799873d4c19013
   - 94fc960744dc04d73a777922992f0d5d
   - ad3a885d38ad04effb8fd9b204a30614
+  - db9596d0ff1a04ffaaa3365a552bb407
   - eafc7593c5e10944db23f7a25b52d62d
+  - b6fd266a483a971409c9751b23171934
   _values:
   - key: 82f8fa60f7f18466f931ed3d26b13cc6
     currencyList:
@@ -69,41 +70,6 @@ MonoBehaviour:
     - Reserved 1
     - Reserved 2
     - COINS_PACKAGE
-  - key: db9596d0ff1a04ffaaa3365a552bb407
-    currencyList:
-    - none
-    - coin
-    - diamond
-    inventoryList:
-    - remove_ads
-    - portion_1
-    - portion_4
-    - skin_1
-    - skin_2
-    abilityList:
-    - magnet
-    - shield
-    gameList:
-    - GAME_PACK_1
-    packageList:
-    - gem_package_1
-    - gem_package_2
-    - gem_package_3
-    - remove_ads
-    - bonus_package_1
-    - coins_package_1
-    - coins_package_2
-    - coins_package_3
-    - unlock_game_level
-    - unlock_game_level_subscription
-    tagList:
-    - IAP
-    - IAP_Fetch
-    - Ability
-    - Reserved 1
-    - Reserved 2
-    - COINS_PACKAGE
-    - SKIN
   - key: 45c7e33a55d4241359799873d4c19013
     currencyList:
     - none
@@ -198,6 +164,41 @@ MonoBehaviour:
     - Ability
     - Reserved 1
     - Reserved 2
+  - key: db9596d0ff1a04ffaaa3365a552bb407
+    currencyList:
+    - none
+    - coin
+    - diamond
+    inventoryList:
+    - remove_ads
+    - portion_1
+    - portion_4
+    - skin_1
+    - skin_2
+    abilityList:
+    - magnet
+    - shield
+    gameList:
+    - GAME_PACK_1
+    packageList:
+    - gem_package_1
+    - gem_package_2
+    - gem_package_3
+    - remove_ads
+    - bonus_package_1
+    - coins_package_1
+    - coins_package_2
+    - coins_package_3
+    - unlock_game_level
+    - unlock_game_level_subscription
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - COINS_PACKAGE
+    - SKIN
   - key: eafc7593c5e10944db23f7a25b52d62d
     currencyList:
     - none
@@ -207,6 +208,26 @@ MonoBehaviour:
     gameList: []
     packageList:
     - gold100
+    - gold500
+    - gold5000
+    tagList:
+    - IAP
+    - IAP_Fetch
+    - Ability
+    - Reserved 1
+    - Reserved 2
+    - coin
+  - key: b6fd266a483a971409c9751b23171934
+    currencyList:
+    - none
+    - coin
+    inventoryList: []
+    abilityList: []
+    gameList: []
+    packageList:
+    - gold100
+    - gold500
+    - gold5000
     tagList:
     - IAP
     - IAP_Fetch

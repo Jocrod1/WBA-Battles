@@ -4,37 +4,50 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Digicrafts.IAP.Pro;
+using Digicrafts.IAP.Pro.Core;
+using Digicrafts.IAP.Pro.Settings;
+using Digicrafts.IAP.Pro.Events;
+using Digicrafts.IAP.Pro.UI;
 
 public class CoinShopScript : MonoBehaviour
 {
-    public GameObject smoke, error, fight, table, wall, realShop;
-    private int coins, health, stamina, damage;
+    [Header("Prices")]
+    public int price;
 
-    public TextMeshProUGUI healthText, defenceText, damageText, coinText, coin2Text;
+    [Header("Scenes")]
+    public GameObject smoke;
+    public GameObject error;
+    public GameObject fight;
+    public GameObject table;
+    public GameObject wall;
+    public GameObject realShop;
 
-    public Button btnHealth, btnDefence, btnDamage;
+    private int health, stamina, damage;
 
-    public Sprite btnYellow, btnGreen;
+    [Header("Button Text")]
+    public GameObject[] textButton;
 
-    float MaxHealth, CurrentHealth;
+    [Header("Button Activated Text")]
+    public GameObject[] activatedButton;
 
-    public int valueCoins;
+    [Header("Button PowerUp")]
+    public Button[] powerButton;
 
-    public GameObject[] textButton, activatedButton;
+    [Header("Button Sprite")]
+    public Sprite btnYellow;
+    public Sprite btnGreen;
 
+    [Header("Audio")]
     public AudioManager AM;
 
     private void Start() {
 
-        coins=PlayerPrefs.GetInt("money");
         health=PlayerPrefs.GetInt("health", 0);
         stamina=PlayerPrefs.GetInt("stamina", 0);
         damage=PlayerPrefs.GetInt("damage", 0);
 
         Color();
-
-        coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money").ToString();
-        coin2Text.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
     }
 
 
@@ -42,64 +55,51 @@ public class CoinShopScript : MonoBehaviour
     {
         AM.PlaySound("Btn");
 
-        if (health >= 1)
+        IAPCurrency currency = IAPInventoryManager.GetCurrency("coin");
+        int amount = currency.amount;
+
+        if(health==1)
         {
-            
+
+        }
+        else if(amount>=price)
+        {
+
+            PlayerPrefs.SetInt("health", 1);
+            PlayerPrefs.SetString("WaitOneHour", "-1");
+            health=PlayerPrefs.GetInt("health");
+
+            Color();
         }
         else
         {
-            if(coins<valueCoins)
-            {
-                NoCoin();
-            }
-            else
-            {
-                coins-=valueCoins;
-                health += 1;
-
-
-                PlayerPrefs.SetInt("money", coins);
-                PlayerPrefs.SetInt("health", health);
-                PlayerPrefs.SetString("WaitOneHour", "-1");
-
-                Color();
-
-
-                coinText.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
-                coin2Text.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
-            }
+            NoCoin();
         }
+
     }
 
     public void Coin100Defence()
     {
         AM.PlaySound("Btn");
 
-        if (stamina >= 1)
+        IAPCurrency currency = IAPInventoryManager.GetCurrency("coin");
+        int amount = currency.amount;
+
+        if(stamina==1)
         {
             
         }
+        else if(amount>=price)
+        {
+            PlayerPrefs.SetInt("stamina", 1);
+            PlayerPrefs.SetString("WaitOneHour", "-1");
+            stamina=PlayerPrefs.GetInt("stamina");
+
+            Color();
+        }
         else
         {
-            if(coins<valueCoins)
-            {
-                NoCoin();
-            }
-            else
-            {
-                coins-=valueCoins;
-                stamina += 1;
-
-
-                PlayerPrefs.SetInt("money", coins);
-                PlayerPrefs.SetInt("stamina", stamina);
-                PlayerPrefs.SetString("WaitOneHour", "-1");
-
-                Color();
-
-                coinText.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
-                coin2Text.GetComponent<TextMeshProUGUI>().text=  PlayerPrefs.GetInt("money").ToString();
-            }
+            NoCoin();
         }
     }
 
@@ -107,31 +107,24 @@ public class CoinShopScript : MonoBehaviour
     {
         AM.PlaySound("Btn");
 
-        if (damage >= 1)
+        IAPCurrency currency = IAPInventoryManager.GetCurrency("coin");
+        int amount = currency.amount;
+
+        if(damage==1)
         {
             
         }
+        else if(amount>=price)
+        {
+            PlayerPrefs.SetInt("damage", 1);
+            PlayerPrefs.SetString("WaitOneHour", "-1");
+            damage=PlayerPrefs.GetInt("damage");
+
+            Color();
+        }
         else
         {
-            if(coins<valueCoins)
-            {
-                NoCoin();
-            }
-            else
-            {
-                coins-=valueCoins;
-                damage += 1;
-
-
-                PlayerPrefs.SetInt("money", coins);
-                PlayerPrefs.SetInt("damage", damage);
-                PlayerPrefs.SetString("WaitOneHour", "-1");
-
-                Color();
-
-                coinText.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money").ToString();
-                coin2Text.GetComponent<TextMeshProUGUI>().text= PlayerPrefs.GetInt("money").ToString();
-            }
+            NoCoin();
         }
     }
 
@@ -139,45 +132,51 @@ public class CoinShopScript : MonoBehaviour
         
         if(health==1)
         {
-            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
-            btnHealth.GetComponent<Image>().sprite = btnGreen;
+            textButton[0].GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            powerButton[0].GetComponent<Image>().sprite = btnGreen;
             textButton[0].SetActive(false);
+            powerButton[0].GetComponent<Button>().enabled=false;
             activatedButton[0].SetActive(true);
         }
         else {
-            healthText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
-            btnHealth.GetComponent<Image>().sprite = btnYellow;
+            textButton[0].GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            powerButton[0].GetComponent<Image>().sprite = btnYellow;
             textButton[0].SetActive(true);
+            powerButton[0].GetComponent<Button>().enabled=true;
             activatedButton[0].SetActive(false);
         }
 
         if(stamina==1)
         {
-            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
-            btnDefence.GetComponent<Image>().sprite = btnGreen;
+            textButton[1].GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            powerButton[1].GetComponent<Image>().sprite = btnGreen;
             textButton[1].SetActive(false);
+            powerButton[1].GetComponent<Button>().enabled=false;
             activatedButton[1].SetActive(true);
         }
         else
         {
-            defenceText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
-            btnDefence.GetComponent<Image>().sprite = btnYellow;
+            textButton[1].GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            powerButton[1].GetComponent<Image>().sprite = btnYellow;
             textButton[1].SetActive(true);
+            powerButton[1].GetComponent<Button>().enabled=true;
             activatedButton[1].SetActive(false);
         }
 
         if(damage==1)
         {
-            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
-            btnDamage.GetComponent<Image>().sprite = btnGreen;
+            textButton[2].GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            powerButton[2].GetComponent<Image>().sprite = btnGreen;
             textButton[2].SetActive(false);
+            powerButton[2].GetComponent<Button>().enabled=false;
             activatedButton[2].SetActive(true);
         }
         else
         {
-            damageText.GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
-            btnDamage.GetComponent<Image>().sprite = btnYellow;
+            textButton[2].GetComponent<TextMeshProUGUI>().color= new Color32(255, 255, 255, 255);
+            powerButton[2].GetComponent<Image>().sprite = btnYellow;
             textButton[2].SetActive(true);
+            powerButton[2].GetComponent<Button>().enabled=true;
             activatedButton[2].SetActive(false);
         }
         

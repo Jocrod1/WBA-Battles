@@ -7,18 +7,29 @@
  
  public class Counter : MonoBehaviour
  {
-     public GameObject smoke, timeMenu, btnCartel;
+    [Header("Objects")]
+    public GameObject smoke;
+    public GameObject timeMenu;
+    public GameObject btnCartel;
+
+    [Header("Time")]
+    public TextMeshProUGUI date;
+
+    [Header("Button")]
+    public TextMeshProUGUI btnFight;
+    public Sprite btnRed;
+    public Sprite btnGreen;
+
+    [Header("Black Animation")]
+    public Animator BlackPanel;
 
     private DateTime currentDate, timeInPref;
 
     private string strTime, playerPrefTime;
 
-    public TextMeshProUGUI date, btnFight;
 
-    public Sprite btnRed, btnGreen;
-
-    void Start()
-     {
+    private void Start()
+    {
 
         date.GetComponent<TextMeshProUGUI>().text=System.DateTime.Now.ToString();
 
@@ -29,9 +40,9 @@
             timeInPref=DateTime.Parse(playerPrefTime);
         }
 
-     }
+    }
 
-     private void Update() {
+    private void Update() {
 
         playerPrefTime=PlayerPrefs.GetString("WaitOneHour");
 
@@ -71,13 +82,10 @@
                         animator2.SetBool("Open", false);
                         animator3.SetBool("Open", false);
                     }
-
                 }
             }
         }
-         
-
-     }
+    }
 
     public void playgame(string Level)
     {
@@ -100,7 +108,7 @@
         }
     }
 
-    public Animator BlackPanel;
+
     IEnumerator LoadYourAsyncScene(string level)
     {
         BlackPanel.SetTrigger("Out");

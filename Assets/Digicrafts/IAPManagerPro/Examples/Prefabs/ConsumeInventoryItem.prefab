@@ -286,8 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingKeyDefault: 
-  targetType: 1
-  uid: portion_1
+  targetType: 0
+  uid: none
   amount: 100
   useConfirmDialog: 1
   OnConsumeSuccess:
