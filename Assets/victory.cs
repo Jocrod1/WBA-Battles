@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class victory : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class victory : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("IDPlayer", -1);
+        PlayerPrefs.SetInt("IDEnemy", -1);
         
         if(PlayerPrefs.GetInt("IDPlayer")==1)
         {
@@ -81,7 +84,12 @@ public class victory : MonoBehaviour
             {
                 image.GetComponent<Image>().sprite = motivationchamp4[2];
             }
-        }
-        
+        }  
     }
+
+    public void goMenu(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
+
 }
