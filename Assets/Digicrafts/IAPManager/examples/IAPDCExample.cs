@@ -33,6 +33,7 @@ public class IAPDCExample : MonoBehaviour, IIAPDelegate {
 
 		// Do somthing after purchase finished
 		// You can get the product information and receipt from here.
+		print(product);
 	}
 
 	// Event when a purchase failed

@@ -19,9 +19,11 @@ public class MenuScript : Manager
 
     private void Start() {
         //valor default
-        PlayerPrefs.GetInt("IDEnemy", -1);
+        var IDEnemy=PlayerPrefs.GetInt("IDEnemy", -1);
 
-        if(PlayerPrefs.GetInt("IDEnemy")==-1)
+        print(PlayerPrefs.GetInt("IDEnemy"));
+
+        if(IDEnemy==-1)
         {
             btnContinue.interactable=false;
         }
@@ -110,6 +112,10 @@ public class MenuScript : Manager
         //GlobalManager.GameplayData.IDPlayer = IDChamp;
         PlayerPrefs.SetInt("IDPlayer", IDChamp);
         PlayerPrefs.SetInt("IDMotivation", IDMotivation);
+
+        PlayerPrefs.SetInt("health", 0);
+        PlayerPrefs.SetInt("stamina", 0);
+        PlayerPrefs.SetInt("damage", 0);
 
         //como comienza un nuevo juego, el eemigo es el primero siempre (el numero 7)
         PlayerPrefs.SetInt("IDEnemy", 7);

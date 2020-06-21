@@ -24,6 +24,7 @@ namespace Digicrafts.IAP.Pro.Events
 
 	[Serializable]
 	public class ConsumeSuccessEvent : UnityEvent<IAPObject>{}
+	
 	[Serializable]
 	public class ConsumeFailEvent : UnityEvent<IAPObject>{}
 

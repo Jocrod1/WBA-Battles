@@ -210,7 +210,7 @@ public class GameplayManager : Manager {
                 SelectedEnemy = PowerEnemies[IDEnemy];
             }
             else {
-                IDEnemy = 17 - ide;
+                IDEnemy = 16 - ide;
                 SelectedEnemy = Enemies[IDEnemy];
             }
             
