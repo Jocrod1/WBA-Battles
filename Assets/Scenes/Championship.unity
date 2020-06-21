@@ -8903,34 +8903,41 @@ MonoBehaviour:
   smoke: {fileID: 496948169}
   smoke2: {fileID: 75957870}
   fight: {fileID: 933412023}
-  diagram: {fileID: 1569337725}
+  menu: {fileID: 1569337725}
   wall: {fileID: 1955292649}
   realShop: {fileID: 1846580574}
   tutorial: {fileID: 1358322476}
-  subEnemy1: {fileID: 748745494}
-  subEnemy2: {fileID: 731409685}
-  subEnemy3: {fileID: 365544802}
-  subPlayer: {fileID: 892831021}
-  final: {fileID: 2085841884}
-  menu: {fileID: 1569337725}
-  imagePlayer: {fileID: 560158981}
-  imagePlayer2: {fileID: 892831021}
+  imgSemifinal:
+  - {fileID: 748745494}
+  - {fileID: 731409685}
+  - {fileID: 365544802}
+  - {fileID: 892831021}
+  imgFinal: {fileID: 2085841884}
+  imagePlayer:
+  - {fileID: 560158981}
+  - {fileID: 892831021}
   imageAnimPlayer1: {fileID: 1452018294}
   imageAnimPlayer2: {fileID: 1140348732}
   imageAnimEnemy1: {fileID: 573687983}
   imageAnimEnemy2: {fileID: 3034872}
   imageAnimFinal: {fileID: 1188055604}
+  vs: {fileID: 2134595411}
   eliminateds1: {fileID: 1597515713}
   eliminateds2: {fileID: 31117448}
-  vs: {fileID: 2134595411}
-  champ1: {fileID: 21300000, guid: 4201eaccc69a6e343b621bbd2d7090aa, type: 3}
-  champ2: {fileID: 21300000, guid: aaf87443f0742a2459d8cc92ff105130, type: 3}
-  champ3: {fileID: 21300000, guid: 4b031b124afd2c241973febf8ad49cf1, type: 3}
-  champ4: {fileID: 21300000, guid: 1319ccd5010c80347a53b0d47769607e, type: 3}
-  player1: {fileID: 21300000, guid: 07f3ec904e636984a8c2bedfa7462f8f, type: 3}
-  player2: {fileID: 21300000, guid: e501519750932ba4cab63d880141c63e, type: 3}
-  player3: {fileID: 21300000, guid: 371193a434c92434c839858a3dd6c321, type: 3}
-  player4: {fileID: 21300000, guid: 77ec87413bb2d3e49a4b356bd2ae0149, type: 3}
+  posterImage:
+  - {fileID: 21300000, guid: 4201eaccc69a6e343b621bbd2d7090aa, type: 3}
+  - {fileID: 21300000, guid: aaf87443f0742a2459d8cc92ff105130, type: 3}
+  - {fileID: 21300000, guid: 4b031b124afd2c241973febf8ad49cf1, type: 3}
+  - {fileID: 21300000, guid: 1319ccd5010c80347a53b0d47769607e, type: 3}
+  playerCartel:
+  - {fileID: 21300000, guid: 07f3ec904e636984a8c2bedfa7462f8f, type: 3}
+  - {fileID: 21300000, guid: e501519750932ba4cab63d880141c63e, type: 3}
+  - {fileID: 21300000, guid: 371193a434c92434c839858a3dd6c321, type: 3}
+  - {fileID: 21300000, guid: 77ec87413bb2d3e49a4b356bd2ae0149, type: 3}
+  enemyCartel:
+  - {fileID: 21300000, guid: 25f879bd5a8ea084a974dc5911723aff, type: 3}
+  - {fileID: 21300000, guid: 9bee1446743f7964695461f6beaf4cc1, type: 3}
+  - {fileID: 21300000, guid: 773586c5213c6d6419dd5bf5594d2ccb, type: 3}
   enemyCartel1: {fileID: 21300000, guid: 25f879bd5a8ea084a974dc5911723aff, type: 3}
   enemyCartel2: {fileID: 21300000, guid: 9bee1446743f7964695461f6beaf4cc1, type: 3}
   enemyCartel3: {fileID: 21300000, guid: 773586c5213c6d6419dd5bf5594d2ccb, type: 3}
