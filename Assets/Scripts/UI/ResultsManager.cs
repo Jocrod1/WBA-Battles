@@ -37,6 +37,7 @@ public class ResultsManager : MonoBehaviour
     public Sprite[] winChamp1, winChamp2, winChamp3, winChamp4, loseChamp1, loseChamp2,loseChamp3, loseChamp4;
 
     private bool winZone;
+    private string Table;
 
 
     public enum Result {
@@ -259,13 +260,6 @@ public class ResultsManager : MonoBehaviour
 
         IdPlayer--;
         IdMotivation--;
-
-/*
-        if (!win)
-            ImagePanel.sprite = playersLoosePanels[Idp].Motivation[idm];
-        else
-            ImagePanel.sprite = playersWinPanels[Idp].Motivation[idm];¨
-            */
     }
 
     public void goTable()
@@ -274,14 +268,17 @@ public class ResultsManager : MonoBehaviour
         {
             if(idEnemy>=0 && idEnemy<=7)
             {
-                string Table="Table";
-                playgame(Table);
+                Table="Table";
             }
-            else if(idEnemy>=10 && idEnemy<=13)
+            else if(idEnemy>=10 && idEnemy<=12)
             {
-                string Table="Championship";
-                playgame(Table);
+                Table="Championship";
             }
+            else if(idEnemy==9)
+            {
+                Table="Victory";  
+            }
+            playgame(Table);
         }
         else
         {
