@@ -216,8 +216,8 @@ MonoBehaviour:
   - {fileID: 6525551185790593945, guid: e6f547a5a6d0c05428165978e3376a72, type: 3}
   - {fileID: 2178568826527945259, guid: 9a5d2d2ea7a1f5a4cb8fb70e7afc1747, type: 3}
   - {fileID: 2100934203973980260, guid: 8ddbd574a2ac9b94ea9cff47e72fba6a, type: 3}
-  - {fileID: 6607562371255432753, guid: 537cefcadcffe68498144f0b88cf54e6, type: 3}
   - {fileID: 723232263737931964, guid: 0ee1dbfbc3259034997bb0df4410cc25, type: 3}
+  - {fileID: 6607562371255432753, guid: 537cefcadcffe68498144f0b88cf54e6, type: 3}
   - {fileID: 55843246583590621, guid: e00585c3c1cf5f147ae3f635cf3d0436, type: 3}
   - {fileID: 3081728705665372400, guid: 52620ec234dc5224892dfaea2a99888a, type: 3}
   PowerEnemies:
@@ -235,7 +235,7 @@ MonoBehaviour:
   EnemyTxt: {fileID: 1337587696}
   Ring: {fileID: 1694301555}
   IDPlayer: 2
-  IDEnemy: 2
+  IDEnemy: 10
   TimerTxt: {fileID: 1204134714}
   TimeCount: 1
   Timer: 0
