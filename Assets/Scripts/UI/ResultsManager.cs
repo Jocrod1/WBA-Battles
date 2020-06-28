@@ -48,6 +48,9 @@ public class ResultsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Establecer TimeOut
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         Results.GameOver = false;
         idEnemy = PlayerPrefs.GetInt("IDEnemy");
         PlayerPrefs.SetInt("WinZoneInLose", 0);

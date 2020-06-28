@@ -43,6 +43,9 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
+        //Establecer TimeOut
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         for (int i = 0; i < Sounds.Count; i++) {
             GameObject obj = new GameObject("Sound_" + i + "_" + Sounds[i].Name);
             obj.transform.SetParent(transform);

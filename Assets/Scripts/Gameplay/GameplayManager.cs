@@ -117,6 +117,8 @@ public class GameplayManager : Manager {
     // Start is called before the first frame update
     void Start()
     {
+        //Establecer TimeOut
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         AM = GetComponent<AudioManager>();
 

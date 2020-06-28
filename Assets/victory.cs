@@ -13,6 +13,9 @@ public class victory : MonoBehaviour
 
     void Start()
     {
+        //Establecer TimeOut
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         PlayerPrefs.SetInt("IDPlayer", -1);
         PlayerPrefs.SetInt("IDEnemy", -1);
         
