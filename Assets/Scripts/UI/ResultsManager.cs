@@ -54,7 +54,7 @@ public class ResultsManager : MonoBehaviour
 
         //agregar una hora al tiempo en que termino la pelea
         oneHour = System.DateTime.Now;
-        duration = new System.TimeSpan(0, 0, 0, 60);
+        duration = new System.TimeSpan(0, 0, 0, 20);
         timeNextFight = oneHour.Add(duration);
 
         if (Results.Win)
@@ -62,14 +62,13 @@ public class ResultsManager : MonoBehaviour
             ResultText.text = "YOU WON";
             ResultText.color = new Color(203f, 166f, 54f);
 
-            PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
-
             SetPanel(true);
 
             if (idEnemy >= 10 && idEnemy <= 12)
             {
                 idEnemy = idEnemy - 1;
                 PlayerPrefs.SetInt("IDEnemy", idEnemy);
+                PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
             }
             else if (idEnemy == 0)
             {
@@ -81,6 +80,10 @@ public class ResultsManager : MonoBehaviour
                 PlayerPrefs.SetInt("IDEnemy", idEnemy);
             }
 
+            if (idEnemy >= 1 && idEnemy <= 3)
+            {
+                PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
+            }
 
 
             //BACKGROUND
@@ -154,7 +157,7 @@ public class ResultsManager : MonoBehaviour
             ResultText.text = "YOU LOSE";
             ResultText.color = new Color(140f, 0, 0);
 
-            PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
+            //PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
 
             SetPanel(false);
 
@@ -162,6 +165,7 @@ public class ResultsManager : MonoBehaviour
             if (idEnemy >= 1 && idEnemy <= 3)
             {
                 PlayerPrefs.SetInt("WinZoneInLose", 1);
+                PlayerPrefs.SetString("WaitOneHour", timeNextFight.ToString());
             }
             else {
                 PlayerPrefs.SetInt("WinZoneInLose", 0);
