@@ -1349,7 +1349,7 @@ MonoBehaviour:
   PunchEnded: 0
   PunchRecieved: 0
   Punch: 0
-  SD2Dodge: 40
+  SD2Dodge: 7
   IsTired: 0
   PunchFailed: 0
   IsDefeated: 0
