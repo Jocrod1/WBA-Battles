@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.Audio;
+using System.Linq;
 
 public class GameplayManager : Manager {
 
@@ -316,6 +317,7 @@ public class GameplayManager : Manager {
     }
 
     public void SetTable() {
+
         float PlyrHealthPerc = (Player.CurrentHealth / Player.MaxHealth);
         float EnmyHealthPerc = (enemy.CurrentHealth / enemy.MaxHealth);
 
@@ -330,6 +332,77 @@ public class GameplayManager : Manager {
         JudgeResult jdge1 = new JudgeResult(PlyrPointsBase, EnmyPointBase);
         JudgeResult jdge2 = new JudgeResult(PlyrPointsBase, EnmyPointBase);
         JudgeResult jdge3 = new JudgeResult(PlyrPointsBase, EnmyPointBase);
+        
+        if(DiffKO != 0)
+        {
+            if(Math.Abs(DiffKO) == 1)
+            {
+                if(Math.Sign(DiffKO) > 0)
+                {
+                    jdge1.Enemy = jdge2.Enemy = jdge3.Enemy = 9;
+                    jdge1.Player = jdge2.Player = jdge3.Player = 10;
+                }
+                else
+                {
+                    jdge1.Enemy = jdge2.Enemy = jdge3.Enemy = 10;
+                    jdge1.Player = jdge2.Player = jdge3.Player = 9;
+                }
+            }
+            if(Math.Abs(DiffKO) == 2)
+            {
+                if (Math.Sign(DiffKO) > 0)
+                {
+                    jdge1.Enemy = jdge2.Enemy = jdge3.Enemy = 8;
+                    jdge1.Player = jdge2.Player = jdge3.Player = 10;
+                }
+                else
+                {
+                    jdge1.Enemy = jdge2.Enemy = jdge3.Enemy = 10;
+                    jdge1.Player = jdge2.Player = jdge3.Player = 8;
+                }
+            }
+        }
+        else
+        {
+            float Diffperc = PlyrHealthPerc - EnmyHealthPerc;
+
+            List<JudgeResult> judges = new List<JudgeResult>();
+            judges.Add(jdge1);
+            judges.Add(jdge2);
+            judges.Add(jdge3);
+
+            int selectJudge = UnityEngine.Random.Range(0, judges.Count - 1);
+
+            for (int i = 0; i < judges.Count; i++)
+            {
+                if (i == selectJudge)
+                {
+                    if (Diffperc < 0.3f)
+                    {
+                        float er = (30 - (Diffperc * 100)) + 10;
+                        if (UnityEngine.Random.value > (er / 100f))
+                        {
+                            judges[i].Enemy = judges[i].Player = 10;
+                            return;
+                        }
+
+                    }
+                }
+                if (Diffperc > 0)
+                {
+                    judges[i].Player = 10;
+                    judges[i].Enemy = 9;
+                }
+                else
+                {
+                    judges[i].Player = 9;
+                    judges[i].Enemy = 10;
+                }
+            }
+            jdge1 = judges[0];
+            jdge2 = judges[1];
+            jdge3 = judges[2];
+        }
 
         //llenar la tabla...
         ResultsTable.Add(new ResultsbyRound(jdge1, jdge2, jdge3));
@@ -513,9 +586,6 @@ public class GameplayManager : Manager {
         Bars.SetBool("Inside", true);
         Spawners.SetBool("Inside", true);
 
-
-        AM.PlaySound("Bell");
-
         yield return new WaitForSeconds(TimeWaitingAnim);
 
         EnableCharacters();
@@ -695,12 +765,14 @@ public class GameplayManager : Manager {
         Player.Wait = false;
         enemy.enabled = true;
         ActivateTimer = true;
+        AM.PlaySound("Bell");
     }
 
     public void DisableCharacters() {
         Player.Wait = true;
         enemy.enabled = false;
         ActivateTimer = false;
+        AM.PlaySound("Bell");
     }
 
     public void PublicCheering(bool Cel) {
