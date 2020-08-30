@@ -108,7 +108,6 @@ public class GameplayManager : Manager {
     public List<Animator> CheerPublic;
     public float Transitiontime;
     public AudioManager AM;
-
     
     public CameraManager cam;
 
@@ -513,6 +512,9 @@ public class GameplayManager : Manager {
 
         Bars.SetBool("Inside", true);
         Spawners.SetBool("Inside", true);
+
+
+        AM.PlaySound("Bell");
 
         yield return new WaitForSeconds(TimeWaitingAnim);
 
