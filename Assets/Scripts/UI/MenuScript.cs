@@ -18,6 +18,9 @@ public class MenuScript : Manager
     public AudioManager AM;
 
     private void Start() {
+        //Establecer TimeOut
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         //valor default
         var IDEnemy=PlayerPrefs.GetInt("IDEnemy", -1);
 

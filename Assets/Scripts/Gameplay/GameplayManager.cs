@@ -117,6 +117,8 @@ public class GameplayManager : Manager {
     // Start is called before the first frame update
     void Start()
     {
+        //Establecer TimeOut
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         AM = GetComponent<AudioManager>();
 
@@ -321,101 +323,16 @@ public class GameplayManager : Manager {
         int plyrKOs = Player.CurrentKnockouts;
         int EnmyKOs = enemy.CurrentKnockouts;
 
-        float PlyrRate = PlyrHealthPerc + plyrKOs;
-        float EnmyRate = EnmyHealthPerc + EnmyKOs;
-
-        float Diff = PlyrRate - EnmyRate;
+        int DiffKO = plyrKOs - EnmyKOs;
 
         int PlyrPointsBase = 0;
         int EnmyPointBase = 0;
-
-        int points = 0;
-
-        if(Math.Abs(Diff) <= 0.5f) {
-            points = Mathf.RoundToInt(UnityEngine.Random.value);
-        }
-
-        switch (EnmyKOs) {
-            case 0: {
-                    PlyrPointsBase = 8;
-                    break;
-            }
-            case 1: {
-                    PlyrPointsBase = 9;
-                    break;
-                }
-            case 2: {
-                    PlyrPointsBase = 10;
-                    break;
-                }
-            default: break;
-        }
-
-
-        switch (plyrKOs) {
-            case 0:
-                {
-                    EnmyPointBase = 8;
-                    break;
-                }
-            case 1:
-                {
-                    EnmyPointBase = 9;
-                    break;
-                }
-            case 2:
-                {
-                    EnmyPointBase = 10;
-                    break;
-                }
-            default: break;
-        }
 
         JudgeResult jdge1 = new JudgeResult(PlyrPointsBase, EnmyPointBase);
         JudgeResult jdge2 = new JudgeResult(PlyrPointsBase, EnmyPointBase);
         JudgeResult jdge3 = new JudgeResult(PlyrPointsBase, EnmyPointBase);
 
-        if (Mathf.Abs(Diff) <= 0.2f && plyrKOs == EnmyKOs)
-        {
-            if (Diff > 0)
-            {
-                jdge1.Enemy -= addPoints(0.333f, 1);
-                jdge2.Enemy -= addPoints(0.333f, 1);
-                jdge3.Enemy -= addPoints(0.333f, 1);
-            }
-            else
-            {
-                jdge1.Player -= addPoints(0.333f, 1);
-                jdge2.Player -= addPoints(0.333f, 1);
-                jdge3.Player -= addPoints(0.333f, 1);
-            }
-        }
-        else if (Mathf.Abs(Diff) <= 0.5f && plyrKOs == EnmyKOs)
-        {
-            if (Diff > 0)
-            {
-                jdge3.Enemy -= addPoints(0.333f, 1);
-            }
-            else
-            {
-                jdge3.Player -= addPoints(0.333f, 1);
-            }
-        }
-        else if(plyrKOs == EnmyKOs) {
-            if (Diff > 0)
-            {
-                jdge1.Enemy -= 1;
-                jdge2.Enemy -= 1;
-                jdge3.Enemy -= 1;
-            }
-            else
-            {
-                jdge1.Player -= 1;
-                jdge2.Player -= 1;
-                jdge3.Player -= 1;
-            }
-        }
-
+        //llenar la tabla...
         ResultsTable.Add(new ResultsbyRound(jdge1, jdge2, jdge3));
         JudgeResult finalResult1 = new JudgeResult(0, 0);
         JudgeResult finalResult2 = new JudgeResult(0, 0);

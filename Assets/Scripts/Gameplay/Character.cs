@@ -61,7 +61,7 @@ public class Character : MonoBehaviour {
     public bool Punch;
     public PunchInfo info { get; set; }
 
-    public float SD2Dodge = 30;
+    public float SD2Dodge = 15;
 
     [Header("States and Times")]
     public bool IsTired;
